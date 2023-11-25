@@ -1,0 +1,351 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'get_bank_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$GetBankEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getBankList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getBankList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getBankList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBankList value) getBankList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBankList value)? getBankList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetBankList value)? getBankList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetBankEventCopyWith<$Res> {
+  factory $GetBankEventCopyWith(
+          GetBankEvent value, $Res Function(GetBankEvent) then) =
+      _$GetBankEventCopyWithImpl<$Res, GetBankEvent>;
+}
+
+/// @nodoc
+class _$GetBankEventCopyWithImpl<$Res, $Val extends GetBankEvent>
+    implements $GetBankEventCopyWith<$Res> {
+  _$GetBankEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetBankListImplCopyWith<$Res> {
+  factory _$$GetBankListImplCopyWith(
+          _$GetBankListImpl value, $Res Function(_$GetBankListImpl) then) =
+      __$$GetBankListImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetBankListImplCopyWithImpl<$Res>
+    extends _$GetBankEventCopyWithImpl<$Res, _$GetBankListImpl>
+    implements _$$GetBankListImplCopyWith<$Res> {
+  __$$GetBankListImplCopyWithImpl(
+      _$GetBankListImpl _value, $Res Function(_$GetBankListImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetBankListImpl implements GetBankList {
+  const _$GetBankListImpl();
+
+  @override
+  String toString() {
+    return 'GetBankEvent.getBankList()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetBankListImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getBankList,
+  }) {
+    return getBankList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getBankList,
+  }) {
+    return getBankList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getBankList,
+    required TResult orElse(),
+  }) {
+    if (getBankList != null) {
+      return getBankList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBankList value) getBankList,
+  }) {
+    return getBankList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBankList value)? getBankList,
+  }) {
+    return getBankList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetBankList value)? getBankList,
+    required TResult orElse(),
+  }) {
+    if (getBankList != null) {
+      return getBankList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetBankList implements GetBankEvent {
+  const factory GetBankList() = _$GetBankListImpl;
+}
+
+/// @nodoc
+mixin _$GetBankState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
+  Bank get bank => throw _privateConstructorUsedError;
+  Option<Either<MainFailure, Bank>> get successorFailure =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetBankStateCopyWith<GetBankState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetBankStateCopyWith<$Res> {
+  factory $GetBankStateCopyWith(
+          GetBankState value, $Res Function(GetBankState) then) =
+      _$GetBankStateCopyWithImpl<$Res, GetBankState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isError,
+      Bank bank,
+      Option<Either<MainFailure, Bank>> successorFailure});
+}
+
+/// @nodoc
+class _$GetBankStateCopyWithImpl<$Res, $Val extends GetBankState>
+    implements $GetBankStateCopyWith<$Res> {
+  _$GetBankStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isError = null,
+    Object? bank = null,
+    Object? successorFailure = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bank: null == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as Bank,
+      successorFailure: null == successorFailure
+          ? _value.successorFailure
+          : successorFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<MainFailure, Bank>>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GetBankStateImplCopyWith<$Res>
+    implements $GetBankStateCopyWith<$Res> {
+  factory _$$GetBankStateImplCopyWith(
+          _$GetBankStateImpl value, $Res Function(_$GetBankStateImpl) then) =
+      __$$GetBankStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isError,
+      Bank bank,
+      Option<Either<MainFailure, Bank>> successorFailure});
+}
+
+/// @nodoc
+class __$$GetBankStateImplCopyWithImpl<$Res>
+    extends _$GetBankStateCopyWithImpl<$Res, _$GetBankStateImpl>
+    implements _$$GetBankStateImplCopyWith<$Res> {
+  __$$GetBankStateImplCopyWithImpl(
+      _$GetBankStateImpl _value, $Res Function(_$GetBankStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isError = null,
+    Object? bank = null,
+    Object? successorFailure = null,
+  }) {
+    return _then(_$GetBankStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bank: null == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as Bank,
+      successorFailure: null == successorFailure
+          ? _value.successorFailure
+          : successorFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<MainFailure, Bank>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetBankStateImpl implements _GetBankState {
+  const _$GetBankStateImpl(
+      {required this.isLoading,
+      required this.isError,
+      required this.bank,
+      required this.successorFailure});
+
+  @override
+  final bool isLoading;
+  @override
+  final bool isError;
+  @override
+  final Bank bank;
+  @override
+  final Option<Either<MainFailure, Bank>> successorFailure;
+
+  @override
+  String toString() {
+    return 'GetBankState(isLoading: $isLoading, isError: $isError, bank: $bank, successorFailure: $successorFailure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetBankStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.bank, bank) || other.bank == bank) &&
+            (identical(other.successorFailure, successorFailure) ||
+                other.successorFailure == successorFailure));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, isError, bank, successorFailure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetBankStateImplCopyWith<_$GetBankStateImpl> get copyWith =>
+      __$$GetBankStateImplCopyWithImpl<_$GetBankStateImpl>(this, _$identity);
+}
+
+abstract class _GetBankState implements GetBankState {
+  const factory _GetBankState(
+          {required final bool isLoading,
+          required final bool isError,
+          required final Bank bank,
+          required final Option<Either<MainFailure, Bank>> successorFailure}) =
+      _$GetBankStateImpl;
+
+  @override
+  bool get isLoading;
+  @override
+  bool get isError;
+  @override
+  Bank get bank;
+  @override
+  Option<Either<MainFailure, Bank>> get successorFailure;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetBankStateImplCopyWith<_$GetBankStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
