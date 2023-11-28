@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 
 class LabelEmail extends StatefulWidget {
   final int maxlines;
@@ -28,9 +29,9 @@ class _LabelEmailState extends State<LabelEmail> {
   @override
   void initState() {
     super.initState();
-    widget.emailController .addListener(() {
+    widget.emailController.addListener(() {
       if (widget.onChanged != null) {
-        widget.onChanged!(widget.emailController .text);
+        widget.onChanged!(widget.emailController.text);
       }
       setState(() {
         _isValid = isEmailValid(widget.emailController.text);
@@ -52,13 +53,13 @@ class _LabelEmailState extends State<LabelEmail> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: const Color.fromARGB(255, 136, 133, 133),
+              color: labelnumericalContainerbordercolor,
               width: 1.0,
             ),
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: labelnumericalContainercolor,
           ),
           child: TextFormField(
-            style: kCardContentStyle,
+            style: kFormContentStyle,
             controller: widget.emailController,
             maxLines: widget.maxlines,
             keyboardType: TextInputType.emailAddress,

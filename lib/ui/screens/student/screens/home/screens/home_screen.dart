@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/screens/home_layout.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/widgets/home_card.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/screens/home_layout.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/widgets/home_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

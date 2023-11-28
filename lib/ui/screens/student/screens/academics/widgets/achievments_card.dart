@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/academics/widgets/file_picker.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/academics/widgets/drop_down_menu.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_inputText.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
-import 'package:panakj_mvvm/ui/view_model/add_achievment/add_achievment_bloc.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/widgets/file_picker.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/widgets/drop_down_menu.dart';
+import 'package:panakj_app/ui/screens/student/widgets/custom_bottomsheet.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
 
 class AchievmentsCard extends StatefulWidget {
-   TextEditingController achievmentController = TextEditingController();
+  TextEditingController achievmentController = TextEditingController();
   final Widget siblings;
   bool mybool;
 
@@ -33,9 +35,11 @@ class _AchievmentsCardState extends State<AchievmentsCard> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              customBottomSheet(title: 'Achievments'),
               LabelInputText(
                 label: 'Achievment Details',
-                maxlines: 3,StringInput: widget.achievmentController,
+                maxlines: 3,
+                StringInput: widget.achievmentController,
               ),
               const HeightSpacer(),
               InputLabel(mytext: 'Category'),
@@ -51,12 +55,16 @@ class _AchievmentsCardState extends State<AchievmentsCard> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                      onPressed: () {
-                        context
-                            .read<AddAchievmentBloc>()
-                            .add(AddMoreAchievments());
-                      },
-                      child: const Text('ADD ACHIEVMENT')),
+                    style: const ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(kvioletColor3)),
+                    onPressed: () {
+                      context
+                          .read<AddAchievmentBloc>()
+                          .add(AddMoreAchievments());
+                    },
+                    child: const Text('ADD ACHIEVMENT'),
+                  ),
                 ],
               )
             ],

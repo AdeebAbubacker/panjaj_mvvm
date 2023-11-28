@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/vericalLine.dart';
-import 'package:panakj_mvvm/ui/view_model/students_app_form/students_app_form_bloc.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/widgets/vericalLine.dart';
+import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
 
 class DoYouHaveBankAcc extends StatelessWidget {
   const DoYouHaveBankAcc({super.key});

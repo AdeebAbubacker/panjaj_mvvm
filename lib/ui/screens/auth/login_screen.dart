@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/model/failure/mainfailure.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home_screen/students_home_screen.dart';
-import 'package:panakj_mvvm/ui/view_model/auth/auth_bloc.dart';
+import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/ui/screens/student/screens/home_screen/students_home_screen.dart';
+import 'package:panakj_app/ui/view_model/auth/auth_bloc.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const StudentsHomeScreen();
+                          return  StudentsHomeScreen();
                         },
                       ),
                     );

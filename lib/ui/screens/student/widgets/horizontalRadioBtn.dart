@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
 
 class horizontalRadioBtn extends StatelessWidget {
   String? title;

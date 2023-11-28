@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/widgets/checkbox_home.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/widgets/checkbox_triplets.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/widgets/land_answer_text.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/widgets/checkbox_home.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/widgets/checkbox_triplets.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/widgets/land_answer_text.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values_bloc.dart';
 
 class HomeCard extends StatefulWidget {
   final Widget siblings;
@@ -121,6 +123,30 @@ class _HomeCardState extends State<HomeCard> {
             ],
           ),
           LandAnswerTextField()
+          // BlocBuilder<GetDropdownValuesBloc, GetDropdownValuesState>(
+          //   builder: (context, state) {
+          //     return Column(children: [
+          //       ElevatedButton(
+          //         onPressed: () {
+          //           context
+          //               .read<GetDropdownValuesBloc>()
+          //               .add(const GetDropDownValues());
+          //         },
+          //         child: const Text('Call dropdown list'),
+          //       ),
+          //       if (state.isError)
+          //         const Column(
+          //           children: [
+          //             // Add error-related widgets here
+          //             Text('Error occurred!'),
+          //           ],
+          //         )
+          //       else
+          //         // Text(
+          //         //     '${state.dropDownValue.data!.datadropdown!.courses!.data!.toList().map((e) => e.name.toString())}')
+          //     ]);
+          //   },
+          // )
         ],
       ),
     );

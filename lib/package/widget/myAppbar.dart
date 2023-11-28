@@ -1,5 +1,5 @@
-import 'package:panakj_mvvm/core/colors/colors.dart';
-import 'package:panakj_mvvm/package/core/constants.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/package/core/constants.dart';
 import 'package:flutter/material.dart';
 
 

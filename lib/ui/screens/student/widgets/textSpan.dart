@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 
 class Textspan extends StatelessWidget {
@@ -15,7 +16,7 @@ class Textspan extends StatelessWidget {
         Text(
           'Upcoming Step',
           style: TextStyle(
-              fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 16.0, color: kblackColor, fontWeight: FontWeight.bold),
         ),
         HeightSpacer(height: 9),
         Text(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class InpuText extends StatefulWidget {
   final int maxlines;
   TextEditingController StringInput = TextEditingController();
-   InpuText({
+  InpuText({
     this.maxlines = 1,
     required this.StringInput,
     Key? key,
@@ -24,10 +25,10 @@ class _InpuTextState extends State<InpuText> {
         SizedBox(
           child: kpadding14(
             child: TextField(
-              controller: widget.StringInput,
-              maxLines: widget.maxlines,
-              decoration: const InputDecoration(border: InputBorder.none),
-            ),
+                controller: widget.StringInput,
+                maxLines: widget.maxlines,
+                decoration: const InputDecoration(border: InputBorder.none),
+                style: kFormContentStyle),
           ),
         ),
       ],

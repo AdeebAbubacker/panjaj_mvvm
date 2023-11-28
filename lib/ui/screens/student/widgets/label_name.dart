@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 
 class LabelName extends StatefulWidget {
   final int maxlines;
@@ -50,12 +52,13 @@ class _LabelNameState extends State<LabelName> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: const Color.fromARGB(255, 136, 133, 133),
+              color: labelnumericalContainerbordercolor,
               width: 1.0,
             ),
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: labelnumericalContainercolor,
           ),
           child: TextFormField(
+            style: kCardContentStyle,
             controller: _controller,
             maxLines: widget.maxlines,
             keyboardType: TextInputType.emailAddress,

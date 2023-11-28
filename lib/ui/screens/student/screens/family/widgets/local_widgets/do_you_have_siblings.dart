@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/view_model/family/family_bloc.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 
 class DoYouHaveSiblings extends StatelessWidget {
   DoYouHaveSiblings({super.key});

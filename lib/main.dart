@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/db/adapters/bank_adapter/bank_adapter.dart';
-import 'package:panakj_mvvm/core/db/boxes/bank_box.dart';
-import 'package:panakj_mvvm/ui/screens/auth/splash_screen.dart';
-import 'package:panakj_mvvm/ui/view_model/Dob/dob_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/add_achievment/add_achievment_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/auth/auth_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/family/family_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/get_bank/get_bank_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/personalInfo/personal_info_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/students_app_form/students_app_form_bloc.dart';
+import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
+import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
+import 'package:panakj_app/core/db/boxes/bank_box.dart';
+import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
+import 'package:panakj_app/ui/demo_screen.dart';
+import 'package:panakj_app/ui/screens/auth/splash_screen.dart';
+import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
+import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
+import 'package:panakj_app/ui/view_model/auth/auth_bloc.dart';
+import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
+import 'package:panakj_app/ui/view_model/get_bank/get_bank_bloc.dart';
+import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values_bloc.dart';
+import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
+import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
+import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
+  // Register all necessary adapters before opening any box
   Hive.registerAdapter(BankDBAdapter());
+  Hive.registerAdapter(personalInfoDBAdapter());
+
+  // Open boxes after registering adapters
   bankBox = await Hive.openBox<BankDB>('bankBox');
+  personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
+
   runApp(const MyApp());
 }
 
@@ -52,13 +63,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => GetBankBloc(),
         ),
+        BlocProvider(
+          create: (context) => GetDropdownValuesBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: '',
         theme: ThemeData(),
-        home: const SplashScreen(),
-       
+        // home: BankListWidget(),
+        home: SplashScreen(),
       ),
     );
   }

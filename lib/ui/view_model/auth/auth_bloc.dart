@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:panakj_mvvm/core/model/failure/mainfailure.dart';
-import 'package:panakj_mvvm/core/service/auth_service.dart';
+import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/core/service/auth_service.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:panakj_mvvm/core/model/auth/auth.dart';
+import 'package:panakj_app/core/model/auth/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_event.dart';

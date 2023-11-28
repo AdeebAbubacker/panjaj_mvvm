@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 
 // ignore: must_be_immutable
 class LabelNumericalText extends StatelessWidget {
   final int maxlines;
   String mytext;
   final double padding;
-   TextEditingController numController = TextEditingController();
+  TextEditingController numController = TextEditingController();
   LabelNumericalText(
-      {this.maxlines = 1, super.key, required this.mytext, this.padding = 5,required this.numController});
+      {this.maxlines = 1,
+      super.key,
+      required this.mytext,
+      this.padding = 5,
+      required this.numController});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +30,14 @@ class LabelNumericalText extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                color: const Color.fromARGB(255, 136, 133, 133),
+                color: labelnumericalContainerbordercolor,
                 width: 1.0,
               ),
-              color: const Color.fromARGB(255, 255, 255, 255)),
+              color: labelnumericalContainercolor),
           child: kpadding14(
             child: TextField(
-             controller: numController, 
+              style: kCardContentStyle,
+              controller: numController,
               keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: const InputDecoration(border: InputBorder.none),

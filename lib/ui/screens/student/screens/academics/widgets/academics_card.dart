@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/academics/widgets/marks_details.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_bottomSheet.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/widgets/marks_details.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class AcademicsCard extends StatefulWidget {
   final Widget siblings;

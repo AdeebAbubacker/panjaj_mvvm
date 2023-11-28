@@ -14,6 +14,9 @@ Bank _$BankFromJson(Map<String, dynamic> json) => Bank(
           ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
           .toList(),
       misc: json['misc'] as List<dynamic>?,
+      paginate: json['paginate'] == null
+          ? null
+          : Paginate.fromJson(json['paginate'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BankToJson(Bank instance) => <String, dynamic>{
@@ -22,4 +25,5 @@ Map<String, dynamic> _$BankToJson(Bank instance) => <String, dynamic>{
       'message': instance.message,
       'data': instance.data,
       'misc': instance.misc,
+      'paginate': instance.paginate,
     };

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:panakj_app/core/colors/colors.dart';
 import 'package:path/path.dart';
 
 class FilePickerScreen extends StatefulWidget {
@@ -21,19 +22,19 @@ class _FilePickerScreenState extends State<FilePickerScreen> {
       setState(() {
         filePath = result.files.single.path!;
         fileName = basename(filePath!);
+        // ignore: avoid_print
         print("Selected file: $fileName");
-        _visible(); // Call visibility check
+        _visible();
       });
-    } else {
-      // User canceled the file picking
-    }
+    } else {}
   }
 
+  // ignore: unused_element
   void _deleteFile() {
     setState(() {
       filePath = '';
       fileName = '';
-      _visible(); // Call visibility check
+      _visible();
     });
   }
 
@@ -45,6 +46,8 @@ class _FilePickerScreenState extends State<FilePickerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+    bool fileSelected = fileName!.isEmpty ? false : true;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -52,65 +55,103 @@ class _FilePickerScreenState extends State<FilePickerScreen> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: 250,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: _openFilePicker,
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(Icons.file_present),
-                    Text('Upload file'),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Visibility(
-                visible: myVisibility,
-                child: Column(
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.delete,
-                        color: Colors.redAccent,
+            fileSelected
+                ? Row(
+                    children: [
+                      SizedBox(
+                        width: 263,
+                        height: 50,
+                        child: OutlinedButton(
+                          style: ButtonStyle(
+                            side: MaterialStateProperty.all(
+                              const BorderSide(
+                                width: 1.0,
+                                color: kvioletColor3,
+                              ),
+                            ),
+                          ),
+                          onPressed: _openFilePicker,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Icon(Icons.file_present,
+                                  color: kvioletColor3),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: Text(
+                                  fileSelected
+                                      ? fileName as String
+                                      : 'UPLOAD FILE',
+                                  style: TextStyle(
+                                      fontSize: fileSelected ? 10 : 12,
+                                      color: fileSelected
+                                          ? kvioletColor3
+                                          : kvioletColor3),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      onPressed: _deleteFile,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Visibility(
+                          visible: myVisibility,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: 60,
+                                height: 50,
+                                child: OutlinedButton(
+                                  onPressed: () {
+                                    _deleteFile();
+                                  },
+                                  style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    side: const BorderSide(color: Colors.red),
+                                  ),
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Colors.redAccent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                : SizedBox(
+                    width: 333,
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(kvioletColor3)),
+                      onPressed: _openFilePicker,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.file_present),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5.0),
+                            child: Text(
+                              fileSelected ? fileName as String : 'UPLOAD FILE',
+                              style: TextStyle(
+                                fontSize: fileSelected ? 10 : 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  ),
           ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                fileName!,
-                style: const TextStyle(color: Colors.brown, fontSize: 7),
-              ),
-            ],
-          ),
         ),
       ],
     );
   }
 }
-
-
-    // const SizedBox(
-    //             width: 10,
-    //           ),
-    //           fileName == ''
-    //               ? Container()
-    //               : Image.file(
-    //                   File(filePath!),
-    //                   height: 30,
-    //                   width: 30,
-    //                   fit: BoxFit.cover,
-    //                 ), // Display image only if a file is selected

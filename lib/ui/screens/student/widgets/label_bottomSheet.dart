@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:panakj_mvvm/core/colors/colors.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class labelBottomSheet extends StatefulWidget {
   final bottomSheetheight;

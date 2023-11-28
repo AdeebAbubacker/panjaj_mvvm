@@ -2,13 +2,13 @@
 
 // ignore: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/do_you_have_bankaccount.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/enterDOB.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/horizontalRadioBtn.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_email.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_inputText.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/labul_NumericalText.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/screens/student/widgets/do_you_have_bankaccount.dart';
+import 'package:panakj_app/ui/screens/student/widgets/enterDOB.dart';
+import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_email.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
+import 'package:panakj_app/ui/screens/student/widgets/labul_NumericalText.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class PersonalDetailsCard extends StatefulWidget {
   bool mybool;

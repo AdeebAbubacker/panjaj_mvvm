@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class Marksdetails extends StatelessWidget {
   final String title;

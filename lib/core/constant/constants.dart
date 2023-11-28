@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const double kiconsize = 25;
-// const kwhiteTextColorTitle = TextStyle(color: Colors.white, fontSize: 15);
-
 const kCarddateTextStyle =
     TextStyle(color: Color.fromARGB(255, 101, 100, 100), fontSize: 12);
 
@@ -12,12 +10,17 @@ final kwhiteTextColorTitle =
 const kwhiteTextColor = TextStyle(color: Colors.white);
 const kwhiteButtonTextColor =
     TextStyle(color: Colors.white, fontWeight: FontWeight.w400);
-// final kCardFilterTextStyle = GoogleFonts.inter(
-//     color: const Color(0xFF702DE3), fontWeight: FontWeight.w500);
+
 final kCardFilterTextStyle = GoogleFonts.inter(
     color: const Color.fromARGB(255, 0, 0, 0), fontWeight: FontWeight.w800);
 final kCardContentStyle =
     GoogleFonts.inter(color: const Color(0xFF72809E), fontSize: 13);
+final kFormContentStyle = GoogleFonts.karla(
+  textStyle: const TextStyle(
+    color: Color(0xFF72809E),
+    fontSize: 16.0,
+  ),
+);
 final kstepperSmallStyle = GoogleFonts.inter(
     color: const Color.fromARGB(255, 156, 157, 159), fontSize: 12);
 final kCardContentSmallStyle =
@@ -63,6 +66,7 @@ const checkboxOptionStyle =
 
 const kPadding14 = Padding(padding: EdgeInsets.only(left: 14));
 
+// ignore: camel_case_types
 class kpadding14 extends StatelessWidget {
   final Widget child;
   const kpadding14({

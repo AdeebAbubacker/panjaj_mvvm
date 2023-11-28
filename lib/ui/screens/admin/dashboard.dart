@@ -1,7 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/colors/colors.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class AdminDashboard extends StatelessWidget {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -108,11 +108,11 @@ class AdminDashContainer extends StatelessWidget {
         width: 100,
         height: 120,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kwhitecolor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: const [
             BoxShadow(
-              color: Colors.grey,
+              color: kgreycolor,
               blurRadius: 3,
               offset: Offset(0, 2),
             ),

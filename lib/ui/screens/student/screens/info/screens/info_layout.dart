@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/core/colors/colors.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/info/screens/bank_layout.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/info/widgets/bank_details_card.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/info/widgets/personal_details_card.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/myPadding.dart';
-import 'package:panakj_mvvm/ui/view_model/students_app_form/students_app_form_bloc.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/screens/info/screens/bank_layout.dart';
+import 'package:panakj_app/ui/screens/student/screens/info/widgets/bank_details_card.dart';
+import 'package:panakj_app/ui/screens/student/screens/info/widgets/personal_details_card.dart';
+import 'package:panakj_app/ui/screens/student/widgets/myPadding.dart';
+import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
 
 class InfoLayout extends StatefulWidget {
   TextEditingController nameController = TextEditingController();

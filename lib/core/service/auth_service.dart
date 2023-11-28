@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:panakj_mvvm/core/model/auth/auth.dart';
-import 'package:panakj_mvvm/core/model/failure/mainfailure.dart';
-import 'package:panakj_mvvm/core/utility/api_endpoint.dart';
+import 'package:panakj_app/core/model/auth/auth.dart';
+import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/core/utility/api_endpoint.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:panakj_mvvm/core/model/bank/bank.dart';
-import 'package:panakj_mvvm/core/model/failure/mainfailure.dart';
-import 'package:panakj_mvvm/core/utility/api_endpoint.dart';
+import 'package:panakj_app/core/model/bank/bank.dart';
+import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/core/utility/api_endpoint.dart';
 
 class BankService {
   Future<Bank> getBank() async {

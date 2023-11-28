@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/colors/colors.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/colors/colors.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class myAppBar extends StatelessWidget {
   final String title;

@@ -2,7 +2,7 @@
 // it should generate radio buttons
 
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class VerticalRadioBtn extends StatefulWidget {
   String? title;

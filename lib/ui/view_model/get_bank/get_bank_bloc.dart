@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:panakj_mvvm/core/model/bank/bank.dart';
-import 'package:panakj_mvvm/core/model/failure/mainfailure.dart';
-import 'package:panakj_mvvm/core/service/bank_service.dart';
+import 'package:panakj_app/core/model/bank/bank.dart';
+import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/core/service/bank_service.dart';
 
 part 'get_bank_event.dart';
 part 'get_bank_state.dart';
@@ -23,8 +23,9 @@ class GetBankBloc extends Bloc<GetBankEvent, GetBankState> {
             successorFailure: optionOf(right(response)),
           ));
           // ignore: avoid_print
-          print(
-              'my respone is ----------- ${response.data!.map((e) => e.name)}');
+        
+          // print(
+          //     'my respone is ----------- ${response.data!.map((e) => e.)}');
         } catch (e) {
           emit(GetBankState(
             isLoading: false,

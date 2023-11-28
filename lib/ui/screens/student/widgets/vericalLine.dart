@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/colors/colors.dart';
+import 'package:panakj_app/core/colors/colors.dart';
 
 class VerticalLine extends StatelessWidget {
   const VerticalLine({super.key});

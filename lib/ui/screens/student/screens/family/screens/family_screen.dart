@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/screens/family_layout.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/card/family_card.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/card/siblings_card.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/local_widgets/do_you_have_siblings.dart';
-import 'package:panakj_mvvm/ui/view_model/family/family_bloc.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/screens/family_layout.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/card/family_card.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/card/siblings_card.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/do_you_have_siblings.dart';
+import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 
 class FamilyScreen extends StatelessWidget {
     TextEditingController fatherincomeController = TextEditingController();

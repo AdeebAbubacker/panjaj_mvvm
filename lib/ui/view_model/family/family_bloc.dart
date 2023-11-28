@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/horizontalRadioBtn.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_bottomSheet.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_inputText.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
+import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 part 'family_event.dart';
 part 'family_state.dart';
 

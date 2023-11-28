@@ -1,39 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panakj_mvvm/package/presentation/custom_stepper.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/academics/screens/academics_screen.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/academics/screens/achievments_screen.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/screens/family_screen.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/home/screens/home_screen.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/info/screens/info_layout.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/bottom_card.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/next_and_previous_button.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
-import 'package:panakj_mvvm/ui/view_model/Dob/dob_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/personalInfo/personal_info_bloc.dart';
-import 'package:panakj_mvvm/ui/view_model/students_app_form/students_app_form_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
+import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
+import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
+import 'package:panakj_app/package/presentation/custom_stepper.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/screens/academics_screen.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/screens/achievments_screen.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/screens/family_screen.dart';
+import 'package:panakj_app/ui/screens/student/screens/home/screens/home_screen.dart';
+import 'package:panakj_app/ui/screens/student/screens/info/screens/info_layout.dart';
+import 'package:panakj_app/ui/screens/student/widgets/bottom_card.dart';
+import 'package:panakj_app/ui/screens/student/widgets/next_and_previous_button.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
+import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
+import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
+import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
+import 'package:intl/intl.dart';
 
-class StudentsApplicationForm extends StatelessWidget {
+class StudentsApplicationForm extends StatefulWidget {
+  StudentsApplicationForm({super.key});
+
+  @override
+  State<StudentsApplicationForm> createState() =>
+      _StudentsApplicationFormState();
+}
+
+class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
+  // late Box<personalInfoDB> personalInfoBox;
+  @override
+  void initState() {
+    super.initState();
+    // personalInfo();
+  }
+
+  // void personalInfo() async {
+  //   personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
+  //   // setState ensures that the build method is called again with the updated state
+  //   setState(() {});
+  // }
+
   ScrollController scrollController = ScrollController();
 
   // 1st Section
   TextEditingController nameController = TextEditingController();
+
   TextEditingController addressController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
   TextEditingController phoneNoController = TextEditingController();
+
   TextEditingController nameatBankController = TextEditingController();
+
   TextEditingController accNoController = TextEditingController();
+
   TextEditingController ifscController = TextEditingController();
 
   //2nd Section
   TextEditingController fatherincomeController = TextEditingController();
+
   TextEditingController motherincomeController = TextEditingController();
+
   TextEditingController guardiaincomeController = TextEditingController();
 
-  StudentsApplicationForm({super.key});
   @override
   Widget build(BuildContext context) {
+    DateTime selectedDate = context.read<DobBloc>().state.selectedDate;
     return Scaffold(
       body: BlocBuilder<StudentsAppFormBloc, StudentsAppFormState>(
         builder: (context, state) {
@@ -54,8 +88,12 @@ class StudentsApplicationForm extends StatelessWidget {
             scrollController: scrollController,
             steps: [
               AddStep(
-                status: 'Progress',
-                stepIcon: Icons.school_rounded,
+                status: personalInfoBox.get('key')?.status == true
+                    ? 'Completed'
+                    : 'Progress',
+                stepIcon: personalInfoBox.get('key')?.status == true
+                    ? Icons.check
+                    : Icons.school_rounded,
                 title: 'Info',
                 content: Padding(
                   padding: EdgeInsets.zero,
@@ -79,13 +117,21 @@ class StudentsApplicationForm extends StatelessWidget {
                             (either) {
                               either.fold(
                                 (failure) {
+                                  // ignore: avoid_print
+                                  print(failure.toString());
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                           content: Text(failure.toString())));
                                 },
                                 (success) {
+                                  // personalInfoBox.put(
+                                  //   'key',
+                                  //   personalInfoDB(
+                                  //     status: true,
+                                  //   ),
+                                  // );
                                   // ignore: avoid_print
-                                  print(success.toString());
+                                  print(success.data.toString());
                                   scrollController.jumpTo(0.0);
                                   handleNextPage(1);
                                 },
@@ -107,7 +153,10 @@ class StudentsApplicationForm extends StatelessWidget {
                                             1
                                         ? "m"
                                         : "f",
-                                    dob: context.read<DobBloc>().state.selectedDate.toString(),
+                                    dob: DateFormat('yyyy-MM-dd').format(context
+                                        .read<DobBloc>()
+                                        .state
+                                        .selectedDate),
                                     phone: phoneNoController.text,
                                     address: addressController.text,
                                     email: emailController.text,

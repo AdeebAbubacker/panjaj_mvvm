@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/checkboxdata.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_bottomSheet.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/local_widgets/checkbox_data.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_inputText.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/labul_NumericalText.dart';
-import 'package:panakj_mvvm/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/label_name.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/screens/student/widgets/checkboxdata.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/checkbox_data.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
+import 'package:panakj_app/ui/screens/student/widgets/labul_NumericalText.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
+import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
+import 'package:panakj_app/ui/screens/student/widgets/label_name.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class FamilyCard extends StatefulWidget {
   TextEditingController fatherincomeController = TextEditingController();

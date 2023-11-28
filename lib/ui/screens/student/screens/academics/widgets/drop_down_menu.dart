@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class MyDropdown extends StatefulWidget {
   const MyDropdown({super.key});
@@ -39,7 +39,7 @@ class _MyDropdownState extends State<MyDropdown> {
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.only(
                 left: 10,
-                right: 0,
+                right: 5,
                 bottom: 0,
                 top: 0,
               ),

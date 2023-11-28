@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/myPadding.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/textSpan.dart';
+import 'package:panakj_app/ui/screens/student/widgets/myPadding.dart';
+import 'package:panakj_app/ui/screens/student/widgets/textSpan.dart';
 
 class BottomCard extends StatelessWidget {
   final Widget nextBtn;

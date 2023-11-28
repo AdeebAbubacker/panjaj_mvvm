@@ -1,10 +1,10 @@
-import 'package:panakj_mvvm/package/core/constants.dart';
-import 'package:panakj_mvvm/package/widget/connector.dart';
-import 'package:panakj_mvvm/package/widget/myAppbar.dart';
-import 'package:panakj_mvvm/package/widget/statusChecker.dart';
-import 'package:panakj_mvvm/package/widget/toggle_button.dart';
+import 'package:panakj_app/package/core/constants.dart';
+import 'package:panakj_app/package/widget/connector.dart';
+import 'package:panakj_app/package/widget/myAppbar.dart';
+import 'package:panakj_app/package/widget/statusChecker.dart';
+import 'package:panakj_app/package/widget/toggle_button.dart';
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class CustomStepper extends StatefulWidget {
   final List<AddStep> steps;

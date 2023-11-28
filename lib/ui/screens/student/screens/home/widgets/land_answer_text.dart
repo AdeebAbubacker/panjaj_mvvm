@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
+import 'package:panakj_app/core/constant/constants.dart';
 
 class LandAnswerTextField extends StatelessWidget {
   const LandAnswerTextField({super.key});

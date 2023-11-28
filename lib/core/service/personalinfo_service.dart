@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:panakj_mvvm/core/model/personal_info/personal_info.dart';
+import 'package:panakj_app/core/model/personal_info/personal_info.dart';
 import 'package:http/http.dart' as http;
-import 'package:panakj_mvvm/core/utility/api_endpoint.dart';
+import 'package:panakj_app/core/utility/api_endpoint.dart';
 
 class PersonalInfoService {
   String authToken =

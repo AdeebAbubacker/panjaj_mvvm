@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:panakj_mvvm/core/constant/constants.dart';
-import 'package:panakj_mvvm/ui/view_model/Dob/dob_bloc.dart';
+import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
 
 class DOBPicker extends StatelessWidget {
   const DOBPicker({Key? key}) : super(key: key);
