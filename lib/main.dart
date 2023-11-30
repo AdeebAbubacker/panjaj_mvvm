@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
+import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
 import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
 import 'package:panakj_app/core/db/boxes/bank_box.dart';
+import 'package:panakj_app/core/db/boxes/course_box.dart';
 import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
-import 'package:panakj_app/ui/demo_screen.dart';
 import 'package:panakj_app/ui/screens/auth/splash_screen.dart';
 import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
 import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
 import 'package:panakj_app/ui/view_model/auth/auth_bloc.dart';
+import 'package:panakj_app/ui/view_model/courses/courses_bloc.dart';
 import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 import 'package:panakj_app/ui/view_model/get_bank/get_bank_bloc.dart';
 import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values_bloc.dart';
@@ -24,11 +26,12 @@ void main() async {
   // Register all necessary adapters before opening any box
   Hive.registerAdapter(BankDBAdapter());
   Hive.registerAdapter(personalInfoDBAdapter());
+  Hive.registerAdapter(CourseDBAdapter());
 
   // Open boxes after registering adapters
   bankBox = await Hive.openBox<BankDB>('bankBox');
   personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
-
+  courseBox = await Hive.openBox<CourseDB>('courseBox');
   runApp(const MyApp());
 }
 
@@ -66,13 +69,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => GetDropdownValuesBloc(),
         ),
+        BlocProvider(
+          create: (context) => CoursesBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: '',
         theme: ThemeData(),
-        // home: BankListWidget(),
-        home: SplashScreen(),
+        // home:  DemoScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/file_picker.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/drop_down_menu.dart';
-import 'package:panakj_app/ui/screens/student/widgets/custom_bottomsheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
@@ -35,7 +34,7 @@ class _AchievmentsCardState extends State<AchievmentsCard> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customBottomSheet(title: 'Achievments'),
+              // customBottomSheet(title: 'Achievments'),
               LabelInputText(
                 label: 'Achievment Details',
                 maxlines: 3,

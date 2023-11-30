@@ -12,9 +12,9 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
           .toList(),
       occupations: json['occupations'] as List<dynamic>?,
       qualifications: json['qualifications'] as List<dynamic>?,
-      courses: json['courses'] == null
-          ? null
-          : Courses.fromJson(json['courses'] as Map<String, dynamic>),
+      courses: (json['courses'] as List<dynamic>?)
+          ?.map((e) => Course.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{

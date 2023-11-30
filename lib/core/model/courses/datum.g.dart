@@ -10,7 +10,7 @@ Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
       id: json['id'] as int?,
       name: json['name'] as String?,
       shortName: json['short_name'],
-      duration: (json['duration'] as num?)?.toDouble(),
+      duration: json['duration'] as int?,
       comments: json['comments'],
       active: json['active'] as bool?,
       createdAt: json['created_at'] == null

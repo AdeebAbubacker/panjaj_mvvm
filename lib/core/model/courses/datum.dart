@@ -8,7 +8,7 @@ class Datum {
 	String? name;
 	@JsonKey(name: 'short_name') 
 	dynamic shortName;
-	double? duration;
+	int? duration;
 	dynamic comments;
 	bool? active;
 	@JsonKey(name: 'created_at') 

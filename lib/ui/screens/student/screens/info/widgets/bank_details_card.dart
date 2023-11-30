@@ -92,9 +92,8 @@ class BankCard extends StatefulWidget {
 }
 
 class _BankCardState extends State<BankCard> {
-  late Box<BankDB> bankBox; // Declare bankBox at the class level
-  List<String> bankNames = []; // List to hold bank names
-
+  late Box<BankDB> bankBox; 
+  List<String> bankNames = []; 
   @override
   void initState() {
     super.initState();

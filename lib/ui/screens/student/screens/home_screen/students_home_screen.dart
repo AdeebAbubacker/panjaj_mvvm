@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
+import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
 import 'package:panakj_app/core/db/boxes/bank_box.dart';
+import 'package:panakj_app/core/db/boxes/course_box.dart';
 import 'package:panakj_app/package/widget/myAppbar.dart';
 import 'package:panakj_app/ui/screens/auth/login_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/Students_application_form/students_application_form.dart';
@@ -14,8 +16,9 @@ class StudentsHomeScreen extends StatelessWidget {
   StudentsHomeScreen({super.key});
 
   var bank;
+  var course;
   Map<int?, String?>? bankData;
-
+  Map<int?, String?>? courseData;
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -39,8 +42,12 @@ class StudentsHomeScreen extends StatelessWidget {
                             .map((e) => e.name)
                             .toList(),
                       ),
+                      courseData = Map.fromIterables(
+                          success.data!.courses!.toList()!.map((e) => e.id),
+                          success.data!.courses!.toList()!.map((e) => e.name)),
                       bankBox = Hive.box<BankDB>('bankBox'),
-                   //   bankBox.clear(),
+                      courseBox = Hive.box<CourseDB>('courseBox'),
+                      //   bankBox.clear(),
                       bankData!.forEach((id, name) {
                         bankBox.put(
                             id as int,
@@ -49,10 +56,23 @@ class StudentsHomeScreen extends StatelessWidget {
                                 name: name as String,
                                 deletedAt: 'null'));
                       }),
+                      courseData!.forEach((id, name) {
+                        courseBox.put(
+                            id as int,
+                            CourseDB(
+                              id: id,
+                              name: name as String,
+                            ));
+                      }),
                       for (var i = 0; i < bankBox.length; i++)
                         {
                           bank = bankBox.getAt(i),
                           print('Bank with id ${bank?.id}: ${bank?.name}'),
+                        },
+                      for (var i = 0; i < courseBox.length; i++)
+                        {
+                          course = courseBox.getAt(i),
+                          print('Bank with id ${course?.id}: ${course?.name}'),
                         }
                     }),
           );
@@ -96,11 +116,14 @@ class StudentsHomeScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return StudentsApplicationForm();
-                        },
-                      ));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return StudentsApplicationForm();
+                          },
+                        ),
+                      );
                     },
                     child: Container(
                       width: double.infinity,
@@ -154,5 +177,3 @@ class StudentsHomeScreen extends StatelessWidget {
     );
   }
 }
-
-

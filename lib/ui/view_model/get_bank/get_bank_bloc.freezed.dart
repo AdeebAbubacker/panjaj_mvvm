@@ -16,37 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GetBankEvent {
+  String get bankQuery => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getBankList,
+    required TResult Function(String bankQuery) searchBankList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getBankList,
+    TResult? Function(String bankQuery)? searchBankList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getBankList,
+    TResult Function(String bankQuery)? searchBankList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetBankList value) getBankList,
+    required TResult Function(GetBankList value) searchBankList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBankList value)? getBankList,
+    TResult? Function(GetBankList value)? searchBankList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBankList value)? getBankList,
+    TResult Function(GetBankList value)? searchBankList,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetBankEventCopyWith<GetBankEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +60,8 @@ abstract class $GetBankEventCopyWith<$Res> {
   factory $GetBankEventCopyWith(
           GetBankEvent value, $Res Function(GetBankEvent) then) =
       _$GetBankEventCopyWithImpl<$Res, GetBankEvent>;
+  @useResult
+  $Res call({String bankQuery});
 }
 
 /// @nodoc
@@ -66,13 +73,30 @@ class _$GetBankEventCopyWithImpl<$Res, $Val extends GetBankEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bankQuery = null,
+  }) {
+    return _then(_value.copyWith(
+      bankQuery: null == bankQuery
+          ? _value.bankQuery
+          : bankQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetBankListImplCopyWith<$Res> {
+abstract class _$$GetBankListImplCopyWith<$Res>
+    implements $GetBankEventCopyWith<$Res> {
   factory _$$GetBankListImplCopyWith(
           _$GetBankListImpl value, $Res Function(_$GetBankListImpl) then) =
       __$$GetBankListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String bankQuery});
 }
 
 /// @nodoc
@@ -82,51 +106,76 @@ class __$$GetBankListImplCopyWithImpl<$Res>
   __$$GetBankListImplCopyWithImpl(
       _$GetBankListImpl _value, $Res Function(_$GetBankListImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bankQuery = null,
+  }) {
+    return _then(_$GetBankListImpl(
+      bankQuery: null == bankQuery
+          ? _value.bankQuery
+          : bankQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetBankListImpl implements GetBankList {
-  const _$GetBankListImpl();
+  const _$GetBankListImpl({required this.bankQuery});
+
+  @override
+  final String bankQuery;
 
   @override
   String toString() {
-    return 'GetBankEvent.getBankList()';
+    return 'GetBankEvent.searchBankList(bankQuery: $bankQuery)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetBankListImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetBankListImpl &&
+            (identical(other.bankQuery, bankQuery) ||
+                other.bankQuery == bankQuery));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, bankQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetBankListImplCopyWith<_$GetBankListImpl> get copyWith =>
+      __$$GetBankListImplCopyWithImpl<_$GetBankListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getBankList,
+    required TResult Function(String bankQuery) searchBankList,
   }) {
-    return getBankList();
+    return searchBankList(bankQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getBankList,
+    TResult? Function(String bankQuery)? searchBankList,
   }) {
-    return getBankList?.call();
+    return searchBankList?.call(bankQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getBankList,
+    TResult Function(String bankQuery)? searchBankList,
     required TResult orElse(),
   }) {
-    if (getBankList != null) {
-      return getBankList();
+    if (searchBankList != null) {
+      return searchBankList(bankQuery);
     }
     return orElse();
   }
@@ -134,34 +183,42 @@ class _$GetBankListImpl implements GetBankList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetBankList value) getBankList,
+    required TResult Function(GetBankList value) searchBankList,
   }) {
-    return getBankList(this);
+    return searchBankList(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBankList value)? getBankList,
+    TResult? Function(GetBankList value)? searchBankList,
   }) {
-    return getBankList?.call(this);
+    return searchBankList?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBankList value)? getBankList,
+    TResult Function(GetBankList value)? searchBankList,
     required TResult orElse(),
   }) {
-    if (getBankList != null) {
-      return getBankList(this);
+    if (searchBankList != null) {
+      return searchBankList(this);
     }
     return orElse();
   }
 }
 
 abstract class GetBankList implements GetBankEvent {
-  const factory GetBankList() = _$GetBankListImpl;
+  const factory GetBankList({required final String bankQuery}) =
+      _$GetBankListImpl;
+
+  @override
+  String get bankQuery;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetBankListImplCopyWith<_$GetBankListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

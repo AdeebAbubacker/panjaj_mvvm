@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:panakj_app/core/model/bank/bank.dart';
+import 'package:panakj_app/core/model/drop_down_values/bank.dart';
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
 import 'package:panakj_app/core/service/bank_service.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+
 
 part 'get_bank_event.dart';
 part 'get_bank_state.dart';
