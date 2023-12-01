@@ -7,14 +7,16 @@ class LabelName extends StatefulWidget {
   final int maxlines;
   final double padding;
   final String labelText;
+  FocusNode namefocusnode;
   final Function(String)? onChanged;
 
-  const LabelName({
+   LabelName({
     this.maxlines = 1,
     Key? key,
     required this.labelText,
     this.padding = 5,
     this.onChanged,
+    required this.namefocusnode,
   }) : super(key: key);
 
   @override
@@ -58,6 +60,7 @@ class _LabelNameState extends State<LabelName> {
             color: labelnumericalContainercolor,
           ),
           child: TextFormField(
+            focusNode: widget.namefocusnode,
             style: kCardContentStyle,
             controller: _controller,
             maxLines: widget.maxlines,

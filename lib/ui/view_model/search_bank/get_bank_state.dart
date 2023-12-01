@@ -6,15 +6,15 @@ class GetBankState with _$GetBankState {
     return GetBankState(
       isLoading: false,
       isError: false,
-      bank: Bank(),
+      bank: SearchBank(),
       successorFailure: const None(),
     );
   }
   const factory GetBankState({
     required bool isLoading,
     required bool isError,
-    required Bank bank,
-    required Option<Either<MainFailure, Bank>> successorFailure,
+    required SearchBank bank,
+    required Option<Either<MainFailure, SearchBank>> successorFailure,
   }) = _GetBankState;
 }
 

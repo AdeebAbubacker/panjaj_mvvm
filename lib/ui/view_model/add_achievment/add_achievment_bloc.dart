@@ -76,11 +76,11 @@ Widget _buildachievmentsCard(
           ),
         ],
       ),
-      LabelInputText(
-        label: 'Achievment Details',
-        maxlines: 3,
-        StringInput: achievmentController,
-      ),
+      // LabelInputText(
+      //   label: 'Achievment Details',
+      //   maxlines: 3,
+      //   StringInput: achievmentController,
+      // ),
       const HeightSpacer(),
       InputLabel(mytext: 'Category'),
       const MyDropdown(),

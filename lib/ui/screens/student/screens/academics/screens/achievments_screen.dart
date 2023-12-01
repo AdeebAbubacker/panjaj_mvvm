@@ -5,7 +5,8 @@ import 'package:panakj_app/ui/screens/student/screens/academics/widgets/achievme
 import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
 
 class AchievmentsScreen extends StatelessWidget {
-  const AchievmentsScreen({super.key});
+  FocusNode focusNode = FocusNode();
+   AchievmentsScreen({super.key,required this.focusNode,});
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +14,10 @@ class AchievmentsScreen extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            // Achievmentslayout(
-            //   achievmentDetailsCard: AchievmentsCard(mybool: false),
-            //   title: 'Achievments',
-            //   Achievmentslayoutheight: 500 +
-            //       (state.numberofachievment > 0
-            //           ? (state.numberofachievment) * 414
-            //           : 0),
-            // ),
             Achievmentslayout(
-              achievmentDetailsCard: AchievmentsCard(mybool: false),
+              achievmentDetailsCard: AchievmentsCard(mybool: false,focusNode: focusNode),
               title: 'Achievments',
-              Achievmentslayoutheight: 600 +
+              Achievmentslayoutheight: 500 +
                   (state.numberofachievment > 0
                       ? (state.numberofachievment) * 414
                       : 0),

@@ -10,6 +10,13 @@ import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_blo
 
 class InfoLayout extends StatefulWidget {
   TextEditingController nameController = TextEditingController();
+    FocusNode infonamefocusNode;
+    FocusNode infoaddressfocusNode;
+    FocusNode numericalfocusnode;
+    FocusNode emailfocusnode;
+        FocusNode banknamefocusnode;
+    FocusNode accnofocusnode;
+    FocusNode bankifscfocusnode;
   TextEditingController addressController = TextEditingController();
   TextEditingController phoneNoController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -22,12 +29,20 @@ class InfoLayout extends StatefulWidget {
     super.key,
     required this.title,
     required this.nameController,
+    required this.numericalfocusnode,
+    required this.infonamefocusNode,
+    required this.infoaddressfocusNode,
+    required this.emailfocusnode,
+        required this.banknamefocusnode,
+    required this.accnofocusnode,
+    required this.bankifscfocusnode,
     required this.addressController,
     required this.emailController,
     required this.phoneNoController,
     required this.nameatBankController,
     required this.accNoController,
     required this.ifscController,
+
   });
   // ignore: prefer_typing_uninitialized_variables
 
@@ -82,8 +97,12 @@ class _InfoLayoutState extends State<InfoLayout> {
                       ),
                       MyPadding(
                         widget: PersonalDetailsCard(
+                          emailfocusnode: widget.emailfocusnode,
+                          numericalfocusnode: widget.numericalfocusnode,
                           mybool: false,
                           nameController: widget.nameController,
+                          infonamefocusNode: widget.infonamefocusNode,
+                          addressfocusNode: widget.infoaddressfocusNode,
                           addressController: widget.addressController,
                           phoneNoController: widget.phoneNoController,
                           emailController: widget.emailController,
@@ -102,6 +121,9 @@ class _InfoLayoutState extends State<InfoLayout> {
                                   const EdgeInsets.only(left: 20, right: 20),
                               child: BankMainLayout(
                                   cardData: BankCard(
+                                    banknamefocusnode: widget.banknamefocusnode,
+                                    accnofocusnode:widget.accnofocusnode ,
+                                    bankifscfocusnode: widget.bankifscfocusnode,
                                     mybool: state.forNoAccountUsers,
                                     accNoController: widget.accNoController,
                                     nameController: widget.nameatBankController,

@@ -1,69 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
-// import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
-// import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
-// import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
-// import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
-// import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
-
-// class BankCard extends StatelessWidget {
-//   bool mybool;
-//   final width;
-//   TextEditingController nameController = TextEditingController();
-//   TextEditingController accNoController = TextEditingController();
-//   TextEditingController ifscController = TextEditingController();
-//   BankCard({
-//     super.key,
-//     this.width,
-//     required this.mybool,
-//     required this.nameController,
-//     required this.accNoController,
-//     required this.ifscController,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     // if (keys.isEmpty) {
-//     //   print('bankbox open values2 - ${bankBox.values}');
-//     //   return const Center(
-//     //     child: Text('No banks found'),
-//     //   );
-//     // }
-
-//     // Extract names from BankDB objects
-
-//     return SingleChildScrollView(
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           LabelInputText(
-//               label: 'Full name (As per bank record)',
-//               StringInput: nameController),
-//           const HeightSpacer(height: 14),
-//           LabelInputText(label: 'Account Number', StringInput: accNoController),
-//           const HeightSpacer(height: 14),
-//           InputLabel(mytext: 'Bank Name'),
-//           labelBottomSheet(
-//             title: 'Bank Details',
-//             hintText: 'Search For Bank',
-//             listofData: [],
-//           ),
-//           const HeightSpacer(height: 14),
-//           LabelInputText(
-//             label: 'Branch IFSC',
-//             StringInput: ifscController,
-//           ),
-//           const HeightSpacer(height: 14),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
+import 'package:panakj_app/ui/screens/student/screens/info/widgets/bank_bottomsheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
@@ -74,6 +12,9 @@ import 'package:hive/hive.dart';
 class BankCard extends StatefulWidget {
   bool mybool;
   final width;
+  FocusNode banknamefocusnode;
+  FocusNode accnofocusnode;
+  FocusNode bankifscfocusnode;
   TextEditingController nameController = TextEditingController();
   TextEditingController accNoController = TextEditingController();
   TextEditingController ifscController = TextEditingController();
@@ -82,6 +23,9 @@ class BankCard extends StatefulWidget {
     super.key,
     this.width,
     required this.mybool,
+    required this.banknamefocusnode,
+    required this.accnofocusnode,
+    required this.bankifscfocusnode,
     required this.nameController,
     required this.accNoController,
     required this.ifscController,
@@ -92,8 +36,8 @@ class BankCard extends StatefulWidget {
 }
 
 class _BankCardState extends State<BankCard> {
-  late Box<BankDB> bankBox; 
-  List<String> bankNames = []; 
+  late Box<BankDB> bankBox;
+  List<String> bankNames = [];
   @override
   void initState() {
     super.initState();
@@ -138,23 +82,27 @@ class _BankCardState extends State<BankCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           LabelInputText(
+            focusNode: widget.banknamefocusnode,
             label: 'Full name (As per bank record)',
             StringInput: widget.nameController,
           ),
           const HeightSpacer(height: 14),
           LabelInputText(
+            focusNode: widget.accnofocusnode,
             label: 'Account Number',
             StringInput: widget.accNoController,
           ),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Bank Name'),
-          labelBottomSheet(
-            title: 'Bank Details',
-            hintText: 'Search For Bank',
-            listofData: bankNames,
-          ),
+          // labelBottomSheet(
+          //   title: 'Bank Details',
+          //   hintText: 'Search For Bank',
+          //   listofData: bankNames,
+          // ),
+          bankBottomSheet(title: 'Bank Details',),
           const HeightSpacer(height: 14),
           LabelInputText(
+            focusNode: widget.bankifscfocusnode,
             label: 'Branch IFSC',
             StringInput: widget.ifscController,
           ),

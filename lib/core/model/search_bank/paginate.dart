@@ -17,7 +17,7 @@ class Paginate {
 	String? lastPageUrl;
 	List<Link>? links;
 	@JsonKey(name: 'next_page_url') 
-	String? nextPageUrl;
+	dynamic nextPageUrl;
 	String? path;
 	@JsonKey(name: 'per_page') 
 	int? perPage;

@@ -14,6 +14,13 @@ class FamilyCard extends StatefulWidget {
   TextEditingController fatherincomeController = TextEditingController();
   TextEditingController motherincomeController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
+  FocusNode realtionfocusNode;
+  FocusNode fatherfocusNode;
+  FocusNode motherfocusNode;
+  FocusNode fathericomefocusnode;
+  FocusNode mothericomefocusnode;
+  FocusNode guardianicomefocusnode;
+  FocusNode guardianfocusNode;
   final Widget siblings;
   bool mybool;
   TextEditingController relationController = TextEditingController();
@@ -23,6 +30,13 @@ class FamilyCard extends StatefulWidget {
     super.key,
     this.width,
     required this.mybool,
+    required this.realtionfocusNode,
+    required this.fathericomefocusnode,
+    required this.mothericomefocusnode,
+    required this.guardianicomefocusnode,
+    required this.fatherfocusNode,
+    required this.motherfocusNode,
+    required this.guardianfocusNode,
     required this.fatherincomeController,
     required this.motherincomeController,
     required this.guardiaincomeController,
@@ -44,7 +58,10 @@ class _FamilyCardState extends State<FamilyCard> {
             padding: EdgeInsets.only(top: 5, bottom: 12),
             child: Text('Father', style: kfamiltTitleTextColor),
           ),
-          const LabelName(labelText: 'Name'),
+          LabelName(
+            labelText: 'Name',
+            namefocusnode: widget.fatherfocusNode,
+          ),
           const HeightSpacer(height: 14),
           const CheckBoxWorkout(
             width: 46,
@@ -56,13 +73,18 @@ class _FamilyCardState extends State<FamilyCard> {
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
           LabelNumericalText(
-              mytext: 'Monthly Income', numController: widget.fatherincomeController),
+            numericalfocusnode: widget.fathericomefocusnode,
+              mytext: 'Monthly Income',
+              numController: widget.fatherincomeController),
           const LineDivider(),
           const Padding(
             padding: EdgeInsets.only(top: 5, bottom: 12),
             child: Text('Mother', style: kfamiltTitleTextColor),
           ),
-          const LabelName(labelText: 'Name'),
+          LabelName(
+            labelText: 'Name',
+            namefocusnode: widget.motherfocusNode,
+          ),
           const HeightSpacer(height: 14),
           const CheckBoxData(label: 'Alive', width: 130),
           const HeightSpacer(height: 14),
@@ -73,16 +95,24 @@ class _FamilyCardState extends State<FamilyCard> {
               title: 'Occupation Details',
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
-          LabelNumericalText(mytext: 'Monthly Income',numController: widget.motherincomeController),
+          LabelNumericalText(
+            numericalfocusnode: widget.mothericomefocusnode,
+              mytext: 'Monthly Income',
+              numController: widget.motherincomeController),
           const LineDivider(),
           const Padding(
             padding: EdgeInsets.only(top: 5, bottom: 12),
             child: Text('Guardian', style: kfamiltTitleTextColor),
           ),
-          const LabelName(labelText: 'Name'),
+          LabelName(
+            labelText: 'Name',
+            namefocusnode: widget.guardianfocusNode,
+          ),
           const HeightSpacer(height: 14),
           LabelInputText(
-              label: 'Relation', StringInput: widget.relationController),
+              focusNode: widget.realtionfocusNode,
+              label: 'Relation',
+              StringInput: widget.relationController),
           const HeightSpacer(height: 14),
           const CheckBoxData(label: 'Alive', width: 130),
           const HeightSpacer(height: 14),
@@ -93,7 +123,10 @@ class _FamilyCardState extends State<FamilyCard> {
               title: 'Occupation Details',
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
-          LabelNumericalText(mytext: 'Monthly Income',numController: widget.guardiaincomeController),
+          LabelNumericalText(
+            numericalfocusnode: widget.guardianicomefocusnode,
+              mytext: 'Monthly Income',
+              numController: widget.guardiaincomeController),
           const LineDivider(),
           widget.siblings
         ],

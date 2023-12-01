@@ -7,14 +7,34 @@ import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widge
 import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 
 class FamilyScreen extends StatelessWidget {
-    TextEditingController fatherincomeController = TextEditingController();
+  TextEditingController fatherincomeController = TextEditingController();
+  FocusNode realtionfocusNode;
+  FocusNode siblingnamefocusNode;
+  FocusNode fathericomefocusnode;
+  FocusNode mothericomefocusnode;
+  FocusNode guardianicomefocusnode;
+  FocusNode fatherfocusNode;
+  FocusNode motherfocusNode;
+  FocusNode guardianfocusNode;
   TextEditingController motherincomeController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
-   FamilyScreen({super.key,required this.fatherincomeController,required this.motherincomeController,required this.guardiaincomeController,});
+  FamilyScreen({
+    super.key,
+    required this.fatherincomeController,
+    required this.fathericomefocusnode,
+    required this.mothericomefocusnode,
+    required this.guardianicomefocusnode,
+    required this.realtionfocusNode,
+    required this.fatherfocusNode,
+    required this.motherfocusNode,
+    required this.guardianfocusNode,
+    required this.siblingnamefocusNode,
+    required this.motherincomeController,
+    required this.guardiaincomeController,
+  });
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocBuilder<FamilyBloc, FamilyState>(
       builder: (context, state) {
         return Column(
@@ -23,6 +43,13 @@ class FamilyScreen extends StatelessWidget {
               familyLayoutheight: 1579,
               title: 'Family Details',
               familyDetailsCard: FamilyCard(
+                fathericomefocusnode: fathericomefocusnode,
+                mothericomefocusnode: mothericomefocusnode,
+                guardianicomefocusnode: guardianicomefocusnode,
+                realtionfocusNode: realtionfocusNode,
+                fatherfocusNode: fatherfocusNode,
+                motherfocusNode: motherfocusNode,
+                guardianfocusNode: guardianfocusNode,
                 mybool: false,
                 siblings: DoYouHaveSiblings(),
                 fatherincomeController: fatherincomeController,
@@ -41,6 +68,7 @@ class FamilyScreen extends StatelessWidget {
                       title: 'Siblings Details',
                       familyDetailsCard: SiblingsCard(
                         mybool: false,
+                        siblingnamefocusNode: siblingnamefocusNode,
                       ),
                     ),
                   )

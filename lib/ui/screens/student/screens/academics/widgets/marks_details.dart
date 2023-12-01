@@ -4,8 +4,12 @@ import 'package:panakj_app/core/constant/constants.dart';
 
 class Marksdetails extends StatelessWidget {
   final String title;
-
-  Marksdetails({Key? key, this.title = 'SSLC Marks'}) : super(key: key);
+  FocusNode marksfocusnode;
+  Marksdetails({
+    Key? key,
+    this.title = 'SSLC Marks',
+    required this.marksfocusnode,
+  }) : super(key: key);
 
   TextEditingController marks = TextEditingController();
 
@@ -22,6 +26,7 @@ class Marksdetails extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  focusNode: marksfocusnode,
                   textAlign: TextAlign.center,
                   textAlignVertical: TextAlignVertical.center,
                   controller: marks,
@@ -29,7 +34,7 @@ class Marksdetails extends StatelessWidget {
                       const TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(7),
-                    TextInputFormater(decimalDigits: 2,integerDigits: 2),
+                    TextInputFormater(decimalDigits: 2, integerDigits: 2),
                   ],
                   style: kCardContentStyle, // Set font size to 8
                   decoration: const InputDecoration(
@@ -96,4 +101,3 @@ class TextInputFormater extends TextInputFormatter {
     return newValue.copyWith(text: newText);
   }
 }
-

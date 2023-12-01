@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
-import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
+import 'package:panakj_app/ui/view_model/search_school/search_school_bloc.dart';
 // import 'package:mylab2/core/core/colors/colors.dart';
 // import 'package:mylab2/core/core/constant/constants.dart';
-// import 'package:mylab2/model/courses/datum.dart';
-// import 'package:mylab2/view_model/courses/courses_bloc.dart';
+// import 'package:mylab2/model/schools/datum.dart';
+// import 'package:mylab2/view_model/schools/schools_bloc.dart';
 
-class coursebottomSheet extends StatefulWidget {
+class schoolBottomSheet extends StatefulWidget {
   final bottomSheetheight;
   final String title;
   final hintText;
   List<String> listofData = [];
 
-  coursebottomSheet(
+  schoolBottomSheet(
       {Key? key,
       this.listofData = const [
         'Nil',
@@ -57,10 +57,10 @@ class coursebottomSheet extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<coursebottomSheet> createState() => _coursebottomSheetState();
+  State<schoolBottomSheet> createState() => _schoolBottomSheetState();
 }
 
-class _coursebottomSheetState extends State<coursebottomSheet> {
+class _schoolBottomSheetState extends State<schoolBottomSheet> {
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
 
@@ -124,8 +124,8 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                           Expanded(
                             child: TextField(
                               onChanged: (textController) {
-                                BlocProvider.of<CoursesBloc>(context).add(
-                                    GetCourses(movieQuery: textController));
+                                BlocProvider.of<SearchSchoolBloc>(context).add(
+                                    GetSchool(schoolQuery: textController));
                               },
                               style: kCardContentStyle,
                               controller: textController,
@@ -161,7 +161,7 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                       ),
                     ),
                     Expanded(
-                      child: BlocBuilder<CoursesBloc, CoursesState>(
+                      child: BlocBuilder<SearchSchoolBloc, SearchSchoolState>(
                         builder: (context, state) {
                           if (state.isLoading) {
                             print('loading');
@@ -174,24 +174,24 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                               child: Text('Error fetching data'),
                             );
                           } else {
-                            print('${state.course.data?.data?.length}');
+                            print('${state.school.data?.data?.length}');
                             return ListView.separated(
                               controller: scrollController,
-                              itemCount: state.course.data?.data?.length ??
+                              itemCount: state.school.data?.data?.length ??
                                   emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
                               itemBuilder: (context, index) {
                                 return InkWell(
-                                  child: (state.course.data != null &&
-                                          state.course.data!.data!.isNotEmpty)
+                                  child: (state.school.data != null &&
+                                          state.school.data!.data!.isNotEmpty)
                                       ? showBottomSheetData(index,
-                                          state.course.data!.data!.toList())
+                                          state.school.data!.data!.toList())
                                       : showBottomSheetData(index, emptyList),
                                   onTap: () {
                                     textController.text =
-                                        state.course.data!.data![index].name!;
+                                        state.school.data!.data![index].name!;
                                     // ignore: avoid_print
                                     print(
                                         'Selected item in bottom sheet----------$index');

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 
 class LandAnswerTextField extends StatelessWidget {
-  const LandAnswerTextField({super.key});
+  FocusNode landfocusNode = FocusNode();
+   LandAnswerTextField({super.key,required this.landfocusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class LandAnswerTextField extends StatelessWidget {
               SizedBox(
                 width: 60,
                 child: TextField(
+                  focusNode: landfocusNode,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelStyle: kCardContentStyle,

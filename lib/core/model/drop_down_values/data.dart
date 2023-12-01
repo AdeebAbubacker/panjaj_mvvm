@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'bank.dart';
 import 'course.dart';
+import 'school.dart';
 
 part 'data.g.dart';
 
@@ -11,8 +12,15 @@ class Data {
 	List<dynamic>? occupations;
 	List<dynamic>? qualifications;
 	List<Course>? courses;
+	List<School>? schools;
 
-	Data({this.banks, this.occupations, this.qualifications, this.courses});
+	Data({
+		this.banks, 
+		this.occupations, 
+		this.qualifications, 
+		this.courses, 
+		this.schools, 
+	});
 
 	factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

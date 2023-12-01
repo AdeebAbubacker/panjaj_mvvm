@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:panakj_app/core/db/adapters/school_adapter/school_adapter.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/widgets/exam_reg.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/marks_details.dart';
+import 'package:panakj_app/ui/screens/student/screens/academics/widgets/school_bottomsheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/course_bottomsheet.dart';
 
 class AcademicsCard extends StatefulWidget {
   final Widget siblings;
+  FocusNode examRegfocusnode;
+  FocusNode sslcfocusnode;
+  FocusNode plusonefocusnode;
+  FocusNode plustwofocusnode;
   bool mybool;
 
   final width;
   AcademicsCard({
     super.key,
     this.width,
+    required this.examRegfocusnode,
     required this.mybool,
+    required this.sslcfocusnode,
+    required this.plusonefocusnode,
+    required this.plustwofocusnode,
     this.siblings = const Text(''),
   });
 
@@ -21,6 +34,46 @@ class AcademicsCard extends StatefulWidget {
 }
 
 class _AcademicsCardState extends State<AcademicsCard> {
+  late Box<SchoolDB> schoolBox;
+  List<String> schoolNames = [];
+  @override
+  void initState() {
+    super.initState();
+
+    setupSchoolBox();
+  }
+
+  Future<void> setupSchoolBox() async {
+    schoolBox = await Hive.openBox<SchoolDB>('schoolBox');
+
+    if (!schoolBox.isOpen) {
+      print('schoolBox is not open');
+      return;
+    }
+
+    List<int> keys = schoolBox.keys.cast<int>().toList();
+
+    print('All keys in schoolBox: $keys');
+
+    if (keys.isEmpty) {
+      print('No banks found in schoolBox');
+      return;
+    }
+
+    // Extract names from BankDB objects
+    schoolNames = keys.map((key) {
+      SchoolDB school = schoolBox.get(key)!;
+      return school.name;
+    }).toList();
+
+    print('Bank names: $schoolNames');
+
+    // Ensure that the widget is rebuilt after the bankNames are populated
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,185 +81,32 @@ class _AcademicsCardState extends State<AcademicsCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InputLabel(mytext: 'School Name'),
-          labelBottomSheet(
-            title: 'School Name',
-            listofData: const [
-              'APJ G.H.S.S, Thodupuzha',
-              'APJHSS Thodupuzha',
-              'B.M. College, Trikkakara',
-              'G.G.H.S.S Thripunithrura',
-              'G.H.S.S Boys, Tripunithura',
-              'G.H.S.S Chottanikkara',
-              'G.H.S.S Edappally',
-              'G.H.S.S Elamakkara',
-              'G.H.S.S Girls, Ernakulam',
-              'G.H.S.S Girls, North Parur',
-              'G.H.S.S Girls, Paravoor',
-              'G.H.S.S Girls, Tripunithura',
-              'G.H.S.S, Chennamangalam',
-              'G.H.S.S, Chottanikkara',
-              'G.H.S.S, Edappally',
-              'G.H.S.S, Edathala',
-              'G.H.S.S, Elamakkara',
-              'G.H.S.S, Kadayiruppu',
-              'G.H.S.S, Kudayathoor',
-              'G.H.S.S, Muvattupuzha',
-              'G.H.S.S, North Parur',
-              'G.H.S.S, Ooramana',
-              'G.H.S.S, Peringassery',
-              'G.H.S.S, Poomala',
-              'G.H.S.S, Puliyanam',
-              'G.H.S.S, Thodupuzha',
-              'G.H.S.S, Tripunithura',
-              'G.H.S.S, Vennala',
-              'G.H.S.S, West Kodikulam',
-              'G.T.H.S.S, Peringassery',
-              'G.T.H.S.S, Poomala',
-              'G.V.H.S.S North Edappally',
-              'G.V.H.S.S, Edappally',
-              'G.V.H.S.S, Kaitharam',
-              'G.V.H.S.S, Kalamassery',
-              'G.V.H.S.S, North Edappally',
-              'G.V.H.S.S, Thattakuzha',
-              'G.V.H.S.S, Thodupuzha',
-              'GHSS Kudayathoor',
-              'GHSS Peringassery',
-              'GHSS West Kodikulam',
-              'GTHSS Poomala',
-              'H.S.S Girls, Ernakulam',
-              'H.S.S Girls, Tripunithura',
-              'H.S.S Mangayil, Maradu',
-              'H.S.S, Aluva',
-              'H.S.S, Chottanikkara',
-              'H.S.S, Edappally',
-              'H.S.S, Elamakkara',
-              'H.S.S, Kalamassery',
-              'H.S.S, Kudayathoor',
-              'H.S.S, Mamalassery',
-              'H.S.S, Muthalakodam',
-              'H.S.S, Muvattupuzha',
-              'H.S.S, Palakuzha',
-              'H.S.S, Peringassery',
-              'H.S.S, Poomala',
-              'H.S.S, Puliyanam',
-              'H.S.S, Thodupuzha',
-              'H.S.S, Vennala',
-              'M.G.M. G.H.S.S, Nayathodu',
-              'M.K.N.M. H.S.S, Kumaramangalam',
-              'MKNMHSS Kumaramangalam',
-              'MTM H.S.S, Pampakuda',
-              'N.S.S H.S.S, Manakad',
-              'NSS Manakad',
-              'NSSHSS Manakkad',
-              'SGHSS Kallanickal',
-              'SGHSS Muthalakodam',
-              'St Mary\'s H.S.S, Kaliyar',
-              'St. George H.S.S, Muthalakkodam',
-              'St. Joseph\'s College, Moolamattom',
-              'St. Joseph\'s H.S.S, Karimannoor',
-              'St. Mary\'s H.S.S, Arakkulam',
-              'St. Sebastian H.S.S, Vazhithalla',
-              'Technical H.S.S, Muttom',
-              'Technical H.S.S, Peermade',
-              'V.C.S.H.S, Puthenvelikara',
-            ],
+          schoolBottomSheet(title: 'sss'),
+          // labelBottomSheet(
+          //   title: 'School Name',
+          //   listofData: schoolNames,
+          // ),
+          const HeightSpacer(),
+          ExamReg(examRegfocusnode: widget.examRegfocusnode),
+          const HeightSpacer(),
+          Marksdetails(
+            title: 'SSLC Marks',
+            marksfocusnode: widget.sslcfocusnode,
           ),
           const HeightSpacer(),
-          const Text(
-            '*nb: Please enter below marks with decimal values\n (eg :76.87)',
-            style: TextStyle(
-              color: Colors.red,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.w500,
-              fontSize: 12.0, // Adjust the font size as needed
-            ),
+          Marksdetails(
+            title: 'Plus One Marks',
+            marksfocusnode: widget.plusonefocusnode,
           ),
           const HeightSpacer(),
-          Marksdetails(title: 'SSLC Marks'),
-          const HeightSpacer(),
-          Marksdetails(title: 'Plus One Marks'),
-          const HeightSpacer(),
-          Marksdetails(title: 'Plus Two Marks'),
+          Marksdetails(
+            title: 'Plus Two Marks',
+            marksfocusnode: widget.plustwofocusnode,
+          ),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Preference for Higher Studies'),
-          labelBottomSheet(
-            title: 'Preference for Higher Studies',
-            listofData: const [
-              'Nil',
-              'AMIE',
-              'B Voc Food',
-              'B.A',
-              'B.A. Accountancy',
-              'B.A. Applied Psychology',
-              'B.A. Economics',
-              'B.A. English',
-              'B.A. English Literature',
-              'B.A. Hindi',
-              'B.A. History',
-              'B.A. Malayalam',
-              'B.A. Music',
-              'B.A. Sanskrit',
-              'B.A. Sociology',
-              'B.Com',
-              'B.Com Computer Application',
-              'B.Com Finance and Taxation',
-              'B.Sc',
-              'B.Sc',
-              'B.Sc Agriculture',
-              'B.Sc Agriculture',
-              'B.Sc Botany',
-              'B.Sc Chemistry',
-              'B.Sc Computer',
-              'B.Sc Electronics',
-              'B.Sc Hotel Management',
-              'B.Sc Mathematics',
-              'B.Sc Nursing',
-              'B.Sc Nursing',
-              'B.Sc Nursing',
-              'B.Sc Physics',
-              'B.Sc Taxation',
-              'B.Sc Zoology',
-              'B.Tech',
-              'B.Tech Computer Science',
-              'B.Tech EEE',
-              'B.Tech Electronics & Communication',
-              'B.Tech IT',
-              'B.Tech Mechanical Engineering',
-              'B.Tech Space Science',
-              'B.Voc Industrial Instrumentation & Automation',
-              'B.Voc Tourism & Hospitality Management',
-              'BBA',
-              'BBA LLB',
-              'BBM',
-              'BCA',
-              'BE Agriculture',
-              'BTTM',
-              'Comp. Hardware',
-              'D. Pharm',
-              'DED',
-              'Diploma',
-              'Diploma Eng.',
-              'Diploma in C.A.',
-              'Diploma in Chemical Engineering',
-              'Diploma in Civil Engineering',
-              'Diploma in Computer',
-              'Diploma in Computer Engineering',
-              'Diploma in Computer Science',
-              'Diploma in Electronics',
-              'Diploma in Electronics',
-              'Diploma in Mechanical Engineering',
-              'Diploma in X-Ray & Radiology',
-              'General Nursing',
-              'GNM',
-              'Hospital Management',
-              'LLB',
-              'M.Sc Electrical',
-              'Nursing',
-              'Nursing',
-              'Polytechnic - Electronic & Communications',
-              'Polytechnic Welding',
-              'TTE'
-            ],
+          coursebottomSheet(
+            title: 'Course of Study',
           ),
         ],
       ),

@@ -8,6 +8,7 @@ class LabelEmail extends StatefulWidget {
   final double padding;
   final String labelText;
   TextEditingController emailController = TextEditingController();
+  FocusNode emailfocusnode;
   final Function(String)? onChanged;
 
   LabelEmail({
@@ -17,6 +18,7 @@ class LabelEmail extends StatefulWidget {
     this.padding = 5,
     this.onChanged,
     required this.emailController,
+    required this.emailfocusnode,
   }) : super(key: key);
 
   @override
@@ -59,6 +61,7 @@ class _LabelEmailState extends State<LabelEmail> {
             color: labelnumericalContainercolor,
           ),
           child: TextFormField(
+            focusNode: widget.emailfocusnode,
             style: kFormContentStyle,
             controller: widget.emailController,
             maxLines: widget.maxlines,

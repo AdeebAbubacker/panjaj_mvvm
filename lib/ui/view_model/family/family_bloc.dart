@@ -62,7 +62,7 @@ class FamilyBloc extends Bloc<FamilyEvent, FamilyState> {
   }
 
   Widget _buildSiblingCard(int siblingIndex) {
-     TextEditingController nameController = TextEditingController();
+    TextEditingController nameController = TextEditingController();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -91,8 +91,8 @@ class FamilyBloc extends Bloc<FamilyEvent, FamilyState> {
               ),
             ),
           ],
-        ),      
-        LabelInputText(label: 'Name',StringInput: nameController),
+        ),
+        // LabelInputText(label: 'Name',StringInput: nameController),
         horizontalRadioBtn(
           steps: [
             Content(choiceLabel: 'Male'),

@@ -6,6 +6,7 @@ import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 
 // ignore: must_be_immutable
 class LabelNumericalText extends StatelessWidget {
+  FocusNode numericalfocusnode;
   final int maxlines;
   String mytext;
   final double padding;
@@ -13,6 +14,7 @@ class LabelNumericalText extends StatelessWidget {
   LabelNumericalText(
       {this.maxlines = 1,
       super.key,
+      required this.numericalfocusnode,
       required this.mytext,
       this.padding = 5,
       required this.numController});
@@ -36,6 +38,7 @@ class LabelNumericalText extends StatelessWidget {
               color: labelnumericalContainercolor),
           child: kpadding14(
             child: TextField(
+              focusNode: numericalfocusnode,
               style: kCardContentStyle,
               controller: numController,
               keyboardType: TextInputType.number,

@@ -3,19 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
-import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
-// import 'package:mylab2/core/core/colors/colors.dart';
-// import 'package:mylab2/core/core/constant/constants.dart';
-// import 'package:mylab2/model/courses/datum.dart';
-// import 'package:mylab2/view_model/courses/courses_bloc.dart';
+import 'package:panakj_app/ui/view_model/search_bank/get_bank_bloc.dart';
 
-class coursebottomSheet extends StatefulWidget {
+class bankBottomSheet extends StatefulWidget {
   final bottomSheetheight;
   final String title;
   final hintText;
   List<String> listofData = [];
-
-  coursebottomSheet(
+  bankBottomSheet(
       {Key? key,
       this.listofData = const [
         'Nil',
@@ -57,10 +52,10 @@ class coursebottomSheet extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<coursebottomSheet> createState() => _coursebottomSheetState();
+  State<bankBottomSheet> createState() => _bankBottomSheetState();
 }
 
-class _coursebottomSheetState extends State<coursebottomSheet> {
+class _bankBottomSheetState extends State<bankBottomSheet> {
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
 
@@ -124,8 +119,9 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                           Expanded(
                             child: TextField(
                               onChanged: (textController) {
-                                BlocProvider.of<CoursesBloc>(context).add(
-                                    GetCourses(movieQuery: textController));
+                                BlocProvider.of<GetBankBloc>(context).add(
+                                     GetBankEvent.searchBankList(
+                                        bankQuery: textController));
                               },
                               style: kCardContentStyle,
                               controller: textController,
@@ -160,51 +156,49 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: BlocBuilder<CoursesBloc, CoursesState>(
-                        builder: (context, state) {
-                          if (state.isLoading) {
-                            print('loading');
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else if (state.isError) {
-                            print('error');
-                            return const Center(
-                              child: Text('Error fetching data'),
-                            );
-                          } else {
-                            print('${state.course.data?.data?.length}');
-                            return ListView.separated(
+                    BlocBuilder<GetBankBloc, GetBankState>(
+                      builder: (context, state) {
+                        if (state.isLoading) {
+                          print('loading');
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else if (state.isError) {
+                          print('error');
+                          return const Center(
+                            child: Text('Error fetching data'),
+                          );
+                        } else {
+                          print('success');
+                          return Expanded(
+                            child: ListView.separated(
                               controller: scrollController,
-                              itemCount: state.course.data?.data?.length ??
-                                  emptyList.length,
+                              itemCount:
+                                  state.bank.data?.length ?? emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
                               itemBuilder: (context, index) {
                                 return InkWell(
-                                  child: (state.course.data != null &&
-                                          state.course.data!.data!.isNotEmpty)
-                                      ? showBottomSheetData(index,
-                                          state.course.data!.data!.toList())
+                                  child: (state.bank.data != null &&
+                                          state.bank.data!.isNotEmpty)
+                                      ? showBottomSheetData(
+                                          index, state.bank.data!.toList())
                                       : showBottomSheetData(index, emptyList),
                                   onTap: () {
                                     textController.text =
-                                        state.course.data!.data![index].name!;
+                                        state.bank.data![index].name!;
                                     // ignore: avoid_print
                                     print(
                                         'Selected item in bottom sheet----------$index');
                                   },
                                 );
                               },
-                            );
-                         
-                         
-                          }
-                        },
-                      ),
-                    ),
+                            ),
+                          );
+                        }
+                      },
+                    )
                   ],
                 );
               },
@@ -253,8 +247,21 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
     );
   }
 
+  List<String> _buildSearchList(String userSearchTerm) {
+    List<String> searchList = [];
+
+    for (int i = 0; i < emptyList.length; i++) {
+      String name = emptyList[i];
+      if (name.toLowerCase().contains(userSearchTerm.toLowerCase())) {
+        searchList.add(emptyList[i]);
+      }
+    }
+    return searchList;
+  }
+
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final Devicewidth = MediaQuery.of(context).size.width;
     return Center(
       child: Column(

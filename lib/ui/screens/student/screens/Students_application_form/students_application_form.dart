@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
-import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
 import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
 import 'package:panakj_app/package/presentation/custom_stepper.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/academics_screen.dart';
@@ -67,6 +64,14 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode focuscontroller1 = FocusNode();
+    FocusNode focuscontroller2 = FocusNode();
+    FocusNode focuscontroller3 = FocusNode();
+    FocusNode focuscontroller4 = FocusNode();
+    FocusNode focuscontroller5 = FocusNode();
+    FocusNode focuscontroller6 = FocusNode();
+    FocusNode focuscontroller7 = FocusNode();
+    FocusNode focuscontroller8 = FocusNode();
     DateTime selectedDate = context.read<DobBloc>().state.selectedDate;
     return Scaffold(
       body: BlocBuilder<StudentsAppFormBloc, StudentsAppFormState>(
@@ -83,184 +88,227 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                 .add(DoYouHaveBankAccEvent(currentStep: step));
           }
 
-          return CustomStepper(
-            currentPage: state.currentStep,
-            scrollController: scrollController,
-            steps: [
-              AddStep(
-                status: personalInfoBox.get('key')?.status == true
-                    ? 'Completed'
-                    : 'Progress',
-                stepIcon: personalInfoBox.get('key')?.status == true
-                    ? Icons.check
-                    : Icons.school_rounded,
-                title: 'Info',
-                content: Padding(
-                  padding: EdgeInsets.zero,
-                  child: Column(
-                    children: <Widget>[
-                      InfoLayout(
-                        title: 'Personal Info',
-                        nameController: nameController,
-                        addressController: addressController,
-                        emailController: emailController,
-                        phoneNoController: phoneNoController,
-                        nameatBankController: nameatBankController,
-                        accNoController: accNoController,
-                        ifscController: ifscController,
-                      ),
-                      const HeightSpacer(),
-                      BlocConsumer<PersonalInfoBloc, PersonalInfoState>(
-                        listener: (context, state) {
-                          state.successorFailure.fold(
-                            () {},
-                            (either) {
-                              either.fold(
-                                (failure) {
-                                  // ignore: avoid_print
-                                  print(failure.toString());
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text(failure.toString())));
-                                },
-                                (success) {
-                                  // personalInfoBox.put(
-                                  //   'key',
-                                  //   personalInfoDB(
-                                  //     status: true,
-                                  //   ),
-                                  // );
-                                  // ignore: avoid_print
-                                  print(success.data.toString());
-                                  scrollController.jumpTo(0.0);
-                                  handleNextPage(1);
-                                },
-                              );
-                            },
-                          );
-                        },
-                        builder: (context, state) {
-                          return BottomCard(
-                            nextBtn: InkResponse(
-                              onTap: () {
-                                BlocProvider.of<PersonalInfoBloc>(context).add(
-                                  PostPersonalInfo(
-                                    name: nameController.text,
-                                    gender: context
-                                                .read<HorizontalRadioBtnBloc>()
-                                                .state
-                                                .groupValue ==
-                                            1
-                                        ? "m"
-                                        : "f",
-                                    dob: DateFormat('yyyy-MM-dd').format(context
-                                        .read<DobBloc>()
-                                        .state
-                                        .selectedDate),
-                                    phone: phoneNoController.text,
-                                    address: addressController.text,
-                                    email: emailController.text,
-                                    bankaccname: nameatBankController.text,
-                                    bankaccno: accNoController.text,
-                                    bankname: "sbi",
-                                    bankifsc: ifscController.text,
-                                  ),
+          List<FocusNode> focusControllers = [
+            focuscontroller1,
+            focuscontroller2,
+            focuscontroller3,
+            focuscontroller4,
+            focuscontroller5,
+            focuscontroller6,
+            focuscontroller7,
+            focuscontroller8,
+          ];
+
+          return GestureDetector(
+            onTap: () {
+              for (var focusController in focusControllers) {
+                if (focusController.hasFocus) {
+                  focusController.unfocus();
+                }
+              }
+            },
+            child: CustomStepper(
+              currentPage: state.currentStep,
+              scrollController: scrollController,
+              steps: [
+                AddStep(
+                  status: personalInfoBox.get('key')?.status == true
+                      ? 'Completed'
+                      : 'Progress',
+                  stepIcon: personalInfoBox.get('key')?.status == true
+                      ? Icons.check
+                      : Icons.school_rounded,
+                  title: 'Info',
+                  content: Padding(
+                    padding: EdgeInsets.zero,
+                    child: Column(
+                      children: <Widget>[
+                        InfoLayout(
+                          title: 'Personal Info',
+                          nameController: nameController,
+                          addressController: addressController,
+                          emailController: emailController,
+                          phoneNoController: phoneNoController,
+                          nameatBankController: nameatBankController,
+                          accNoController: accNoController,
+                          ifscController: ifscController,
+                          infonamefocusNode: focuscontroller1,
+                          infoaddressfocusNode: focuscontroller2,
+                          numericalfocusnode: focuscontroller3,
+                          emailfocusnode: focuscontroller4,
+                          banknamefocusnode: focuscontroller5,
+                          accnofocusnode: focuscontroller6,
+                          bankifscfocusnode: focuscontroller7,
+                        ),
+                        const HeightSpacer(),
+                        BlocConsumer<PersonalInfoBloc, PersonalInfoState>(
+                          listener: (context, state) {
+                            state.successorFailure.fold(
+                              () {},
+                              (either) {
+                                either.fold(
+                                  (failure) {
+                                    // ignore: avoid_print
+                                    print(failure.toString());
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(failure.toString())));
+                                  },
+                                  (success) {
+                                    // personalInfoBox.put(
+                                    //   'key',
+                                    //   personalInfoDB(
+                                    //     status: true,
+                                    //   ),
+                                    // );
+                                    // ignore: avoid_print
+                                    print(success.data.toString());
+                                    scrollController.jumpTo(0.0);
+                                    handleNextPage(1);
+                                  },
                                 );
                               },
-                              child: const StepperBtn(
-                                nextorprev: 'Next',
+                            );
+                          },
+                          builder: (context, state) {
+                            return BottomCard(
+                              nextBtn: InkResponse(
+                                onTap: () {
+                                  BlocProvider.of<PersonalInfoBloc>(context)
+                                      .add(
+                                    PostPersonalInfo(
+                                      name: nameController.text,
+                                      gender: context
+                                                  .read<
+                                                      HorizontalRadioBtnBloc>()
+                                                  .state
+                                                  .groupValue ==
+                                              1
+                                          ? "m"
+                                          : "f",
+                                      dob: DateFormat('yyyy-MM-dd').format(
+                                          context
+                                              .read<DobBloc>()
+                                              .state
+                                              .selectedDate),
+                                      phone: phoneNoController.text,
+                                      address: addressController.text,
+                                      email: emailController.text,
+                                      bankaccname: nameatBankController.text,
+                                      bankaccno: accNoController.text,
+                                      bankname: "sbi",
+                                      bankifsc: ifscController.text,
+                                    ),
+                                  );
+                                },
+                                child: const StepperBtn(
+                                  nextorprev: 'Next',
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                AddStep(
+                  title: 'Family',
+                  content: Column(
+                    children: [
+                      FamilyScreen(
+                        realtionfocusNode: focuscontroller1,
+                        fatherfocusNode: focuscontroller2,
+                        motherfocusNode: focuscontroller3,
+                        guardianfocusNode: focuscontroller4,
+                        fathericomefocusnode: focuscontroller5,
+                        mothericomefocusnode: focuscontroller6,
+                        guardianicomefocusnode: focuscontroller7,
+                        siblingnamefocusNode: focuscontroller8,
+                        fatherincomeController: fatherincomeController,
+                        motherincomeController: motherincomeController,
+                        guardiaincomeController: guardiaincomeController,
+                      ),
+                      const HeightSpacer(),
+                      BottomCard(
+                        prevBtn: InkResponse(
+                            onTap: () {
+                              scrollController.jumpTo(0.0);
+                              handlePrevious(0);
+                            },
+                            child: const StepperBtn(nextorprev: 'Prev')),
+                        nextBtn: InkResponse(
+                            onTap: () {
+                              scrollController.jumpTo(0.0);
+                              handleNextPage(2);
+                            },
+                            child: const StepperBtn(nextorprev: 'Next')),
                       ),
                     ],
                   ),
+                  stepIcon: Icons.family_restroom,
+                  status: 'To do',
                 ),
-              ),
-              AddStep(
-                title: 'Family',
-                content: Column(
-                  children: [
-                    FamilyScreen(
-                      fatherincomeController: fatherincomeController,
-                      motherincomeController: motherincomeController,
-                      guardiaincomeController: guardiaincomeController,
-                    ),
-                    const HeightSpacer(),
-                    BottomCard(
-                      prevBtn: InkResponse(
-                          onTap: () {
-                            scrollController.jumpTo(0.0);
-                            handlePrevious(0);
-                          },
-                          child: const StepperBtn(nextorprev: 'Prev')),
-                      nextBtn: InkResponse(
-                          onTap: () {
-                            scrollController.jumpTo(0.0);
-                            handleNextPage(2);
-                          },
-                          child: const StepperBtn(nextorprev: 'Next')),
-                    ),
-                  ],
-                ),
-                stepIcon: Icons.family_restroom,
-                status: 'To do',
-              ),
-              AddStep(
-                title: 'Academics',
-                content: Column(
-                  children: [
-                    const AcademicsScreen(),
-                    const HeightSpacer(),
-                    const AchievmentsScreen(),
-                    BottomCard(
-                      prevBtn: InkResponse(
-                        onTap: () {
-                          scrollController.jumpTo(0.0);
-                          handlePrevious(1);
-                        },
-                        child: const StepperBtn(nextorprev: 'Prev'),
+                AddStep(
+                  title: 'Academics',
+                  content: Column(
+                    children: [
+                      AcademicsScreen(
+                        examRegfocusnode: focuscontroller1,
+                        sslcfocusnode: focuscontroller2,
+                        plusonefocusnode: focuscontroller3,
+                        plustwofocusnode: focuscontroller4,
                       ),
-                      nextBtn: InkResponse(
+                      const HeightSpacer(),
+                      AchievmentsScreen(focusNode: focuscontroller5),
+                      BottomCard(
+                        prevBtn: InkResponse(
                           onTap: () {
                             scrollController.jumpTo(0.0);
-                            handleNextPage(3);
+                            handlePrevious(1);
                           },
-                          child: const StepperBtn(
-                            nextorprev: 'Next',
-                          )),
-                    ),
-                  ],
-                ),
-                stepIcon: Icons.school_rounded,
-                status: 'Completed',
-              ),
-              AddStep(
-                title: 'Home',
-                content: Column(
-                  children: [
-                    const HomeScreen(),
-                    const HeightSpacer(),
-                    BottomCard(
-                      prevBtn: InkResponse(
-                        onTap: () {
-                          scrollController.jumpTo(0.0);
-                          handlePrevious(2);
-                        },
-                        child: const StepperBtn(nextorprev: 'Prev'),
+                          child: const StepperBtn(nextorprev: 'Prev'),
+                        ),
+                        nextBtn: InkResponse(
+                            onTap: () {
+                              scrollController.jumpTo(0.0);
+                              handleNextPage(3);
+                            },
+                            child: const StepperBtn(
+                              nextorprev: 'Next',
+                            )),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  stepIcon: Icons.school_rounded,
+                  status: 'Completed',
                 ),
-                stepIcon: Icons.home,
-                status: 'Progress',
-              ),
-            ],
-            config: StepConfig(
-              activeConfig: AcitiveUi(),
-              inactiveConfig: InacitiveUi(
-                iconBgColor: Colors.black45,
+                AddStep(
+                  title: 'Home',
+                  content: Column(
+                    children: [
+                      HomeScreen(landfocusNode: focuscontroller1),
+                      const HeightSpacer(),
+                      BottomCard(
+                        prevBtn: InkResponse(
+                          onTap: () {
+                            scrollController.jumpTo(0.0);
+                            handlePrevious(2);
+                          },
+                          child: const StepperBtn(nextorprev: 'Prev'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  stepIcon: Icons.home,
+                  status: 'Progress',
+                ),
+              ],
+              config: StepConfig(
+                activeConfig: AcitiveUi(),
+                inactiveConfig: InacitiveUi(
+                  iconBgColor: Colors.black45,
+                ),
               ),
             ),
           );

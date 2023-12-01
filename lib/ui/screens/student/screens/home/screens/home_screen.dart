@@ -3,7 +3,8 @@ import 'package:panakj_app/ui/screens/student/screens/home/screens/home_layout.d
 import 'package:panakj_app/ui/screens/student/screens/home/widgets/home_card.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  FocusNode landfocusNode = FocusNode();
+   HomeScreen({super.key,required this.landfocusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         HomeLayout(
           HomeLayoutheight: 670,
           title: 'Residential Details',
-          homeDetailsCard: HomeCard(mybool: false),
+          homeDetailsCard: HomeCard(mybool: false,landfocusNode:landfocusNode),
         ),
       ],
     );

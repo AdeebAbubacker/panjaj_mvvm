@@ -10,12 +10,14 @@ import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values
 class HomeCard extends StatefulWidget {
   final Widget siblings;
   bool mybool;
+  FocusNode landfocusNode = FocusNode();
 
   final width;
   HomeCard({
     super.key,
     this.width,
     required this.mybool,
+    required this.landfocusNode,
     this.siblings = const Text(''),
   });
 
@@ -26,11 +28,11 @@ class HomeCard extends StatefulWidget {
 class _HomeCardState extends State<HomeCard> {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return  SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             '* nb: Please provide your residential details genuinely',
             style: TextStyle(
               color: Colors.red,
@@ -39,9 +41,9 @@ class _HomeCardState extends State<HomeCard> {
               fontSize: 12.0,
             ),
           ),
-          HeightSpacer(),
-          HeightSpacer(),
-          Row(
+          const HeightSpacer(),
+          const HeightSpacer(),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,9 +60,9 @@ class _HomeCardState extends State<HomeCard> {
               ),
             ],
           ),
-          CheckBoxHome(),
-          HeightSpacer(),
-          Row(
+          const CheckBoxHome(),
+          const HeightSpacer(),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -77,13 +79,13 @@ class _HomeCardState extends State<HomeCard> {
               ),
             ],
           ),
-          CheckBoxTriplet(
+          const CheckBoxTriplet(
             option1: 'sheet',
             option2: 'concrete',
             option3: 'Tilled',
           ),
-          HeightSpacer(),
-          Row(
+          const HeightSpacer(),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -100,11 +102,11 @@ class _HomeCardState extends State<HomeCard> {
               ),
             ],
           ),
-          CheckBoxTriplet(
+          const CheckBoxTriplet(
               option1: 'Pipe water',
               option2: 'Well Water',
               option3: 'Other Source'),
-          HeightSpacer(),
+          const HeightSpacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,31 +124,8 @@ class _HomeCardState extends State<HomeCard> {
               ),
             ],
           ),
-          LandAnswerTextField()
-          // BlocBuilder<GetDropdownValuesBloc, GetDropdownValuesState>(
-          //   builder: (context, state) {
-          //     return Column(children: [
-          //       ElevatedButton(
-          //         onPressed: () {
-          //           context
-          //               .read<GetDropdownValuesBloc>()
-          //               .add(const GetDropDownValues());
-          //         },
-          //         child: const Text('Call dropdown list'),
-          //       ),
-          //       if (state.isError)
-          //         const Column(
-          //           children: [
-          //             // Add error-related widgets here
-          //             Text('Error occurred!'),
-          //           ],
-          //         )
-          //       else
-          //         // Text(
-          //         //     '${state.dropDownValue.data!.datadropdown!.courses!.data!.toList().map((e) => e.name.toString())}')
-          //     ]);
-          //   },
-          // )
+          LandAnswerTextField(landfocusNode:widget.landfocusNode ,)
+         
         ],
       ),
     );

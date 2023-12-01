@@ -14,6 +14,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  FocusNode namefocusNode = FocusNode();
+  FocusNode passwordfocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class _LoginState extends State<Login> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return  StudentsHomeScreen();
+                          return StudentsHomeScreen();
                         },
                       ),
                     );
@@ -52,60 +54,70 @@ class _LoginState extends State<Login> {
             );
           },
           builder: (context, state) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 90),
-                  SizedBox(
-                      width: 260,
-                      height: 240,
-                      child: Image.asset('assets/login_img.png')),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: TextFormField(
-                      controller: emailController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 11,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: TextFormField(
-                      controller: passwordController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    width: 200,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        BlocProvider.of<AuthBloc>(context).add(
-                          AuthEvent.mylogin(
-                            email: emailController.text,
-                            password: passwordController.text,
+            return GestureDetector(
+              onTap: () {
+                if (namefocusNode.hasFocus || passwordfocusNode.hasFocus) {
+                  namefocusNode.unfocus();
+                  passwordfocusNode.unfocus();
+                }
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 90),
+                    SizedBox(
+                        width: 260,
+                        height: 240,
+                        child: Image.asset('assets/login_img.png')),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: TextFormField(
+                        focusNode: namefocusNode,
+                        controller: emailController,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                        );
-                      },
-                      child: const Text('Login'),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 11,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: TextFormField(
+                        focusNode: passwordfocusNode,
+                        controller: passwordController,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          BlocProvider.of<AuthBloc>(context).add(
+                            AuthEvent.mylogin(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            ),
+                          );
+                        },
+                        child: const Text('Login'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

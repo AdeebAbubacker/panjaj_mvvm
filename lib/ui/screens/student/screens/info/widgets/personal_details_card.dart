@@ -13,6 +13,10 @@ import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 class PersonalDetailsCard extends StatefulWidget {
   bool mybool;
   final TextEditingController nameController;
+  FocusNode infonamefocusNode ;
+   FocusNode addressfocusNode;
+   FocusNode numericalfocusnode;
+   FocusNode emailfocusnode;
   final TextEditingController addressController;
   final TextEditingController phoneNoController;
   final TextEditingController emailController;
@@ -21,7 +25,11 @@ class PersonalDetailsCard extends StatefulWidget {
     super.key,
     this.width,
     required this.mybool,
+    required this.numericalfocusnode,
     required this.nameController,
+    required this.infonamefocusNode,
+    required this.addressfocusNode,
+    required this.emailfocusnode,
     required this.addressController,
     required this.phoneNoController,
     required this.emailController,
@@ -38,7 +46,11 @@ class _PersonalDetailsCardState extends State<PersonalDetailsCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelInputText(label: 'Name', StringInput: widget.nameController),
+          LabelInputText(
+            label: 'Name',
+            StringInput: widget.nameController,
+            focusNode: widget.infonamefocusNode,
+          ),
           const HeightSpacer(height: 14),
           horizontalRadioBtn(
             steps: [
@@ -54,13 +66,17 @@ class _PersonalDetailsCardState extends State<PersonalDetailsCard> {
             label: 'Address',
             maxlines: 3,
             StringInput: widget.addressController,
+            focusNode: widget.addressfocusNode,
           ),
           const HeightSpacer(height: 14),
           LabelNumericalText(
+            numericalfocusnode: widget.numericalfocusnode,
               mytext: 'Phone no', numController: widget.phoneNoController),
           const HeightSpacer(height: 14),
           LabelEmail(
-            labelText: 'email',emailController: widget.emailController,
+            labelText: 'email',           
+            emailController: widget.emailController,
+            emailfocusnode: widget.emailfocusnode,
           ),
           const DoYouHaveBankAcc(),
         ],

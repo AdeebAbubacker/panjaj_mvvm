@@ -14,7 +14,7 @@ final Map<String, dynamic> params = {
 class DropDownService {
   Future<DropDownValues> getDropDownValue() async {
     final uri = Uri.parse(
-        '${ApiEndpoint.dropdownvalues}?bank=1&cccupation=1&qualification=1&courses=1');
+        '${ApiEndpoint.dropdownvalues}?bank=1&cccupation=1&qualification=1&courses=1&schools=1');
     try {
       final response = await http.get(uri);
 

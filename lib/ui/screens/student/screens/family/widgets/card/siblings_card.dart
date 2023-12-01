@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
 import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/course_bottomsheet.dart';
+//import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/course_bottomsheet.dart';
+
 import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
@@ -15,12 +17,14 @@ class SiblingsCard extends StatefulWidget {
   final Widget siblings;
   bool mybool;
   TextEditingController nameController = TextEditingController();
+  FocusNode siblingnamefocusNode;
 
   final width;
   SiblingsCard({
     super.key,
     this.width,
     required this.mybool,
+    required this.siblingnamefocusNode,
     this.siblings = const Text(''),
   });
 
@@ -82,7 +86,11 @@ class _SiblingsCardState extends State<SiblingsCard> {
                 padding: EdgeInsets.only(top: 5, bottom: 12),
                 child: Text('Brother / Sister', style: kfamiltTitleTextColor),
               ),
-              LabelInputText(label: 'Name', StringInput: widget.nameController),
+              LabelInputText(
+                label: 'Name',
+                StringInput: widget.nameController,
+                focusNode: widget.siblingnamefocusNode,
+              ),
               horizontalRadioBtn(
                 steps: [
                   Content(choiceLabel: 'Male'),
@@ -108,11 +116,9 @@ class _SiblingsCardState extends State<SiblingsCard> {
               ),
               const HeightSpacer(),
               InputLabel(mytext: 'Course of Study'),
-              coursebottomSheet(title: 'Course of Study',),
-              // labelBottomSheet(
-              //     listofData: coursename,
-              //     title: 'Course of Study',
-              //     hintText: 'Search For Occupation / Job'),
+              coursebottomSheet(
+                title: 'Course of Study',
+              ),
               const HeightSpacer(),
               InputLabel(mytext: 'Occupation / Job'),
               labelBottomSheet(

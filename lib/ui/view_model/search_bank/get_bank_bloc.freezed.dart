@@ -225,8 +225,8 @@ abstract class GetBankList implements GetBankEvent {
 mixin _$GetBankState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
-  Bank get bank => throw _privateConstructorUsedError;
-  Option<Either<MainFailure, Bank>> get successorFailure =>
+  SearchBank get bank => throw _privateConstructorUsedError;
+  Option<Either<MainFailure, SearchBank>> get successorFailure =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -243,8 +243,8 @@ abstract class $GetBankStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isError,
-      Bank bank,
-      Option<Either<MainFailure, Bank>> successorFailure});
+      SearchBank bank,
+      Option<Either<MainFailure, SearchBank>> successorFailure});
 }
 
 /// @nodoc
@@ -277,11 +277,11 @@ class _$GetBankStateCopyWithImpl<$Res, $Val extends GetBankState>
       bank: null == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as Bank,
+              as SearchBank,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, Bank>>,
+              as Option<Either<MainFailure, SearchBank>>,
     ) as $Val);
   }
 }
@@ -297,8 +297,8 @@ abstract class _$$GetBankStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isError,
-      Bank bank,
-      Option<Either<MainFailure, Bank>> successorFailure});
+      SearchBank bank,
+      Option<Either<MainFailure, SearchBank>> successorFailure});
 }
 
 /// @nodoc
@@ -329,11 +329,11 @@ class __$$GetBankStateImplCopyWithImpl<$Res>
       bank: null == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as Bank,
+              as SearchBank,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, Bank>>,
+              as Option<Either<MainFailure, SearchBank>>,
     ));
   }
 }
@@ -352,9 +352,9 @@ class _$GetBankStateImpl implements _GetBankState {
   @override
   final bool isError;
   @override
-  final Bank bank;
+  final SearchBank bank;
   @override
-  final Option<Either<MainFailure, Bank>> successorFailure;
+  final Option<Either<MainFailure, SearchBank>> successorFailure;
 
   @override
   String toString() {
@@ -387,20 +387,20 @@ class _$GetBankStateImpl implements _GetBankState {
 
 abstract class _GetBankState implements GetBankState {
   const factory _GetBankState(
-          {required final bool isLoading,
-          required final bool isError,
-          required final Bank bank,
-          required final Option<Either<MainFailure, Bank>> successorFailure}) =
-      _$GetBankStateImpl;
+      {required final bool isLoading,
+      required final bool isError,
+      required final SearchBank bank,
+      required final Option<Either<MainFailure, SearchBank>>
+          successorFailure}) = _$GetBankStateImpl;
 
   @override
   bool get isLoading;
   @override
   bool get isError;
   @override
-  Bank get bank;
+  SearchBank get bank;
   @override
-  Option<Either<MainFailure, Bank>> get successorFailure;
+  Option<Either<MainFailure, SearchBank>> get successorFailure;
   @override
   @JsonKey(ignore: true)
   _$$GetBankStateImplCopyWith<_$GetBankStateImpl> get copyWith =>

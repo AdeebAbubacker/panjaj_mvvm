@@ -224,10 +224,9 @@ abstract class GetCourses implements CoursesEvent {
 mixin _$CoursesState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
-  Courses get course => throw _privateConstructorUsedError;
-  Option<Either<MainFailure, Course>> get successorFailure =>
+  SearchCourse get course => throw _privateConstructorUsedError;
+  Option<Either<MainFailure, SearchCourse>> get successorFailure =>
       throw _privateConstructorUsedError;
-  Datum get searchResultList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CoursesStateCopyWith<CoursesState> get copyWith =>
@@ -243,9 +242,8 @@ abstract class $CoursesStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isError,
-      Courses course,
-      Option<Either<MainFailure, Course>> successorFailure,
-      Datum searchResultList});
+      SearchCourse course,
+      Option<Either<MainFailure, SearchCourse>> successorFailure});
 }
 
 /// @nodoc
@@ -265,7 +263,6 @@ class _$CoursesStateCopyWithImpl<$Res, $Val extends CoursesState>
     Object? isError = null,
     Object? course = null,
     Object? successorFailure = null,
-    Object? searchResultList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -279,15 +276,11 @@ class _$CoursesStateCopyWithImpl<$Res, $Val extends CoursesState>
       course: null == course
           ? _value.course
           : course // ignore: cast_nullable_to_non_nullable
-              as Courses,
+              as SearchCourse,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, Course>>,
-      searchResultList: null == searchResultList
-          ? _value.searchResultList
-          : searchResultList // ignore: cast_nullable_to_non_nullable
-              as Datum,
+              as Option<Either<MainFailure, SearchCourse>>,
     ) as $Val);
   }
 }
@@ -303,9 +296,8 @@ abstract class _$$CoursesStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isError,
-      Courses course,
-      Option<Either<MainFailure, Course>> successorFailure,
-      Datum searchResultList});
+      SearchCourse course,
+      Option<Either<MainFailure, SearchCourse>> successorFailure});
 }
 
 /// @nodoc
@@ -323,7 +315,6 @@ class __$$CoursesStateImplCopyWithImpl<$Res>
     Object? isError = null,
     Object? course = null,
     Object? successorFailure = null,
-    Object? searchResultList = null,
   }) {
     return _then(_$CoursesStateImpl(
       isLoading: null == isLoading
@@ -337,15 +328,11 @@ class __$$CoursesStateImplCopyWithImpl<$Res>
       course: null == course
           ? _value.course
           : course // ignore: cast_nullable_to_non_nullable
-              as Courses,
+              as SearchCourse,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, Course>>,
-      searchResultList: null == searchResultList
-          ? _value.searchResultList
-          : searchResultList // ignore: cast_nullable_to_non_nullable
-              as Datum,
+              as Option<Either<MainFailure, SearchCourse>>,
     ));
   }
 }
@@ -357,23 +344,20 @@ class _$CoursesStateImpl implements _CoursesState {
       {required this.isLoading,
       required this.isError,
       required this.course,
-      required this.successorFailure,
-      required this.searchResultList});
+      required this.successorFailure});
 
   @override
   final bool isLoading;
   @override
   final bool isError;
   @override
-  final Courses course;
+  final SearchCourse course;
   @override
-  final Option<Either<MainFailure, Course>> successorFailure;
-  @override
-  final Datum searchResultList;
+  final Option<Either<MainFailure, SearchCourse>> successorFailure;
 
   @override
   String toString() {
-    return 'CoursesState(isLoading: $isLoading, isError: $isError, course: $course, successorFailure: $successorFailure, searchResultList: $searchResultList)';
+    return 'CoursesState(isLoading: $isLoading, isError: $isError, course: $course, successorFailure: $successorFailure)';
   }
 
   @override
@@ -386,14 +370,12 @@ class _$CoursesStateImpl implements _CoursesState {
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.course, course) || other.course == course) &&
             (identical(other.successorFailure, successorFailure) ||
-                other.successorFailure == successorFailure) &&
-            (identical(other.searchResultList, searchResultList) ||
-                other.searchResultList == searchResultList));
+                other.successorFailure == successorFailure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isError, course,
-      successorFailure, searchResultList);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, isError, course, successorFailure);
 
   @JsonKey(ignore: true)
   @override
@@ -406,20 +388,18 @@ abstract class _CoursesState implements CoursesState {
   const factory _CoursesState(
       {required final bool isLoading,
       required final bool isError,
-      required final Courses course,
-      required final Option<Either<MainFailure, Course>> successorFailure,
-      required final Datum searchResultList}) = _$CoursesStateImpl;
+      required final SearchCourse course,
+      required final Option<Either<MainFailure, SearchCourse>>
+          successorFailure}) = _$CoursesStateImpl;
 
   @override
   bool get isLoading;
   @override
   bool get isError;
   @override
-  Courses get course;
+  SearchCourse get course;
   @override
-  Option<Either<MainFailure, Course>> get successorFailure;
-  @override
-  Datum get searchResultList;
+  Option<Either<MainFailure, SearchCourse>> get successorFailure;
   @override
   @JsonKey(ignore: true)
   _$$CoursesStateImplCopyWith<_$CoursesStateImpl> get copyWith =>

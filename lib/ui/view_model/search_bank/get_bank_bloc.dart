@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:panakj_app/core/model/drop_down_values/bank.dart';
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
+import 'package:panakj_app/core/model/search_bank/search_bank.dart';
 import 'package:panakj_app/core/service/bank_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,7 +17,7 @@ class GetBankBloc extends Bloc<GetBankEvent, GetBankState> {
     on<GetBankList>(
       (event, emit) async {
         try {
-          final response = await _getbankservice.getBank();
+          final response = await _getbankservice.getBank(search: event.bankQuery);
           emit(GetBankState(
             isLoading: false,
             isError: false,
@@ -32,7 +32,7 @@ class GetBankBloc extends Bloc<GetBankEvent, GetBankState> {
           emit(GetBankState(
             isLoading: false,
             isError: true,
-            bank: Bank(),
+            bank: SearchBank(),
             successorFailure: optionOf(
                 left(MainFailure.clientFailure(message: e.toString()))),
           ));

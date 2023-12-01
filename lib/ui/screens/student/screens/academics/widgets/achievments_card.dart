@@ -12,12 +12,14 @@ class AchievmentsCard extends StatefulWidget {
   TextEditingController achievmentController = TextEditingController();
   final Widget siblings;
   bool mybool;
+  FocusNode focusNode = FocusNode();
 
   final width;
   AchievmentsCard({
     super.key,
     this.width,
     required this.mybool,
+    required this.focusNode,
     this.siblings = const Text(''),
   });
 
@@ -39,6 +41,7 @@ class _AchievmentsCardState extends State<AchievmentsCard> {
                 label: 'Achievment Details',
                 maxlines: 3,
                 StringInput: widget.achievmentController,
+                focusNode: widget.focusNode,
               ),
               const HeightSpacer(),
               InputLabel(mytext: 'Category'),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 
 class InpuText extends StatefulWidget {
   final int maxlines;
+  FocusNode focusNode = FocusNode();
   TextEditingController StringInput = TextEditingController();
   InpuText({
     this.maxlines = 1,
     required this.StringInput,
+    required this.focusNode,
     Key? key,
   }) : super(key: key);
 
@@ -25,6 +26,7 @@ class _InpuTextState extends State<InpuText> {
         SizedBox(
           child: kpadding14(
             child: TextField(
+              focusNode:widget.focusNode ,
                 controller: widget.StringInput,
                 maxLines: widget.maxlines,
                 decoration: const InputDecoration(border: InputBorder.none),

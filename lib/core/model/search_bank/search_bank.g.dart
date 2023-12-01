@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'bank.dart';
+part of 'search_bank.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Bank _$BankFromJson(Map<String, dynamic> json) => Bank(
+SearchBank _$SearchBankFromJson(Map<String, dynamic> json) => SearchBank(
       status: json['status'] as int?,
       count: json['count'] as int?,
       message: json['message'] as String?,
@@ -19,7 +19,8 @@ Bank _$BankFromJson(Map<String, dynamic> json) => Bank(
           : Paginate.fromJson(json['paginate'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$BankToJson(Bank instance) => <String, dynamic>{
+Map<String, dynamic> _$SearchBankToJson(SearchBank instance) =>
+    <String, dynamic>{
       'status': instance.status,
       'count': instance.count,
       'message': instance.message,

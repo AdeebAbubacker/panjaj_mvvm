@@ -1,19 +1,19 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
-import 'package:panakj_app/core/model/search_bank/search_bank.dart';
+import 'package:panakj_app/core/model/search_school/search_school.dart';
 
-class BankService {
+class SchoolService {
   static const String baseApiUrl = "https://pt.tekpeak.in/api";
-  static const String getBankEndpoint = "/bank";
+  static const String getSchoolEndpoint = "/school";
 
-  Future<SearchBank> getBank({String? search}) async {
-    final uri = Uri.parse('$baseApiUrl$getBankEndpoint?&search=$search');
+  Future<SearchSchool> getSchool({String? search}) async {
+    final uri = Uri.parse('$baseApiUrl$getSchoolEndpoint?&search=$search');
     try {
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        return SearchBank.fromJson(jsonDecode(response.body));
+        return SearchSchool.fromJson(jsonDecode(response.body));
       } else {
         final failureMessage = response.body.toString();
         // ignore: avoid_print
