@@ -5,12 +5,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
-import 'package:panakj_app/core/db/boxes/course_box.dart';
 import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
-// import 'package:mylab2/core/core/colors/colors.dart';
-// import 'package:mylab2/core/core/constant/constants.dart';
-// import 'package:mylab2/model/courses/datum.dart';
-// import 'package:mylab2/view_model/courses/courses_bloc.dart';
+
 
 class coursebottomSheet extends StatefulWidget {
   final bottomSheetheight;
@@ -90,13 +86,13 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
       return;
     }
 
-    // Extract names from BankDB objects
+   
     courseNames = keys.map((key) {
       CourseDB courseDB = courseBox.get(key)!;
       return courseDB.name;
     }).toList();
 
-    // Ensure that the widget is rebuilt after the bankNames are populated
+
     if (mounted) {
       setState(() {});
     }

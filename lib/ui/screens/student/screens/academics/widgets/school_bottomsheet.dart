@@ -8,10 +8,7 @@ import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/core/db/adapters/school_adapter/school_adapter.dart';
 import 'package:panakj_app/ui/view_model/search_school/search_school_bloc.dart';
-// import 'package:mylab2/core/core/colors/colors.dart';
-// import 'package:mylab2/core/core/constant/constants.dart';
-// import 'package:mylab2/model/schools/datum.dart';
-// import 'package:mylab2/view_model/schools/schools_bloc.dart';
+
 
 class schoolBottomSheet extends StatefulWidget {
   final bottomSheetheight;
@@ -273,9 +270,7 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
             textController.text.isEmpty ? schoolNames[index] : data[index].name,
-            // textController.text.isEmpty
-            // ? (schoolBox.getAt(index) as SchoolDB?)?.name ?? ''
-            // : data[index].name as String,
+       
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,
