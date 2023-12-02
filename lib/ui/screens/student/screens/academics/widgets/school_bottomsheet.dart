@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/core/db/adapters/school_adapter/school_adapter.dart';
 import 'package:panakj_app/ui/view_model/search_school/search_school_bloc.dart';
 // import 'package:mylab2/core/core/colors/colors.dart';
 // import 'package:mylab2/core/core/constant/constants.dart';
@@ -61,6 +65,44 @@ class schoolBottomSheet extends StatefulWidget {
 }
 
 class _schoolBottomSheetState extends State<schoolBottomSheet> {
+  late Box<SchoolDB> schoolBox;
+  List<String> schoolNames = [];
+  @override
+  void initState() {
+    super.initState();
+
+    setupSchoolBox();
+  }
+
+  Future<void> setupSchoolBox() async {
+    schoolBox = await Hive.openBox<SchoolDB>('schoolBox');
+
+    if (!schoolBox.isOpen) {
+      print('schoolBox is not open');
+      return;
+    }
+
+    List<int> keys = schoolBox.keys.cast<int>().toList();
+
+    print('All keys in schoolBox: $keys');
+
+    if (keys.isEmpty) {
+      print('No banks found in schoolBox');
+      return;
+    }
+
+    // Extract names from BankDB objects
+    schoolNames = keys.map((key) {
+      SchoolDB school = schoolBox.get(key)!;
+      return school.name;
+    }).toList();
+
+    // Ensure that the widget is rebuilt after the bankNames are populated
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
 
@@ -164,21 +206,20 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
                       child: BlocBuilder<SearchSchoolBloc, SearchSchoolState>(
                         builder: (context, state) {
                           if (state.isLoading) {
-                            print('loading');
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
                           } else if (state.isError) {
-                            print('error');
                             return const Center(
                               child: Text('Error fetching data'),
                             );
                           } else {
-                            print('${state.school.data?.data?.length}');
                             return ListView.separated(
                               controller: scrollController,
-                              itemCount: state.school.data?.data?.length ??
-                                  emptyList.length,
+                              itemCount: textController.text.isEmpty
+                                  ? schoolBox.length
+                                  : state.school.data?.data?.length ??
+                                      emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
@@ -199,8 +240,6 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
                                 );
                               },
                             );
-                         
-                         
                           }
                         },
                       ),
@@ -233,7 +272,10 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
         Container(
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
-            data[index].name as String,
+            textController.text.isEmpty ? schoolNames[index] : data[index].name,
+            // textController.text.isEmpty
+            // ? (schoolBox.getAt(index) as SchoolDB?)?.name ?? ''
+            // : data[index].name as String,
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,
@@ -255,6 +297,7 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final Devicewidth = MediaQuery.of(context).size.width;
     return Center(
       child: Column(

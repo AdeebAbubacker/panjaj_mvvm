@@ -37,6 +37,7 @@ void main() async {
   personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
   courseBox = await Hive.openBox<CourseDB>('courseBox');
   schoolBox = await Hive.openBox<SchoolDB>('schoolBox');
+
   runApp(const MyApp());
 }
 

@@ -81,11 +81,7 @@ class _AcademicsCardState extends State<AcademicsCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InputLabel(mytext: 'School Name'),
-          schoolBottomSheet(title: 'sss'),
-          // labelBottomSheet(
-          //   title: 'School Name',
-          //   listofData: schoolNames,
-          // ),
+          schoolBottomSheet(title: 'School Name'),
           const HeightSpacer(),
           ExamReg(examRegfocusnode: widget.examRegfocusnode),
           const HeightSpacer(),

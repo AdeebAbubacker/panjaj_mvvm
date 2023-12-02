@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
 import 'package:panakj_app/ui/view_model/search_bank/get_bank_bloc.dart';
 
 class bankBottomSheet extends StatefulWidget {
@@ -56,6 +58,45 @@ class bankBottomSheet extends StatefulWidget {
 }
 
 class _bankBottomSheetState extends State<bankBottomSheet> {
+  late Box<BankDB> bankBox;
+  List<String> bankNames = [];
+  @override
+  void initState() {
+    super.initState();
+    setupBankBox();
+  }
+
+  Future<void> setupBankBox() async {
+    bankBox = await Hive.openBox<BankDB>('bankBox');
+
+    if (!bankBox.isOpen) {
+      print('bankBox is not open');
+      return;
+    }
+
+    List<int> keys = bankBox.keys.cast<int>().toList();
+
+    print('All keys in bankBox: $keys');
+
+    if (keys.isEmpty) {
+      print('No banks found in bankBox');
+      return;
+    }
+
+    // Extract names from BankDB objects
+    bankNames = keys.map((key) {
+      BankDB bank = bankBox.get(key)!;
+      return bank.name;
+    }).toList();
+
+    print('Bank names: $bankNames');
+
+    // Ensure that the widget is rebuilt after the bankNames are populated
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
 
@@ -120,7 +161,7 @@ class _bankBottomSheetState extends State<bankBottomSheet> {
                             child: TextField(
                               onChanged: (textController) {
                                 BlocProvider.of<GetBankBloc>(context).add(
-                                     GetBankEvent.searchBankList(
+                                    GetBankEvent.searchBankList(
                                         bankQuery: textController));
                               },
                               style: kCardContentStyle,
@@ -173,8 +214,9 @@ class _bankBottomSheetState extends State<bankBottomSheet> {
                           return Expanded(
                             child: ListView.separated(
                               controller: scrollController,
-                              itemCount:
-                                  state.bank.data?.length ?? emptyList.length,
+                              itemCount: textController.text.isEmpty
+                                  ? bankBox.length
+                                  : state.bank.data!.length ?? emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
@@ -227,7 +269,7 @@ class _bankBottomSheetState extends State<bankBottomSheet> {
         Container(
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
-            data[index].name as String,
+            textController.text.isEmpty ? bankNames[index] : data[index].name,
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,

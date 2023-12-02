@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
+import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
+import 'package:panakj_app/core/db/boxes/course_box.dart';
 import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
 // import 'package:mylab2/core/core/colors/colors.dart';
 // import 'package:mylab2/core/core/constant/constants.dart';
@@ -61,6 +64,44 @@ class coursebottomSheet extends StatefulWidget {
 }
 
 class _coursebottomSheetState extends State<coursebottomSheet> {
+  late Box<CourseDB> courseBox;
+  List<String> courseNames = [];
+  @override
+  void initState() {
+    super.initState();
+
+    setupCourseBox();
+  }
+
+  Future<void> setupCourseBox() async {
+    courseBox = await Hive.openBox<CourseDB>('courseBox');
+
+    if (!courseBox.isOpen) {
+      print('schoolBox is not open');
+      return;
+    }
+
+    List<int> keys = courseBox.keys.cast<int>().toList();
+
+    print('All keys in schoolBox: $keys');
+
+    if (keys.isEmpty) {
+      print('No banks found in schoolBox');
+      return;
+    }
+
+    // Extract names from BankDB objects
+    courseNames = keys.map((key) {
+      CourseDB courseDB = courseBox.get(key)!;
+      return courseDB.name;
+    }).toList();
+
+    // Ensure that the widget is rebuilt after the bankNames are populated
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
 
@@ -177,8 +218,10 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                             print('${state.course.data?.data?.length}');
                             return ListView.separated(
                               controller: scrollController,
-                              itemCount: state.course.data?.data?.length ??
-                                  emptyList.length,
+                              itemCount: textController.text.isEmpty
+                                  ? courseBox.length
+                                  : state.course.data!.data!.length ??
+                                      emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
@@ -199,8 +242,6 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                                 );
                               },
                             );
-                         
-                         
                           }
                         },
                       ),
@@ -233,7 +274,7 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
         Container(
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
-            data[index].name as String,
+            textController.text.isEmpty ? courseNames[index] : data[index].name,
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,
