@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 
 class VerticalRadioBtn extends StatefulWidget {
-  String? title;
+  final String? title;
   int groupValue;
   final List<MyData> steps;
 
@@ -16,10 +16,10 @@ class VerticalRadioBtn extends StatefulWidget {
       required this.steps});
 
   @override
-  _VerticalRadioBtnState createState() => _VerticalRadioBtnState();
+  VerticalRadioBtnState createState() => VerticalRadioBtnState();
 }
 
-class _VerticalRadioBtnState extends State<VerticalRadioBtn> {
+class VerticalRadioBtnState extends State<VerticalRadioBtn> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,7 +43,7 @@ class _VerticalRadioBtnState extends State<VerticalRadioBtn> {
             return Row(
               children: [
                 Radio(
-                  value: index, 
+                  value: index,
                   groupValue: widget.groupValue,
                   onChanged: (value) {
                     setState(() {

@@ -24,7 +24,7 @@ class _CheckBoxHomeState extends State<CheckBoxHome> {
               });
             }),
         const Text('Own House', style: checkboxOptionStyle),
-        Spacer(),
+        const Spacer(),
         Checkbox(
             value: rentalHouse,
             onChanged: (value) {
@@ -34,7 +34,7 @@ class _CheckBoxHomeState extends State<CheckBoxHome> {
               });
             }),
         const Text('Rental House', style: checkboxOptionStyle),
-        Spacer(),
+        const Spacer(),
       ],
     );
   }

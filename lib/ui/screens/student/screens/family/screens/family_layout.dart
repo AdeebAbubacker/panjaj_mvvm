@@ -9,7 +9,7 @@ class FamilyLayout extends StatefulWidget {
 
   final Widget familyDetailsCard;
 
-  FamilyLayout({
+  const FamilyLayout({
     super.key,
     required this.familyDetailsCard,
     required this.title,

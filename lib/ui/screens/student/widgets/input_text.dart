@@ -3,7 +3,7 @@ import 'package:panakj_app/core/constant/constants.dart';
 
 class InpuText extends StatefulWidget {
   final int maxlines;
-  FocusNode focusNode = FocusNode();
+   FocusNode focusNode = FocusNode();
   TextEditingController StringInput = TextEditingController();
   InpuText({
     this.maxlines = 1,

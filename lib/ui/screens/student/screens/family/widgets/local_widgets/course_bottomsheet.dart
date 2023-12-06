@@ -7,14 +7,13 @@ import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
 import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
 
-
-class coursebottomSheet extends StatefulWidget {
+class CoursebottomSheet extends StatefulWidget {
   final bottomSheetheight;
   final String title;
   final hintText;
   List<String> listofData = [];
 
-  coursebottomSheet(
+  CoursebottomSheet(
       {Key? key,
       this.listofData = const [
         'Nil',
@@ -56,16 +55,15 @@ class coursebottomSheet extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<coursebottomSheet> createState() => _coursebottomSheetState();
+  State<CoursebottomSheet> createState() => _CoursebottomSheetState();
 }
 
-class _coursebottomSheetState extends State<coursebottomSheet> {
+class _CoursebottomSheetState extends State<CoursebottomSheet> {
   late Box<CourseDB> courseBox;
   List<String> courseNames = [];
   @override
   void initState() {
     super.initState();
-
     setupCourseBox();
   }
 
@@ -73,25 +71,19 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
     courseBox = await Hive.openBox<CourseDB>('courseBox');
 
     if (!courseBox.isOpen) {
-      print('schoolBox is not open');
       return;
     }
 
     List<int> keys = courseBox.keys.cast<int>().toList();
 
-    print('All keys in schoolBox: $keys');
-
     if (keys.isEmpty) {
-      print('No banks found in schoolBox');
       return;
     }
 
-   
     courseNames = keys.map((key) {
       CourseDB courseDB = courseBox.get(key)!;
       return courseDB.name;
     }).toList();
-
 
     if (mounted) {
       setState(() {});
@@ -201,17 +193,37 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
                       child: BlocBuilder<CoursesBloc, CoursesState>(
                         builder: (context, state) {
                           if (state.isLoading) {
-                            print('loading');
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
                           } else if (state.isError) {
-                            print('error');
-                            return const Center(
-                              child: Text('Error fetching data'),
+                            return ListView.separated(
+                              controller: scrollController,
+                              itemCount: textController.text.isEmpty
+                                  ? courseBox.length
+                                  : state.course.data!.data!.length ??
+                                      emptyList.length,
+                              separatorBuilder: (context, index) {
+                                return const Divider();
+                              },
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  child: (state.course.data != null &&
+                                          state.course.data!.data!.isNotEmpty)
+                                      ? showBottomSheetData(index,
+                                          state.course.data!.data!.toList())
+                                      : showBottomSheetData(index, emptyList),
+                                  onTap: () {
+                                    textController.text =
+                                        state.course.data!.data![index].name!;
+                                    // ignore: avoid_print
+                                    print(
+                                        'Selected item in bottom sheet----------$index');
+                                  },
+                                );
+                              },
                             );
                           } else {
-                            print('${state.course.data?.data?.length}');
                             return ListView.separated(
                               controller: scrollController,
                               itemCount: textController.text.isEmpty
@@ -270,7 +282,10 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
         Container(
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
-            textController.text.isEmpty ? courseNames[index] : data[index].name,
+            // textController.text.isEmpty ? courseNames[index] : data[index].name,
+            textController.text.isEmpty || textController.text == ""
+                ? courseNames[index]
+                : data[index].name,
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,
@@ -292,7 +307,7 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final Devicewidth = MediaQuery.of(context).size.width;
+    final devicewidth = MediaQuery.of(context).size.width;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -300,7 +315,7 @@ class _coursebottomSheetState extends State<coursebottomSheet> {
           Stack(
             children: [
               Container(
-                width: Devicewidth,
+                width: devicewidth,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(

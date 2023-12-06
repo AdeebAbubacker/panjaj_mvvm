@@ -10,21 +10,32 @@ import 'package:panakj_app/core/db/boxes/school_box.dart';
 import 'package:panakj_app/package/widget/myAppbar.dart';
 import 'package:panakj_app/ui/screens/auth/login_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/Students_application_form/students_application_form.dart';
-import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
 import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StudentsHomeScreen extends StatelessWidget {
-  StudentsHomeScreen({super.key});
+class StudentsHomeScreen extends StatefulWidget {
+  const StudentsHomeScreen({super.key});
 
+  @override
+  State<StudentsHomeScreen> createState() => _StudentsHomeScreenState();
+}
+
+class _StudentsHomeScreenState extends State<StudentsHomeScreen> {
   var bank;
+
   var course;
+
   var schools;
+
   Map<int?, String?>? bankData;
+
   Map<int?, String?>? courseData;
+
   Map<int?, String?>? schoolData;
+
   @override
   Widget build(BuildContext context) {
+    int _currentIndex = 0;
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       BlocProvider.of<GetDropdownValuesBloc>(context)
           .add(const GetDropDownValues());
@@ -37,7 +48,7 @@ class StudentsHomeScreen extends StatelessWidget {
           state.successorFailure.fold(
             () => () {},
             (either) => either.fold(
-                (failure) => {},
+                (failure) => {print('Failure')},
                 (success) => {
                       bankData = Map.fromIterables(
                         success.data!.banks!.toList().map((e) => e.id).toList(),
@@ -80,29 +91,30 @@ class StudentsHomeScreen extends StatelessWidget {
                               name: name as String,
                             ));
                       }),
-                     
+
                       for (var i = 0; i < bankBox.length; i++)
                         {
                           bank = bankBox.getAt(i),
-                          print('Bank with id ${bank?.id}: ${bank?.name}'),
+                          print('sss'),
                         },
+
                       for (var i = 0; i < courseBox.length; i++)
                         {
                           course = courseBox.getAt(i),
-                          print('Bank with id ${course?.id}: ${course?.name}'),
+                          print('sss'),
                         },
                       for (var i = 0; i < schoolBox.length; i++)
                         {
                           schools = schoolBox.getAt(i),
-                          print(
-                              'Schools with id ${schools?.id}: ${schools?.name}'),
-                        }
+                          print('sss'),
+                        },
                     }),
           );
         }
       },
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: Color.fromARGB(255, 227, 226, 226),
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(67.0),
             child: myAppBar(leadingIcon: Icon(Icons.person)),
@@ -137,60 +149,115 @@ class StudentsHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return StudentsApplicationForm();
-                          },
+                  Container(
+                    width: double.infinity,
+                    height: 200,
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(183, 213, 218, 220),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 227, 226, 226)
+                              .withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 200,
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 213, 218, 220),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10, top: 10),
+                          child: Text(
+                            ' Apply For Scholorship',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                           ),
-                        ],
-                      ),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, top: 10),
-                            child: Text(
-                              'Fill Application',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 390,
+                            height: 1,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(6),
+                          child: Text(
+                            'Seize the opportunity to shape your academic destiny by submitting your application for the Pankaj Trust Scholarship today – a gateway to a future brimming with possibilities!',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
                             ),
+                            textAlign: TextAlign.justify,
                           ),
-                          LineDivider(),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'Please fill your application form, for completing application',
-                              style: TextStyle(
-                                  fontSize: 14, color: Colors.black87),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 260, top: 10),
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
                             ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const StudentsApplicationForm();
+                                  },
+                                ),
+                              );
+                            },
+                            child: const Text('Apply Now'),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
+                  Container(
+                    width: 395,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(183, 213, 218, 220),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 227, 226, 226)
+                              .withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10, top: 10),
+                          child: Text(
+                            ' Application Status',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

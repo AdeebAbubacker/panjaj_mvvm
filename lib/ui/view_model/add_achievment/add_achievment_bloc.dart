@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/drop_down_menu.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/file_picker.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 part 'add_achievment_event.dart';

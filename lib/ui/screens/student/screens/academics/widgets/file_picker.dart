@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,7 @@ class _FilePickerScreenState extends State<FilePickerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
+    // final deviceWidth = MediaQuery.of(context).size.width;
     bool fileSelected = fileName!.isEmpty ? false : true;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +128,7 @@ class _FilePickerScreenState extends State<FilePickerScreen> {
                     width: 333,
                     height: 50,
                     child: ElevatedButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(kvioletColor3)),
                       onPressed: _openFilePicker,

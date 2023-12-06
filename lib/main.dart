@@ -25,14 +25,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-
-  // Register all necessary adapters before opening any box
   Hive.registerAdapter(BankDBAdapter());
   Hive.registerAdapter(personalInfoDBAdapter());
   Hive.registerAdapter(CourseDBAdapter());
   Hive.registerAdapter(SchoolDBAdapter());
-
-  // Open boxes after registering adapters
   bankBox = await Hive.openBox<BankDB>('bankBox');
   personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
   courseBox = await Hive.openBox<CourseDB>('courseBox');
@@ -81,13 +77,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SearchSchoolBloc(),
         ),
-     
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: '',
         theme: ThemeData(),
-        // home:  DemoScreen(),
         home: const SplashScreen(),
       ),
     );

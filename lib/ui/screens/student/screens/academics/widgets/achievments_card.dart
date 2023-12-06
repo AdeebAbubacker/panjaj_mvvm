@@ -9,10 +9,10 @@ import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
 
 class AchievmentsCard extends StatefulWidget {
-  TextEditingController achievmentController = TextEditingController();
+ final TextEditingController achievmentController = TextEditingController();
   final Widget siblings;
-  bool mybool;
-  FocusNode focusNode = FocusNode();
+ final bool mybool;
+ final FocusNode focusNode ;
 
   final width;
   AchievmentsCard({

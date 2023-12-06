@@ -4,4 +4,5 @@ class ApiEndpoint {
     static const String dropdownvalues = "https://pt.tekpeak.in/api/dropdown_values";
 
   static const String getBank = "https://pt.tekpeak.in/api/bank";
+   static const String getCourse = "https://pt.tekpeak.in/api/course";
 }

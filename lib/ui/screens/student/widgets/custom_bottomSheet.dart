@@ -4,59 +4,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 
-class customBottomSheet extends StatefulWidget {
-  final bottomSheetheight;
+class CustomBottomSheet extends StatefulWidget {
+  final double bottomSheetheight;
   final String title;
-  // ignore: prefer_typing_uninitialized_variables
-  final hintText;
-  List<String> listofData = [];
-  customBottomSheet(
+  final String hintText;
+ final List<String> listofData;
+  const CustomBottomSheet(
       {Key? key,
-      this.listofData = const [
-        'Nil',
-        'Agriculture',
-        'Fishing',
-        'Plumbing',
-        'Painting',
-        'Soldier',
-        'Policeman',
-        'Driver',
-        'Clerk',
-        "Office Staff",
-        'Supervisor',
-        'Able Seamen',
-        'Accountants',
-        'Auditors',
-        'Actors',
-        'Actuaries',
-        'Acupuncturists',
-        'Acute Care Nurses',
-        'Education Specialists',
-        'Adjustment Clerks',
-        'Administrative Law Judges',
-        'Adjudicators',
-        'Hearing Officers',
-        'Administrative Services Managers',
-        'Adult Literacy',
-        'Remedial Education',
-        'GED Teachers and Instructors',
-        'Advanced Practice Psychiatric Nurses',
-        'Advertising and Promotions Managers',
-        'Advertising Sales Agents',
-        'Aerospace Engineering and Operations Technicians',
-        'Aerospace Engineers',
-      ],
+      this.listofData= const [],
       required this.title,
       this.bottomSheetheight = 0.9,
-      this.hintText})
+      this.hintText = ''})
       : super(key: key);
 
   @override
-  State<customBottomSheet> createState() => _customBottomSheetCopyState();
+  State<CustomBottomSheet> createState() => _customBottomSheetCopyState();
 }
 
 // ignore: camel_case_types
-class _customBottomSheetCopyState extends State<customBottomSheet> {
+class _customBottomSheetCopyState extends State<CustomBottomSheet> {
   final List<String> emptyList = [];
   final TextEditingController textController = TextEditingController();
   bool visibilty = false;
@@ -156,8 +122,7 @@ class _customBottomSheetCopyState extends State<customBottomSheet> {
                     Expanded(
                       child: ListView.separated(
                         controller: scrollController,
-                        itemCount: (widget.listofData != null &&
-                                widget.listofData.isNotEmpty)
+                        itemCount: (widget.listofData.isNotEmpty)
                             ? widget.listofData.length
                             : emptyList.length,
                         separatorBuilder: (context, index) {
@@ -165,8 +130,7 @@ class _customBottomSheetCopyState extends State<customBottomSheet> {
                         },
                         itemBuilder: (context, index) {
                           return InkWell(
-                            child: (widget.listofData != null &&
-                                    widget.listofData.isNotEmpty)
+                            child: (widget.listofData.isNotEmpty)
                                 ? showBottomSheetData(index, widget.listofData)
                                 : showBottomSheetData(index, emptyList),
                             onTap: () {
@@ -228,17 +192,6 @@ class _customBottomSheetCopyState extends State<customBottomSheet> {
     );
   }
 
-  List<String> _buildSearchList(String userSearchTerm) {
-    List<String> searchList = [];
-
-    for (int i = 0; i < emptyList.length; i++) {
-      String name = emptyList[i];
-      if (name.toLowerCase().contains(userSearchTerm.toLowerCase())) {
-        searchList.add(emptyList[i]);
-      }
-    }
-    return searchList;
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,8 @@ class SchoolService {
   static const String getSchoolEndpoint = "/school";
 
   Future<SearchSchool> getSchool({String? search}) async {
-    final uri = Uri.parse('$baseApiUrl$getSchoolEndpoint?&search=$search');
+    final uri =
+        Uri.parse('https://pt.tekpeak.in/api/school?page=1&search=$search');
     try {
       final response = await http.get(uri);
 

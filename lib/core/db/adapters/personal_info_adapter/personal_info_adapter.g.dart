@@ -17,16 +17,46 @@ class personalInfoDBAdapter extends TypeAdapter<personalInfoDB> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return personalInfoDB(
-      status: fields[0] as bool,
+      name: fields[0] as String,
+      gender: fields[1] as bool,
+      dob: fields[2] as DateTime,
+      address: fields[3] as String,
+      mobno: fields[4] as int,
+      email: fields[5] as String,
+      doyouHaveBankAcc: fields[6] as bool,
+      nameasPerBank: fields[7] as String,
+      AccNumber: fields[8] as int,
+      bankName: fields[9] as String,
+      BranchIFSC: fields[10] as dynamic,
     );
   }
 
   @override
   void write(BinaryWriter writer, personalInfoDB obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(11)
       ..writeByte(0)
-      ..write(obj.status);
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.gender)
+      ..writeByte(2)
+      ..write(obj.dob)
+      ..writeByte(3)
+      ..write(obj.address)
+      ..writeByte(4)
+      ..write(obj.mobno)
+      ..writeByte(5)
+      ..write(obj.email)
+      ..writeByte(6)
+      ..write(obj.doyouHaveBankAcc)
+      ..writeByte(7)
+      ..write(obj.nameasPerBank)
+      ..writeByte(8)
+      ..write(obj.AccNumber)
+      ..writeByte(9)
+      ..write(obj.bankName)
+      ..writeByte(10)
+      ..write(obj.BranchIFSC);
   }
 
   @override

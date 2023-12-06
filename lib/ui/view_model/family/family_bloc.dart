@@ -2,10 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/lineDivider.dart';
-import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
+import 'package:panakj_app/ui/screens/student/widgets/horizontal_radiobtn.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
-import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 part 'family_event.dart';
 part 'family_state.dart';
@@ -43,12 +42,10 @@ class FamilyBloc extends Bloc<FamilyEvent, FamilyState> {
     on<DeleteSibling>((event, emit) {
       List<Widget> updatedSiblings = List.from(state.siblingCards);
 
-      // Ensure the index is within the valid range
+
       if (event.siblingIndex >= 0 &&
           event.siblingIndex < updatedSiblings.length) {
         updatedSiblings.removeAt(event.siblingIndex);
-
-        // Update the numberOfSiblings based on the updated list length
         final numberofSiblings = updatedSiblings.length;
 
         emit(FamilyState(
@@ -62,7 +59,7 @@ class FamilyBloc extends Bloc<FamilyEvent, FamilyState> {
   }
 
   Widget _buildSiblingCard(int siblingIndex) {
-    TextEditingController nameController = TextEditingController();
+  final  TextEditingController nameController = TextEditingController();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -93,7 +90,7 @@ class FamilyBloc extends Bloc<FamilyEvent, FamilyState> {
           ],
         ),
         // LabelInputText(label: 'Name',StringInput: nameController),
-        horizontalRadioBtn(
+        HorizontalRadioBtn(
           steps: [
             Content(choiceLabel: 'Male'),
             Content(choiceLabel: 'Female'),

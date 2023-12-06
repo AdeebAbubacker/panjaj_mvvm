@@ -5,13 +5,13 @@ import 'package:panakj_app/ui/screens/student/widgets/myPadding.dart';
 
 class Achievmentslayout extends StatefulWidget {
   final Widget achievmentDetailsCard;
-  final double Achievmentslayoutheight;
+  final double achievmentslayoutheight;
   final String title;
 
   Achievmentslayout({
     super.key,
     required this.title,
-    required this.Achievmentslayoutheight,
+    required this.achievmentslayoutheight,
     required this.achievmentDetailsCard,
   });
   // ignore: prefer_typing_uninitialized_variables
@@ -35,14 +35,14 @@ class _AchievmentslayoutState extends State<Achievmentslayout> {
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
-                      color: Color.fromRGBO(0, 0, 0, 0.16), // RGBA color
-                      offset: Offset(5, 8), // X and Y offset
-                      blurRadius: 15, // Blur radius (B)
-                      spreadRadius: 0, // Spread (S)
+                      color: Color.fromRGBO(0, 0, 0, 0.16), 
+                      offset: Offset(5, 8), 
+                      blurRadius: 15, 
+                      spreadRadius: 0, 
                     ),
                   ]),
               width: deviceWidth * 0.95,
-              height: widget.Achievmentslayoutheight,
+              height: widget.achievmentslayoutheight,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

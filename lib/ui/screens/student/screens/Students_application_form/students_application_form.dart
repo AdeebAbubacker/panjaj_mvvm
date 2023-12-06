@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
 import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
+import 'package:panakj_app/core/model/personal_info/personal_info.dart';
 import 'package:panakj_app/package/presentation/custom_stepper.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/academics_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/achievments_screen.dart';
@@ -14,10 +17,11 @@ import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
 import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
 import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
 import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
 class StudentsApplicationForm extends StatefulWidget {
-  StudentsApplicationForm({super.key});
+  const StudentsApplicationForm({super.key});
 
   @override
   State<StudentsApplicationForm> createState() =>
@@ -25,18 +29,18 @@ class StudentsApplicationForm extends StatefulWidget {
 }
 
 class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
-  // late Box<personalInfoDB> personalInfoBox;
+  late Box<personalInfoDB> personalInfoBox;
   @override
   void initState() {
     super.initState();
-    // personalInfo();
+    personalInfo();
   }
 
-  // void personalInfo() async {
-  //   personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
-  //   // setState ensures that the build method is called again with the updated state
-  //   setState(() {});
-  // }
+  void personalInfo() async {
+    personalInfoBox = await Hive.openBox<personalInfoDB>('personalInfoBox');
+    // setState ensures that the build method is called again with the updated state
+    setState(() {});
+  }
 
   ScrollController scrollController = ScrollController();
 
@@ -112,12 +116,14 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
               scrollController: scrollController,
               steps: [
                 AddStep(
-                  status: personalInfoBox.get('key')?.status == true
-                      ? 'Completed'
-                      : 'Progress',
-                  stepIcon: personalInfoBox.get('key')?.status == true
-                      ? Icons.check
-                      : Icons.school_rounded,
+                  // status: personalInfoBox.get('key')?.status == true
+                  //     ? 'Completed'
+                  //     : 'Progress',
+                  status: 'Progress',
+                  // stepIcon: personalInfoBox.get('key')?.status == true
+                  //     ? Icons.check
+                  //     : Icons.school_rounded,
+                  stepIcon: Icons.school_rounded,
                   title: 'Info',
                   content: Padding(
                     padding: EdgeInsets.zero,
@@ -155,12 +161,44 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                                             content: Text(failure.toString())));
                                   },
                                   (success) {
-                                    // personalInfoBox.put(
-                                    //   'key',
-                                    //   personalInfoDB(
-                                    //     status: true,
-                                    //   ),
-                                    // );
+                                    personalInfoBox.put(
+                                      'key',
+                                      personalInfoDB(
+                                        name: nameController.text,
+                                        gender: true,
+                                        dob: selectedDate,
+                                        address: addressController.text,
+                                        mobno: 888,
+                                        email: emailController.text,
+                                        doyouHaveBankAcc: true,
+                                        nameasPerBank:
+                                            nameatBankController.text,
+                                        AccNumber: 000000000000,
+                                        bankName: "Federal Bank",
+                                        BranchIFSC: "IFSC0808",
+                                      ),
+                                    );
+                                    for (var data in personalInfoBox.values) {
+                                      print(
+                                          'data from personal info box: $data');
+
+                                      print('name from db: ${data.name}');
+                                      print('gender from db: ${data.gender}');
+                                      print('dob from db: ${data.dob}');
+                                      print('address from db: ${data.address}');
+                                      print('mobno from db: ${data.mobno}');
+                                      print('email from db: ${data.email}');
+                                      print(
+                                          'do you have from db: ${data.doyouHaveBankAcc}');
+                                      print(
+                                          'name as per bank from db: ${data.nameasPerBank}');
+                                      print(
+                                          'acc number from db: ${data.AccNumber}');
+                                      print(
+                                          'bank Name from db: ${data.bankName}');
+                                      print(
+                                          'Branch IFSC from db: ${data.BranchIFSC}');
+                                    }
                                     // ignore: avoid_print
                                     print(success.data.toString());
                                     scrollController.jumpTo(0.0);

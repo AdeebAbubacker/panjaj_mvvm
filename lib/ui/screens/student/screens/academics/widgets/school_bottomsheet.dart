@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,7 +6,6 @@ import 'package:panakj_app/core/colors/colors.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/core/db/adapters/school_adapter/school_adapter.dart';
 import 'package:panakj_app/ui/view_model/search_school/search_school_bloc.dart';
-
 
 class schoolBottomSheet extends StatefulWidget {
   final bottomSheetheight;
@@ -75,26 +72,20 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
     schoolBox = await Hive.openBox<SchoolDB>('schoolBox');
 
     if (!schoolBox.isOpen) {
-      print('schoolBox is not open');
       return;
     }
 
     List<int> keys = schoolBox.keys.cast<int>().toList();
 
-    print('All keys in schoolBox: $keys');
-
     if (keys.isEmpty) {
-      print('No banks found in schoolBox');
       return;
     }
 
-    // Extract names from BankDB objects
     schoolNames = keys.map((key) {
       SchoolDB school = schoolBox.get(key)!;
       return school.name;
     }).toList();
 
-    // Ensure that the widget is rebuilt after the bankNames are populated
     if (mounted) {
       setState(() {});
     }
@@ -146,7 +137,7 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
                               Icons.close,
                               color: kredColor,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -269,8 +260,9 @@ class _schoolBottomSheetState extends State<schoolBottomSheet> {
         Container(
           margin: const EdgeInsets.only(top: 12, bottom: 10, left: 14),
           child: Text(
-            textController.text.isEmpty ? schoolNames[index] : data[index].name,
-       
+            textController.text.isEmpty || textController.text == ""
+                ? schoolNames[index]
+                : data[index].name,
             style: const TextStyle(
               color: Color.fromARGB(255, 84, 84, 84),
               fontSize: 14,

@@ -23,14 +23,11 @@ class _SplashScreenState extends State<SplashScreen> {
     String? accessToken = prefs.getString('loginState');
 
     if (accessToken != null) {
-      // User is logged in, navigate to HomeScreen
       // ignore: use_build_context_synchronously
-      await
-      
-       Navigator.pushReplacement(
+      await Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  StudentsHomeScreen(),
+            builder: (context) => StudentsHomeScreen(),
           ));
     } else {
       // User is not logged in, navigate to LoginScreen
@@ -46,13 +43,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('please wait ...'),
+              Image.asset(
+                'assets/logo400.png',
+                width: 200,
+                height: 200,
+              ),
             ],
           ),
         ),

@@ -4,13 +4,13 @@ part of 'family_bloc.dart';
 class FamilyEvent {}
 
 class ForSiblings extends FamilyEvent{
-   bool siblings;
+ final  bool siblings;
  
   ForSiblings({this.siblings = false,});
 }
 
 class FornoSiblings extends FamilyEvent{
-   bool nosiblings;
+  final bool nosiblings;
   FornoSiblings({this.nosiblings = false,});
 }
 

@@ -8,24 +8,18 @@ import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class CustomStepper extends StatefulWidget {
   final List<AddStep> steps;
-  StepConfig? config;
+  final StepConfig? config;
   final bool pagesLocked;
-  ScrollController scrollController = ScrollController();
-
-
-  /// Default page that is to be shown when the page loads.
+  final ScrollController scrollController;
   int currentPage;
   final EdgeInsets margin;
   final EdgeInsets padding;
 
-
   final Map<String, Map<String, double>> uiConfig;
-  // final List uiConfig;
 
   CustomStepper({
     Key? key,
     required this.steps,
-    
     this.currentPage = 0,
     this.padding = const EdgeInsets.only(left: 0, right: 0),
     this.margin = const EdgeInsets.only(left: 0, right: 0),
@@ -74,7 +68,6 @@ class _CustomStepperState extends State<CustomStepper> {
         List.generate(pageLength, (index) => widget.pagesLocked ? false : true);
     stepActive[0] = true;
 
-    /// we generate +1 as index 0 is never used , we use only from 1
     void onToggleClicked(int page) {
       setState(() {
         widget.currentPage = page;
@@ -84,23 +77,23 @@ class _CustomStepperState extends State<CustomStepper> {
       });
     }
 
-    void continueStep() {
-      int nextPage = widget.currentPage + 1;
+    // void continueStep() {
+    //   int nextPage = widget.currentPage + 1;
 
-      if (stepActive[nextPage] && widget.currentPage < pageLengthIndex) {
-        widget.currentPage += 1;
-        onToggleClicked(nextPage);
-      } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Page Locked!')));
-      }
-    }
+    //   if (stepActive[nextPage] && widget.currentPage < pageLengthIndex) {
+    //     widget.currentPage += 1;
+    //     onToggleClicked(nextPage);
+    //   } else {
+    //     ScaffoldMessenger.of(context)
+    //         .showSnackBar(const SnackBar(content: Text('Page Locked!')));
+    //   }
+    // }
 
-    void cancelStep() {
-      if (widget.currentPage > 0) {
-        onToggleClicked(widget.currentPage - 1);
-      }
-    }
+    // void cancelStep() {
+    //   if (widget.currentPage > 0) {
+    //     onToggleClicked(widget.currentPage - 1);
+    //   }
+    // }
 
     var deviceWidth = MediaQuery.of(context).size.width;
     var devicePaddingLeft = 15;

@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/db/adapters/bank_adapter/bank_adapter.dart';
 import 'package:panakj_app/ui/screens/student/screens/info/widgets/bank_bottomsheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
-import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
@@ -48,16 +47,16 @@ class _BankCardState extends State<BankCard> {
     bankBox = await Hive.openBox<BankDB>('bankBox');
 
     if (!bankBox.isOpen) {
-      print('bankBox is not open');
+   
       return;
     }
 
     List<int> keys = bankBox.keys.cast<int>().toList();
 
-    print('All keys in bankBox: $keys');
+  
 
     if (keys.isEmpty) {
-      print('No banks found in bankBox');
+     
       return;
     }
 
@@ -67,7 +66,7 @@ class _BankCardState extends State<BankCard> {
       return bank.name;
     }).toList();
 
-    print('Bank names: $bankNames');
+  
 
     // Ensure that the widget is rebuilt after the bankNames are populated
     if (mounted) {
@@ -94,11 +93,6 @@ class _BankCardState extends State<BankCard> {
           ),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Bank Name'),
-          // labelBottomSheet(
-          //   title: 'Bank Details',
-          //   hintText: 'Search For Bank',
-          //   listofData: bankNames,
-          // ),
           bankBottomSheet(title: 'Bank Details',),
           const HeightSpacer(height: 14),
           LabelInputText(

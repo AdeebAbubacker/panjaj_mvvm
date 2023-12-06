@@ -7,10 +7,10 @@ class CheckBoxData extends StatefulWidget {
   const CheckBoxData({super.key, required this.label, this.width = 20});
 
   @override
-  _CheckBoxDataState createState() => _CheckBoxDataState();
+  CheckBoxDataState createState() => CheckBoxDataState();
 }
 
-class _CheckBoxDataState extends State<CheckBoxData> {
+class CheckBoxDataState extends State<CheckBoxData> {
   bool aliveOrDisabled = false;
   bool deadOrEnabled = false;
   int selectedValue = 0;

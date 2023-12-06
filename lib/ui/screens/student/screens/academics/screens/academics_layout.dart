@@ -4,18 +4,18 @@ import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/ui/screens/student/widgets/myPadding.dart';
 
 class AcademicsLayout extends StatefulWidget {
-  final double AcademicsLayoutheight;
+  final double academicsLayoutheight;
   final String title;
 
   final Widget academicsDetailsCard;
 
-  AcademicsLayout({
+  const AcademicsLayout({
     super.key,
     required this.academicsDetailsCard,
     required this.title,
-    required this.AcademicsLayoutheight,
+    required this.academicsLayoutheight,
   });
-  // ignore: prefer_typing_uninitialized_variables
+
 
   @override
   State<AcademicsLayout> createState() => _AcademicsLayoutState();
@@ -36,14 +36,14 @@ class _AcademicsLayoutState extends State<AcademicsLayout> {
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
-                      color: Color.fromRGBO(0, 0, 0, 0.16), // RGBA color
-                      offset: Offset(5, 8), // X and Y offset
-                      blurRadius: 15, // Blur radius (B)
-                      spreadRadius: 0, // Spread (S)
+                      color: Color.fromRGBO(0, 0, 0, 0.16), 
+                      offset: Offset(5, 8),
+                      blurRadius: 15,
+                      spreadRadius: 0, 
                     ),
                   ]),
               width: deviceWidth * 0.95,
-              height: widget.AcademicsLayoutheight,
+              height: widget.academicsLayoutheight,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

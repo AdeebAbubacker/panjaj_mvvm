@@ -4,13 +4,13 @@ part of 'students_app_form_bloc.dart';
  class StudentsAppFormEvent {}
 
 class DoYouHaveBankAccEvent extends StudentsAppFormEvent{
-   bool forBankAccountholder;
+ final  bool forBankAccountholder;
    final int currentStep;
   DoYouHaveBankAccEvent({this.forBankAccountholder = false,this.currentStep = 0});
 }
 
 class ForNoAccBankAccEvent extends StudentsAppFormEvent{
-   bool forNoAccountUsers;
+  final bool forNoAccountUsers;
   ForNoAccBankAccEvent(this.forNoAccountUsers,);
 }
 

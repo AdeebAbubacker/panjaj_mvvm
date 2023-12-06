@@ -3,11 +3,11 @@ import 'package:panakj_app/ui/screens/student/screens/academics/screens/academic
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/academics_card.dart';
 
 class AcademicsScreen extends StatelessWidget {
-  FocusNode examRegfocusnode;
-  FocusNode sslcfocusnode;
-  FocusNode plusonefocusnode;
-  FocusNode plustwofocusnode;
-   AcademicsScreen({
+final  FocusNode examRegfocusnode;
+final  FocusNode sslcfocusnode;
+ final FocusNode plusonefocusnode;
+final  FocusNode plustwofocusnode;
+  const AcademicsScreen({
     super.key,
     required this.examRegfocusnode,
     required this.sslcfocusnode,
@@ -20,7 +20,7 @@ class AcademicsScreen extends StatelessWidget {
     return Column(
       children: [
         AcademicsLayout(
-          AcademicsLayoutheight: 470,
+          academicsLayoutheight: 470,
           title: 'Academic Details',
           academicsDetailsCard: AcademicsCard(
             mybool: false,

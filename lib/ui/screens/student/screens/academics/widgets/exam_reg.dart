@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 
 class ExamReg extends StatelessWidget {
-  FocusNode examRegfocusnode;
+ final FocusNode examRegfocusnode;
   final String title;
 
   ExamReg({

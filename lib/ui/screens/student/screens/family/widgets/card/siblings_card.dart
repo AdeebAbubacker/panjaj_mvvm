@@ -6,7 +6,7 @@ import 'package:panakj_app/core/db/adapters/course_adapter/course_adapter.dart';
 import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/course_bottomsheet.dart';
 //import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/course_bottomsheet.dart';
 
-import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
+import 'package:panakj_app/ui/screens/student/widgets/horizontal_radiobtn.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
@@ -41,28 +41,26 @@ class _SiblingsCardState extends State<SiblingsCard> {
     courseBox = await Hive.openBox<CourseDB>('courseBox');
 
     if (!courseBox.isOpen) {
-      print('CourseBox is not open');
       return;
     }
 
     List<int> keys = courseBox.keys.cast<int>().toList();
 
-    print('All keys in courseBox: $keys');
+
 
     if (keys.isEmpty) {
-      print('No couurses found in course box');
       return;
     }
 
-    // Extract names from BankDB objects
+
     coursename = keys.map((key) {
       CourseDB bank = courseBox.get(key)!;
       return bank.name;
     }).toList();
 
-    print('Course names: $coursename');
 
-    // Ensure that the widget is rebuilt after the bankNames are populated
+
+
     if (mounted) {
       setState(() {});
     }
@@ -91,7 +89,7 @@ class _SiblingsCardState extends State<SiblingsCard> {
                 StringInput: widget.nameController,
                 focusNode: widget.siblingnamefocusNode,
               ),
-              horizontalRadioBtn(
+              HorizontalRadioBtn(
                 steps: [
                   Content(choiceLabel: 'Male'),
                   Content(choiceLabel: 'Female'),
@@ -116,7 +114,7 @@ class _SiblingsCardState extends State<SiblingsCard> {
               ),
               const HeightSpacer(),
               InputLabel(mytext: 'Course of Study'),
-              coursebottomSheet(
+              CoursebottomSheet(
                 title: 'Course of Study',
               ),
               const HeightSpacer(),

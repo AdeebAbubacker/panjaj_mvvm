@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Connector extends StatelessWidget {
-  final myColor;
-  double width = 20;
-  Connector({super.key, this.width = 20, this.myColor});
+  final Color? myColor;
+ final double width;
+  const Connector({super.key, this.width = 20, this.myColor});
 
   @override
   Widget build(BuildContext context) {
@@ -17,4 +17,3 @@ class Connector extends StatelessWidget {
   }
 }
 
-// Color.fromARGB(255, 142, 141, 141),

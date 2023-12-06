@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:panakj_app/ui/screens/student/widgets/do_you_have_bankaccount.dart';
 import 'package:panakj_app/ui/screens/student/widgets/enterDOB.dart';
-import 'package:panakj_app/ui/screens/student/widgets/horizontalRadioBtn.dart';
+import 'package:panakj_app/ui/screens/student/widgets/horizontal_radiobtn.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_email.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 import 'package:panakj_app/ui/screens/student/widgets/labul_NumericalText.dart';
@@ -52,7 +52,7 @@ class _PersonalDetailsCardState extends State<PersonalDetailsCard> {
             focusNode: widget.infonamefocusNode,
           ),
           const HeightSpacer(height: 14),
-          horizontalRadioBtn(
+          HorizontalRadioBtn(
             steps: [
               Content(choiceLabel: 'Male'),
               Content(choiceLabel: 'Female'),

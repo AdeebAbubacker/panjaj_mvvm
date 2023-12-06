@@ -14,40 +14,6 @@ class bankBottomSheet extends StatefulWidget {
   List<String> listofData = [];
   bankBottomSheet(
       {Key? key,
-      this.listofData = const [
-        'Nil',
-        'Agriculture',
-        'Fishing',
-        'Plumbing',
-        'Painting',
-        'Soldier',
-        'Policeman',
-        'Driver',
-        'Clerk',
-        "Office Staff",
-        'Supervisor',
-        'Able Seamen',
-        'Accountants',
-        'Auditors',
-        'Actors',
-        'Actuaries',
-        'Acupuncturists',
-        'Acute Care Nurses',
-        'Education Specialists',
-        'Adjustment Clerks',
-        'Administrative Law Judges',
-        'Adjudicators',
-        'Hearing Officers',
-        'Administrative Services Managers',
-        'Adult Literacy',
-        'Remedial Education',
-        'GED Teachers and Instructors',
-        'Advanced Practice Psychiatric Nurses',
-        'Advertising and Promotions Managers',
-        'Advertising Sales Agents',
-        'Aerospace Engineering and Operations Technicians',
-        'Aerospace Engineers',
-      ],
       required this.title,
       this.bottomSheetheight = 0.9,
       this.hintText})
@@ -200,17 +166,17 @@ class _bankBottomSheetState extends State<bankBottomSheet> {
                     BlocBuilder<GetBankBloc, GetBankState>(
                       builder: (context, state) {
                         if (state.isLoading) {
-                          print('loading');
+                          
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
                         } else if (state.isError) {
-                          print('error');
+                     
                           return const Center(
                             child: Text('Error fetching data'),
                           );
                         } else {
-                          print('success');
+                    
                           return Expanded(
                             child: ListView.separated(
                               controller: scrollController,

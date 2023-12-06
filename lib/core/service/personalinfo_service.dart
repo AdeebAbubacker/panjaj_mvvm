@@ -43,9 +43,7 @@ class PersonalInfoService {
       );
 
       if (response.statusCode == 200) {
-        final personalinfo = PersonalInfo.fromJson(jsonDecode(response.body));
-
-        // ignore: avoid_print
+   
 
         return PersonalInfo.fromJson(jsonDecode(response.body));
       } else {
