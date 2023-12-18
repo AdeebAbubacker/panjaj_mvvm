@@ -8,12 +8,14 @@ import 'package:panakj_app/core/db/boxes/bank_box.dart';
 import 'package:panakj_app/core/db/boxes/course_box.dart';
 import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
 import 'package:panakj_app/core/db/boxes/school_box.dart';
-import 'package:panakj_app/ui/screens/auth/splash_screen.dart';
 import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
 import 'package:panakj_app/ui/view_model/add_achievment/add_achievment_bloc.dart';
 import 'package:panakj_app/ui/view_model/auth/auth_bloc.dart';
 import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
+import 'package:panakj_app/ui/view_model/familyInfo/family_info_bloc.dart';
+import 'package:panakj_app/ui/view_model/gallery/gallery_bloc.dart';
 import 'package:panakj_app/ui/view_model/get_dropdown_values/get_dropdown_values_bloc.dart';
+import 'package:panakj_app/ui/view_model/get_news/get_news_bloc.dart';
 import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
 import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
 import 'package:panakj_app/ui/view_model/search_bank/get_bank_bloc.dart';
@@ -21,6 +23,8 @@ import 'package:panakj_app/ui/view_model/search_courses/courses_bloc.dart';
 import 'package:panakj_app/ui/view_model/search_school/search_school_bloc.dart';
 import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:panakj_app/ui/screens/auth/splash_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +73,9 @@ class MyApp extends StatelessWidget {
           create: (context) => GetBankBloc(),
         ),
         BlocProvider(
+          create: (context) => FamilyInfoBloc(),
+        ),
+        BlocProvider(
           create: (context) => GetDropdownValuesBloc(),
         ),
         BlocProvider(
@@ -77,11 +84,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SearchSchoolBloc(),
         ),
+        BlocProvider(
+          create: (context) => GalleryBloc(),
+        ),
+        BlocProvider(
+          create: (context) => GetNewsBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: '',
-        theme: ThemeData(),
+        theme: ThemeData(useMaterial3: false),
         home: const SplashScreen(),
       ),
     );

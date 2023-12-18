@@ -178,7 +178,7 @@ class _CustomStepperState extends State<CustomStepper> {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(67.0),
-        child: myAppBar(),
+        child: myAppBar(leadingIcon: Icon(Icons.person)),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

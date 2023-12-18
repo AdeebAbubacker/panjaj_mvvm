@@ -201,7 +201,7 @@ class _CoursebottomSheetState extends State<CoursebottomSheet> {
                               controller: scrollController,
                               itemCount: textController.text.isEmpty
                                   ? courseBox.length
-                                  : state.course.data!.data!.length ??
+                                  : state.course.data!.length ??
                                       emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
@@ -209,13 +209,13 @@ class _CoursebottomSheetState extends State<CoursebottomSheet> {
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   child: (state.course.data != null &&
-                                          state.course.data!.data!.isNotEmpty)
+                                          state.course.data!.isNotEmpty)
                                       ? showBottomSheetData(index,
-                                          state.course.data!.data!.toList())
+                                          state.course.data!.toList())
                                       : showBottomSheetData(index, emptyList),
                                   onTap: () {
                                     textController.text =
-                                        state.course.data!.data![index].name!;
+                                        state.course.data![index].name!;
                                     // ignore: avoid_print
                                     print(
                                         'Selected item in bottom sheet----------$index');
@@ -228,7 +228,7 @@ class _CoursebottomSheetState extends State<CoursebottomSheet> {
                               controller: scrollController,
                               itemCount: textController.text.isEmpty
                                   ? courseBox.length
-                                  : state.course.data!.data!.length ??
+                                  : state.course.data!.length ??
                                       emptyList.length,
                               separatorBuilder: (context, index) {
                                 return const Divider();
@@ -236,13 +236,13 @@ class _CoursebottomSheetState extends State<CoursebottomSheet> {
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   child: (state.course.data != null &&
-                                          state.course.data!.data!.isNotEmpty)
+                                          state.course.data!.isNotEmpty)
                                       ? showBottomSheetData(index,
-                                          state.course.data!.data!.toList())
+                                          state.course.data!.toList())
                                       : showBottomSheetData(index, emptyList),
                                   onTap: () {
                                     textController.text =
-                                        state.course.data!.data![index].name!;
+                                        state.course.data![index].name!;
                                     // ignore: avoid_print
                                     print(
                                         'Selected item in bottom sheet----------$index');

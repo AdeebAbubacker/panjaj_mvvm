@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:panakj_app/core/model/drop_down_values/drop_down_values.dart';
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
-import 'package:panakj_app/core/utility/api_endpoint.dart';
+
 
 final Map<String, dynamic> params = {
   'bank': 0,

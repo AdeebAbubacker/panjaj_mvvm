@@ -7,7 +7,7 @@ class AddMoreAchievments extends AddAchievmentEvent {}
 
 
 class DeleteSibling extends AddAchievmentEvent {
-  final int achievmentIndex ;
+ final String achievmentID;
 
-  DeleteSibling({required this.achievmentIndex});
+  DeleteSibling({required this.achievmentID});
 }

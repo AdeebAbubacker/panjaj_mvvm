@@ -10,9 +10,9 @@ PersonalInfo _$PersonalInfoFromJson(Map<String, dynamic> json) => PersonalInfo(
       status: json['status'] as int?,
       count: json['count'] as int?,
       message: json['message'] as String?,
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      data: json['data'] == null
+          ? null
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
       misc: json['misc'] == null
           ? null
           : Misc.fromJson(json['misc'] as Map<String, dynamic>),

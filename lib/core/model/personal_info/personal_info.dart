@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'datum.dart';
+import 'data.dart';
 import 'misc.dart';
 
 part 'personal_info.g.dart';
@@ -10,7 +10,7 @@ class PersonalInfo {
 	int? status;
 	int? count;
 	String? message;
-	List<Datum>? data;
+	Data? data;
 	Misc? misc;
 
 	PersonalInfo({

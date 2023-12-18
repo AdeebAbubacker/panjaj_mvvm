@@ -10,13 +10,13 @@ import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_blo
 
 class InfoLayout extends StatefulWidget {
   TextEditingController nameController = TextEditingController();
-    FocusNode infonamefocusNode;
-    FocusNode infoaddressfocusNode;
-    FocusNode numericalfocusnode;
-    FocusNode emailfocusnode;
-        FocusNode banknamefocusnode;
-    FocusNode accnofocusnode;
-    FocusNode bankifscfocusnode;
+  FocusNode infonamefocusNode;
+  FocusNode infoaddressfocusNode;
+  FocusNode numericalfocusnode;
+  FocusNode emailfocusnode;
+  FocusNode banknamefocusnode;
+  FocusNode accnofocusnode;
+  FocusNode bankifscfocusnode;
   TextEditingController addressController = TextEditingController();
   TextEditingController phoneNoController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -33,7 +33,7 @@ class InfoLayout extends StatefulWidget {
     required this.infonamefocusNode,
     required this.infoaddressfocusNode,
     required this.emailfocusnode,
-        required this.banknamefocusnode,
+    required this.banknamefocusnode,
     required this.accnofocusnode,
     required this.bankifscfocusnode,
     required this.addressController,
@@ -42,7 +42,6 @@ class InfoLayout extends StatefulWidget {
     required this.nameatBankController,
     required this.accNoController,
     required this.ifscController,
-
   });
   // ignore: prefer_typing_uninitialized_variables
 
@@ -76,7 +75,7 @@ class _InfoLayoutState extends State<InfoLayout> {
                     ],
                   ),
                   width: deviceWidth * 0.95,
-                  height: state.forBankAccountholder ? 1054 : 681,
+                  height: state.forBankAccountholder ? 1200 : 795,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -122,7 +121,7 @@ class _InfoLayoutState extends State<InfoLayout> {
                               child: BankMainLayout(
                                   cardData: BankCard(
                                     banknamefocusnode: widget.banknamefocusnode,
-                                    accnofocusnode:widget.accnofocusnode ,
+                                    accnofocusnode: widget.accnofocusnode,
                                     bankifscfocusnode: widget.bankifscfocusnode,
                                     mybool: state.forNoAccountUsers,
                                     accNoController: widget.accNoController,
@@ -143,7 +142,3 @@ class _InfoLayoutState extends State<InfoLayout> {
     );
   }
 }
-
-
-
-

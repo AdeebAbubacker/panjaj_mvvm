@@ -31,32 +31,28 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
             isError: false,
             successorFailure: optionOf(right(response))));
         print(
-            'nameeeeeeeeeeeeeee -----------------------------${response.data!.map((e) => e.name.toString())}');
+            'nameeeeeeeeeeeeeee -----------------------------${response.data!.name}');
+        print('gender -----------------------------${response.data!.gender}');
+
+        print('dob -----------------------------${response.data!.dob}');
+
+        print('address -----------------------------${response.data!.address}');
         print(
-            'gender -----------------------------${response.data!.map((e) => e.gender.toString())}');
+            'phone nooooooooo -----------------------------${response.data!.phone}');
 
         print(
-            'dob -----------------------------${response.data!.map((e) => e.dob.toString())}');
+            'emailllllllllllllllll -----------------------------${response.data!.email}');
+
+        print('bank  name -----------------------------${response.data!.bank}');
 
         print(
-            'address -----------------------------${response.data!.map((e) => e.address.toString())}');
-        print(
-            'phone nooooooooo -----------------------------${response.data!.map((e) => e.phone.toString())}');
+            'bank account name -----------------------------${response.data!.bank!.bankAccName}');
 
         print(
-            'emailllllllllllllllll -----------------------------${response.data!.map((e) => e.email.toString())}');
+            'bank account number -----------------------------${response.data!.bank!.bankAccNo}');
 
         print(
-            'bank  name -----------------------------${response.data!.map((e) => e.bankName.toString())}');
-
-        print(
-            'bank account name -----------------------------${response.data!.map((e) => e.bankAccName.toString())}');
-
-        print(
-            'bank account number -----------------------------${response.data!.map((e) => e.bankAccNo.toString())}');
-
-        print(
-            'ifsc -----------------------------${response.data!.map((e) => e.bankIfsc.toString())}');
+            'ifsc -----------------------------${response.data!.bank!.bankIfsc}');
       } catch (e) {
         emit(state.copyWith(
             isLoading: false,
@@ -68,4 +64,6 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
       emit(PersonalInfoState.initial());
     });
   }
+
+
 }

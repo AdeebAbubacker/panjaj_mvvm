@@ -14,6 +14,7 @@ import 'package:panakj_app/ui/screens/student/widgets/bottom_card.dart';
 import 'package:panakj_app/ui/screens/student/widgets/next_and_previous_button.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
+import 'package:panakj_app/ui/view_model/familyInfo/family_info_bloc.dart';
 import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
 import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
 import 'package:panakj_app/ui/view_model/students_app_form/students_app_form_bloc.dart';
@@ -277,6 +278,23 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                             child: const StepperBtn(nextorprev: 'Prev')),
                         nextBtn: InkResponse(
                             onTap: () {
+                              BlocProvider.of<FamilyInfoBloc>(context).add(
+                                const PostFamilyInfo(
+                                    name: "Rishi",
+                                    relation: "son",
+                                    phone: "3534",
+                                    email: "sfh@gmail.com",
+                                    highest_qualification: "mca",
+                                    occupation: "farmer",
+                                    income: "345",
+                                    alive: "1",
+                                    disabled: "1",
+                                    siblingname: "dgg",
+                                    siblinggender: "f",
+                                    siblingsqualification: "4",
+                                    siblingscourse: "3",
+                                    siblingsoccuptaion: "2"),
+                              );
                               scrollController.jumpTo(0.0);
                               handleNextPage(2);
                             },

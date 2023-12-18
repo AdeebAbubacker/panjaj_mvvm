@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
 import 'package:panakj_app/core/model/search_bank/search_bank.dart';
-import 'package:panakj_app/core/utility/api_endpoint.dart';
+import 'package:panakj_app/core/constant/api.dart';
+
+// lib\core/constant/api.dart
 
 class BankService {
   // static const String baseApiUrl = "https://pt.tekpeak.in/api";
@@ -10,7 +12,7 @@ class BankService {
 
   Future<SearchBank> getBank({String? search}) async {
     // final uri = Uri.parse('$baseApiUrl$getBankEndpoint?&search=$search');
-      final uri = Uri.parse('${ApiEndpoint.getBank}?&search=$search');
+    final uri = Uri.parse('$baseUrl/bank?&search=$search');
     try {
       final response = await http.get(uri);
 
@@ -22,7 +24,7 @@ class BankService {
         print(MainFailure.clientFailure(message: failureMessage));
         throw MainFailure.clientFailure(message: failureMessage);
       }
-    } catch (e) { 
+    } catch (e) {
       // ignore: avoid_print
       print("Error in BankService: $e");
       rethrow;

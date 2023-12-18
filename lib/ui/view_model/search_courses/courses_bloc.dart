@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
-import 'package:panakj_app/core/model/search_courses/courses.dart';
+import 'package:panakj_app/core/model/search_course/search_course.dart';
 import 'package:panakj_app/core/service/course_service.dart';
 
 part 'courses_event.dart';

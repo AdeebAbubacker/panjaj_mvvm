@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       await Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => StudentsHomeScreen(),
+            builder: (context) => const StudentsHomeScreen(),
           ));
     } else {
       // User is not logged in, navigate to LoginScreen

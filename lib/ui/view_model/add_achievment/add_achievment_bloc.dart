@@ -5,7 +5,7 @@ import 'package:panakj_app/ui/screens/student/screens/academics/widgets/drop_dow
 import 'package:panakj_app/ui/screens/student/screens/academics/widgets/file_picker.dart';
 import 'package:panakj_app/ui/screens/student/widgets/input_label.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
-
+import 'package:panakj_app/ui/screens/student/widgets/label_inputText.dart';
 part 'add_achievment_event.dart';
 part 'add_achievment_state.dart';
 
@@ -15,38 +15,48 @@ class AddAchievmentBloc extends Bloc<AddAchievmentEvent, AddAchievmentState> {
             achievmentcards: List.empty(), numberofachievment: 0)) {
     on<AddMoreAchievments>((event, emit) {
       List<Widget> updatedSiblings = List.from(state.achievmentcards);
-      int newIndex = updatedSiblings.length + 1;
-      final numberofSiblings = newIndex;
-      updatedSiblings.add(_buildachievmentsCard(newIndex, add));
+      int newIndex = updatedSiblings.length;
+      final numberofSiblings = newIndex + 1;
+      String achievmentID =
+          '${DateTime.now().millisecondsSinceEpoch}-$numberofSiblings';
+      updatedSiblings.add(_buildachievmentsCard(achievmentID, add));
       emit(AddAchievmentState(
-          achievmentcards: updatedSiblings,
-          numberofachievment: numberofSiblings));
+        achievmentcards: updatedSiblings,
+        numberofachievment: numberofSiblings,
+      ));
     });
 
     on<DeleteSibling>((event, emit) {
       List<Widget> updatedSiblings = List.from(state.achievmentcards);
 
-      // Ensure the index is within the valid range
-      if (event.achievmentIndex >= 0 &&
-          event.achievmentIndex < updatedSiblings.length) {
-        updatedSiblings.removeAt(event.achievmentIndex);
+      // Find the widget with the specified key and remove it
+      updatedSiblings.removeWhere(
+        (widget) {
+          return widget.key is ValueKey<String> &&
+              (widget.key as ValueKey<String>).value == event.achievmentID;
+        },
+      );
 
-        // Update the numberOfSiblings based on the updated list length
-        final numberofSiblings = updatedSiblings.length;
+      final numberofSiblings = updatedSiblings.length;
 
-        emit(AddAchievmentState(
-          achievmentcards: updatedSiblings,
-          numberofachievment: numberofSiblings,
-        ));
-      }
+      emit(AddAchievmentState(
+        achievmentcards: updatedSiblings,
+        numberofachievment: numberofSiblings,
+      ));
+
+      print("Deleted sibling with ID: ${event.achievmentID}");
+      print("After deletion - Updated siblings: $updatedSiblings");
     });
   }
 }
 
 Widget _buildachievmentsCard(
-    int achievmentIndex, void Function(AddAchievmentEvent) add) {
+    String achievmentID, void Function(AddAchievmentEvent) add) {
   TextEditingController achievmentController = TextEditingController();
+
+  Key cardKey = ValueKey<String>(achievmentID);
   return Column(
+    key: cardKey,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
@@ -60,10 +70,11 @@ Widget _buildachievmentsCard(
         children: [
           ElevatedButton(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red)),
+              backgroundColor: MaterialStateProperty.all(Colors.red),
+            ),
             onPressed: () {
-              final newachievmentIndex = achievmentIndex - 1;
-              add(DeleteSibling(achievmentIndex: newachievmentIndex));
+              add(DeleteSibling(achievmentID: achievmentID));
+              print("Built card with ID: $achievmentID");
             },
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,11 +86,12 @@ Widget _buildachievmentsCard(
           ),
         ],
       ),
-      // LabelInputText(
-      //   label: 'Achievment Details',
-      //   maxlines: 3,
-      //   StringInput: achievmentController,
-      // ),
+      LabelInputText(
+        label: 'Achievment Details',
+        maxlines: 3,
+        StringInput: achievmentController,
+        focusNode: FocusNode(),
+      ),
       const HeightSpacer(),
       InputLabel(mytext: 'Category'),
       const MyDropdown(),

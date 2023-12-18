@@ -38,9 +38,12 @@ class PersonalInfoService {
           "bank_acc_name": bankaccname,
           "bank_acc_no": bankaccno,
           "bank_name": bankname,
-          "bank_ifsc": bankifsc
+          "bank_ifsc": bankifsc,
+
+          
         }),
       );
+     
 
       if (response.statusCode == 200) {
    
