@@ -7,7 +7,7 @@ class FamilyInfoState with _$FamilyInfoState {
     return FamilyInfoState(
       isLoading: false,
       isError: false,
-      familyInfo: FamilyInfo(),
+      familyInfo: FamilyData(),
       successorFailure: const None(),
     );
   }
@@ -15,7 +15,7 @@ class FamilyInfoState with _$FamilyInfoState {
   const factory FamilyInfoState({
     required bool isLoading,
     required bool isError,
-    required FamilyInfo familyInfo,
-    required Option<Either<MainFailure, FamilyInfo>> successorFailure,
+    required FamilyData familyInfo,
+    required Option<Either<MainFailure, FamilyData>> successorFailure,
   }) = _FamilyInfoState;
 }

@@ -7,7 +7,11 @@ import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widge
 import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 
 class FamilyScreen extends StatelessWidget {
+  TextEditingController fathernameController = TextEditingController();
   TextEditingController fatherincomeController = TextEditingController();
+
+  TextEditingController motherincomeController = TextEditingController();
+  TextEditingController guardiaincomeController = TextEditingController();
   FocusNode realtionfocusNode;
   FocusNode siblingnamefocusNode;
   FocusNode fathericomefocusnode;
@@ -16,10 +20,10 @@ class FamilyScreen extends StatelessWidget {
   FocusNode fatherfocusNode;
   FocusNode motherfocusNode;
   FocusNode guardianfocusNode;
-  TextEditingController motherincomeController = TextEditingController();
-  TextEditingController guardiaincomeController = TextEditingController();
+
   FamilyScreen({
     super.key,
+    required this.fathernameController,
     required this.fatherincomeController,
     required this.fathericomefocusnode,
     required this.mothericomefocusnode,
@@ -43,6 +47,7 @@ class FamilyScreen extends StatelessWidget {
               familyLayoutheight: 1579,
               title: 'Family Details',
               familyDetailsCard: FamilyCard(
+                fathernameController: fathernameController,
                 fathericomefocusnode: fathericomefocusnode,
                 mothericomefocusnode: mothericomefocusnode,
                 guardianicomefocusnode: guardianicomefocusnode,

@@ -8,6 +8,7 @@ class LabelName extends StatefulWidget {
   final double padding;
   final String labelText;
   FocusNode namefocusnode;
+  TextEditingController namecontroller;
   final Function(String)? onChanged;
 
    LabelName({
@@ -17,6 +18,7 @@ class LabelName extends StatefulWidget {
     this.padding = 5,
     this.onChanged,
     required this.namefocusnode,
+    required this.namecontroller,
   }) : super(key: key);
 
   @override
@@ -24,18 +26,18 @@ class LabelName extends StatefulWidget {
 }
 
 class _LabelNameState extends State<LabelName> {
-  final _controller = TextEditingController();
+
   bool _isValid = true;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
+   widget. namecontroller.addListener(() {
       if (widget.onChanged != null) {
-        widget.onChanged!(_controller.text);
+        widget.onChanged!(widget.namecontroller .text);
       }
       setState(() {
-        _isValid = isFieldEmpty(_controller.text);
+        _isValid = isFieldEmpty(widget.namecontroller .text);
       });
     });
   }
@@ -62,7 +64,7 @@ class _LabelNameState extends State<LabelName> {
           child: TextFormField(
             focusNode: widget.namefocusnode,
             style: kCardContentStyle,
-            controller: _controller,
+            controller: widget.namecontroller,
             maxLines: widget.maxlines,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(

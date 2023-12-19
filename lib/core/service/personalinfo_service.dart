@@ -39,15 +39,10 @@ class PersonalInfoService {
           "bank_acc_no": bankaccno,
           "bank_name": bankname,
           "bank_ifsc": bankifsc,
-
-          
         }),
       );
-     
 
       if (response.statusCode == 200) {
-   
-
         return PersonalInfo.fromJson(jsonDecode(response.body));
       } else {
         throw Exception(jsonDecode(response.body));

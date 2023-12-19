@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'family_info.dart';
+part of 'family_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-FamilyInfo _$FamilyInfoFromJson(Map<String, dynamic> json) => FamilyInfo(
+FamilyData _$FamilyDataFromJson(Map<String, dynamic> json) => FamilyData(
       status: json['status'] as int?,
       count: json['count'] as int?,
       message: json['message'] as String?,
@@ -16,7 +16,7 @@ FamilyInfo _$FamilyInfoFromJson(Map<String, dynamic> json) => FamilyInfo(
       misc: json['misc'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$FamilyInfoToJson(FamilyInfo instance) =>
+Map<String, dynamic> _$FamilyDataToJson(FamilyData instance) =>
     <String, dynamic>{
       'status': instance.status,
       'count': instance.count,

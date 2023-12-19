@@ -10,20 +10,7 @@ class SampleApiCall extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       BlocProvider.of<FamilyInfoBloc>(context).add(PostFamilyInfo(
         name: "Rishi",
-        relation: "son",
-        phone: "3534",
-        email: "sfh@gmail.com",
-//dob:2022-10-03
-        highest_qualification: "mca",
-        occupation: "farmer",
-        income: "345",
-        alive: "1",
-        disabled: "1",
-        siblingname: "dgg",
-        siblinggender: "f",
-        siblingsqualification: "4",
-        siblingscourse: "3",
-        siblingsoccuptaion: "2",
+       
       ));
     });
     return Scaffold(

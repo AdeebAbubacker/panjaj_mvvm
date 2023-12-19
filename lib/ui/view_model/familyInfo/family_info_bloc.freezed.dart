@@ -19,64 +19,19 @@ mixin _$FamilyInfoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)
-        postFamilyInfo,
+    required TResult Function(String name) postFamilyInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult? Function(String name)? postFamilyInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult Function(String name)? postFamilyInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,22 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)
-        postFamilyInfo,
+    required TResult Function(String name) postFamilyInfo,
   }) {
     return started();
   }
@@ -182,22 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult? Function(String name)? postFamilyInfo,
   }) {
     return started?.call();
   }
@@ -206,22 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult Function(String name)? postFamilyInfo,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -272,21 +182,7 @@ abstract class _$$PostFamilyInfoImplCopyWith<$Res> {
           $Res Function(_$PostFamilyInfoImpl) then) =
       __$$PostFamilyInfoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String name,
-      String relation,
-      String phone,
-      String email,
-      String highest_qualification,
-      String occupation,
-      String income,
-      String alive,
-      String disabled,
-      String siblingname,
-      String siblinggender,
-      String siblingsqualification,
-      String siblingscourse,
-      String siblingsoccuptaion});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -301,76 +197,11 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? relation = null,
-    Object? phone = null,
-    Object? email = null,
-    Object? highest_qualification = null,
-    Object? occupation = null,
-    Object? income = null,
-    Object? alive = null,
-    Object? disabled = null,
-    Object? siblingname = null,
-    Object? siblinggender = null,
-    Object? siblingsqualification = null,
-    Object? siblingscourse = null,
-    Object? siblingsoccuptaion = null,
   }) {
     return _then(_$PostFamilyInfoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      relation: null == relation
-          ? _value.relation
-          : relation // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      highest_qualification: null == highest_qualification
-          ? _value.highest_qualification
-          : highest_qualification // ignore: cast_nullable_to_non_nullable
-              as String,
-      occupation: null == occupation
-          ? _value.occupation
-          : occupation // ignore: cast_nullable_to_non_nullable
-              as String,
-      income: null == income
-          ? _value.income
-          : income // ignore: cast_nullable_to_non_nullable
-              as String,
-      alive: null == alive
-          ? _value.alive
-          : alive // ignore: cast_nullable_to_non_nullable
-              as String,
-      disabled: null == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as String,
-      siblingname: null == siblingname
-          ? _value.siblingname
-          : siblingname // ignore: cast_nullable_to_non_nullable
-              as String,
-      siblinggender: null == siblinggender
-          ? _value.siblinggender
-          : siblinggender // ignore: cast_nullable_to_non_nullable
-              as String,
-      siblingsqualification: null == siblingsqualification
-          ? _value.siblingsqualification
-          : siblingsqualification // ignore: cast_nullable_to_non_nullable
-              as String,
-      siblingscourse: null == siblingscourse
-          ? _value.siblingscourse
-          : siblingscourse // ignore: cast_nullable_to_non_nullable
-              as String,
-      siblingsoccuptaion: null == siblingsoccuptaion
-          ? _value.siblingsoccuptaion
-          : siblingsoccuptaion // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -379,54 +210,14 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PostFamilyInfoImpl implements PostFamilyInfo {
-  const _$PostFamilyInfoImpl(
-      {required this.name,
-      required this.relation,
-      required this.phone,
-      required this.email,
-      required this.highest_qualification,
-      required this.occupation,
-      required this.income,
-      required this.alive,
-      required this.disabled,
-      required this.siblingname,
-      required this.siblinggender,
-      required this.siblingsqualification,
-      required this.siblingscourse,
-      required this.siblingsoccuptaion});
+  const _$PostFamilyInfoImpl({required this.name});
 
   @override
   final String name;
-  @override
-  final String relation;
-  @override
-  final String phone;
-  @override
-  final String email;
-  @override
-  final String highest_qualification;
-  @override
-  final String occupation;
-  @override
-  final String income;
-  @override
-  final String alive;
-  @override
-  final String disabled;
-  @override
-  final String siblingname;
-  @override
-  final String siblinggender;
-  @override
-  final String siblingsqualification;
-  @override
-  final String siblingscourse;
-  @override
-  final String siblingsoccuptaion;
 
   @override
   String toString() {
-    return 'FamilyInfoEvent.postFamilyInfo(name: $name, relation: $relation, phone: $phone, email: $email, highest_qualification: $highest_qualification, occupation: $occupation, income: $income, alive: $alive, disabled: $disabled, siblingname: $siblingname, siblinggender: $siblinggender, siblingsqualification: $siblingsqualification, siblingscourse: $siblingscourse, siblingsoccuptaion: $siblingsoccuptaion)';
+    return 'FamilyInfoEvent.postFamilyInfo(name: $name)';
   }
 
   @override
@@ -434,48 +225,11 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostFamilyInfoImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.relation, relation) ||
-                other.relation == relation) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.highest_qualification, highest_qualification) ||
-                other.highest_qualification == highest_qualification) &&
-            (identical(other.occupation, occupation) ||
-                other.occupation == occupation) &&
-            (identical(other.income, income) || other.income == income) &&
-            (identical(other.alive, alive) || other.alive == alive) &&
-            (identical(other.disabled, disabled) ||
-                other.disabled == disabled) &&
-            (identical(other.siblingname, siblingname) ||
-                other.siblingname == siblingname) &&
-            (identical(other.siblinggender, siblinggender) ||
-                other.siblinggender == siblinggender) &&
-            (identical(other.siblingsqualification, siblingsqualification) ||
-                other.siblingsqualification == siblingsqualification) &&
-            (identical(other.siblingscourse, siblingscourse) ||
-                other.siblingscourse == siblingscourse) &&
-            (identical(other.siblingsoccuptaion, siblingsoccuptaion) ||
-                other.siblingsoccuptaion == siblingsoccuptaion));
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      relation,
-      phone,
-      email,
-      highest_qualification,
-      occupation,
-      income,
-      alive,
-      disabled,
-      siblingname,
-      siblinggender,
-      siblingsqualification,
-      siblingscourse,
-      siblingsoccuptaion);
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
@@ -488,116 +242,29 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)
-        postFamilyInfo,
+    required TResult Function(String name) postFamilyInfo,
   }) {
-    return postFamilyInfo(
-        name,
-        relation,
-        phone,
-        email,
-        highest_qualification,
-        occupation,
-        income,
-        alive,
-        disabled,
-        siblingname,
-        siblinggender,
-        siblingsqualification,
-        siblingscourse,
-        siblingsoccuptaion);
+    return postFamilyInfo(name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult? Function(String name)? postFamilyInfo,
   }) {
-    return postFamilyInfo?.call(
-        name,
-        relation,
-        phone,
-        email,
-        highest_qualification,
-        occupation,
-        income,
-        alive,
-        disabled,
-        siblingname,
-        siblinggender,
-        siblingsqualification,
-        siblingscourse,
-        siblingsoccuptaion);
+    return postFamilyInfo?.call(name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String name,
-            String relation,
-            String phone,
-            String email,
-            String highest_qualification,
-            String occupation,
-            String income,
-            String alive,
-            String disabled,
-            String siblingname,
-            String siblinggender,
-            String siblingsqualification,
-            String siblingscourse,
-            String siblingsoccuptaion)?
-        postFamilyInfo,
+    TResult Function(String name)? postFamilyInfo,
     required TResult orElse(),
   }) {
     if (postFamilyInfo != null) {
-      return postFamilyInfo(
-          name,
-          relation,
-          phone,
-          email,
-          highest_qualification,
-          occupation,
-          income,
-          alive,
-          disabled,
-          siblingname,
-          siblinggender,
-          siblingsqualification,
-          siblingscourse,
-          siblingsoccuptaion);
+      return postFamilyInfo(name);
     }
     return orElse();
   }
@@ -635,36 +302,10 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
 }
 
 abstract class PostFamilyInfo implements FamilyInfoEvent {
-  const factory PostFamilyInfo(
-      {required final String name,
-      required final String relation,
-      required final String phone,
-      required final String email,
-      required final String highest_qualification,
-      required final String occupation,
-      required final String income,
-      required final String alive,
-      required final String disabled,
-      required final String siblingname,
-      required final String siblinggender,
-      required final String siblingsqualification,
-      required final String siblingscourse,
-      required final String siblingsoccuptaion}) = _$PostFamilyInfoImpl;
+  const factory PostFamilyInfo({required final String name}) =
+      _$PostFamilyInfoImpl;
 
   String get name;
-  String get relation;
-  String get phone;
-  String get email;
-  String get highest_qualification;
-  String get occupation;
-  String get income;
-  String get alive;
-  String get disabled;
-  String get siblingname;
-  String get siblinggender;
-  String get siblingsqualification;
-  String get siblingscourse;
-  String get siblingsoccuptaion;
   @JsonKey(ignore: true)
   _$$PostFamilyInfoImplCopyWith<_$PostFamilyInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -674,8 +315,8 @@ abstract class PostFamilyInfo implements FamilyInfoEvent {
 mixin _$FamilyInfoState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
-  FamilyInfo get familyInfo => throw _privateConstructorUsedError;
-  Option<Either<MainFailure, FamilyInfo>> get successorFailure =>
+  FamilyData get familyInfo => throw _privateConstructorUsedError;
+  Option<Either<MainFailure, FamilyData>> get successorFailure =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -692,8 +333,8 @@ abstract class $FamilyInfoStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isError,
-      FamilyInfo familyInfo,
-      Option<Either<MainFailure, FamilyInfo>> successorFailure});
+      FamilyData familyInfo,
+      Option<Either<MainFailure, FamilyData>> successorFailure});
 }
 
 /// @nodoc
@@ -726,11 +367,11 @@ class _$FamilyInfoStateCopyWithImpl<$Res, $Val extends FamilyInfoState>
       familyInfo: null == familyInfo
           ? _value.familyInfo
           : familyInfo // ignore: cast_nullable_to_non_nullable
-              as FamilyInfo,
+              as FamilyData,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, FamilyInfo>>,
+              as Option<Either<MainFailure, FamilyData>>,
     ) as $Val);
   }
 }
@@ -746,8 +387,8 @@ abstract class _$$FamilyInfoStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isError,
-      FamilyInfo familyInfo,
-      Option<Either<MainFailure, FamilyInfo>> successorFailure});
+      FamilyData familyInfo,
+      Option<Either<MainFailure, FamilyData>> successorFailure});
 }
 
 /// @nodoc
@@ -778,11 +419,11 @@ class __$$FamilyInfoStateImplCopyWithImpl<$Res>
       familyInfo: null == familyInfo
           ? _value.familyInfo
           : familyInfo // ignore: cast_nullable_to_non_nullable
-              as FamilyInfo,
+              as FamilyData,
       successorFailure: null == successorFailure
           ? _value.successorFailure
           : successorFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<MainFailure, FamilyInfo>>,
+              as Option<Either<MainFailure, FamilyData>>,
     ));
   }
 }
@@ -801,9 +442,9 @@ class _$FamilyInfoStateImpl implements _FamilyInfoState {
   @override
   final bool isError;
   @override
-  final FamilyInfo familyInfo;
+  final FamilyData familyInfo;
   @override
-  final Option<Either<MainFailure, FamilyInfo>> successorFailure;
+  final Option<Either<MainFailure, FamilyData>> successorFailure;
 
   @override
   String toString() {
@@ -840,8 +481,8 @@ abstract class _FamilyInfoState implements FamilyInfoState {
   const factory _FamilyInfoState(
       {required final bool isLoading,
       required final bool isError,
-      required final FamilyInfo familyInfo,
-      required final Option<Either<MainFailure, FamilyInfo>>
+      required final FamilyData familyInfo,
+      required final Option<Either<MainFailure, FamilyData>>
           successorFailure}) = _$FamilyInfoStateImpl;
 
   @override
@@ -849,9 +490,9 @@ abstract class _FamilyInfoState implements FamilyInfoState {
   @override
   bool get isError;
   @override
-  FamilyInfo get familyInfo;
+  FamilyData get familyInfo;
   @override
-  Option<Either<MainFailure, FamilyInfo>> get successorFailure;
+  Option<Either<MainFailure, FamilyData>> get successorFailure;
   @override
   @JsonKey(ignore: true)
   _$$FamilyInfoStateImplCopyWith<_$FamilyInfoStateImpl> get copyWith =>

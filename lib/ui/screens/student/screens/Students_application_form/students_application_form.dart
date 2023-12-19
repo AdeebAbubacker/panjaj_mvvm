@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
-import 'package:panakj_app/core/db/boxes/personal_info_box.dart';
-import 'package:panakj_app/core/model/personal_info/personal_info.dart';
 import 'package:panakj_app/package/presentation/custom_stepper.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/academics_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/achievments_screen.dart';
@@ -61,10 +59,11 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
   TextEditingController ifscController = TextEditingController();
 
   //2nd Section
+  TextEditingController fathernameController = TextEditingController();
   TextEditingController fatherincomeController = TextEditingController();
-
+  TextEditingController mothernameController = TextEditingController();
   TextEditingController motherincomeController = TextEditingController();
-
+  TextEditingController guardianameController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
 
   @override
@@ -256,6 +255,7 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                   content: Column(
                     children: [
                       FamilyScreen(
+                        fathernameController: fathernameController,
                         realtionfocusNode: focuscontroller1,
                         fatherfocusNode: focuscontroller2,
                         motherfocusNode: focuscontroller3,
@@ -269,36 +269,52 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                         guardiaincomeController: guardiaincomeController,
                       ),
                       const HeightSpacer(),
-                      BottomCard(
-                        prevBtn: InkResponse(
-                            onTap: () {
-                              scrollController.jumpTo(0.0);
-                              handlePrevious(0);
-                            },
-                            child: const StepperBtn(nextorprev: 'Prev')),
-                        nextBtn: InkResponse(
-                            onTap: () {
-                              BlocProvider.of<FamilyInfoBloc>(context).add(
-                                const PostFamilyInfo(
-                                    name: "Rishi",
-                                    relation: "son",
-                                    phone: "3534",
-                                    email: "sfh@gmail.com",
-                                    highest_qualification: "mca",
-                                    occupation: "farmer",
-                                    income: "345",
-                                    alive: "1",
-                                    disabled: "1",
-                                    siblingname: "dgg",
-                                    siblinggender: "f",
-                                    siblingsqualification: "4",
-                                    siblingscourse: "3",
-                                    siblingsoccuptaion: "2"),
+                      BlocConsumer<FamilyInfoBloc, FamilyInfoState>(
+                        listener: (context, state) {
+                          state.successorFailure.fold(
+                            () {},
+                            (either) {
+                              either.fold(
+                                (failure) {
+                                  // ignore: avoid_print
+                                  print(failure.toString());
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(failure.toString())));
+                                },
+                                (success) {
+                                  // ignore: avoid_print
+                                  print(success.data.toString());
+                                  scrollController.jumpTo(0.0);
+                                  handleNextPage(2);
+                                },
                               );
-                              scrollController.jumpTo(0.0);
-                              handleNextPage(2);
                             },
-                            child: const StepperBtn(nextorprev: 'Next')),
+                          );
+                        },
+                        builder: (context, state) {
+                          return BottomCard(
+                            prevBtn: InkResponse(
+                              onTap: () {
+                                scrollController.jumpTo(0.0);
+                                handlePrevious(0);
+                              },
+                              child: const StepperBtn(nextorprev: 'Prev'),
+                            ),
+                            nextBtn: InkResponse(
+                              onTap: () {
+                                BlocProvider.of<FamilyInfoBloc>(context).add(
+                                  const PostFamilyInfo(
+                                      name: "adeeb",)
+                                      
+                                );
+                              },
+                              child: const StepperBtn(
+                                nextorprev: 'Next',
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

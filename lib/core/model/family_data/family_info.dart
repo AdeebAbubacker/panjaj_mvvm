@@ -1,18 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'guardian.dart';
+import 'sibling.dart';
 
 part 'family_info.g.dart';
 
 @JsonSerializable()
 class FamilyInfo {
-	int? status;
-	int? count;
-	String? message;
-	Data? data;
-	List<dynamic>? misc;
+	List<Guardian>? guardians;
+	List<Sibling>? siblings;
 
-	FamilyInfo({this.status, this.count, this.message, this.data, this.misc});
+	FamilyInfo({this.guardians, this.siblings});
 
 	factory FamilyInfo.fromJson(Map<String, dynamic> json) {
 		return _$FamilyInfoFromJson(json);

@@ -11,6 +11,7 @@ import 'package:panakj_app/ui/screens/student/widgets/label_name.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 
 class FamilyCard extends StatefulWidget {
+  TextEditingController fathernameController = TextEditingController();
   TextEditingController fatherincomeController = TextEditingController();
   TextEditingController motherincomeController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
@@ -31,6 +32,7 @@ class FamilyCard extends StatefulWidget {
     this.width,
     required this.mybool,
     required this.realtionfocusNode,
+    required this.fathernameController,
     required this.fathericomefocusnode,
     required this.mothericomefocusnode,
     required this.guardianicomefocusnode,
@@ -61,6 +63,7 @@ class _FamilyCardState extends State<FamilyCard> {
           LabelName(
             labelText: 'Name',
             namefocusnode: widget.fatherfocusNode,
+            namecontroller: widget. fathernameController,
           ),
           const HeightSpacer(height: 14),
           const CheckBoxWorkout(
@@ -84,6 +87,7 @@ class _FamilyCardState extends State<FamilyCard> {
           LabelName(
             labelText: 'Name',
             namefocusnode: widget.motherfocusNode,
+            namecontroller: widget.fathernameController,
           ),
           const HeightSpacer(height: 14),
           const CheckBoxData(label: 'Alive', width: 130),
@@ -105,6 +109,7 @@ class _FamilyCardState extends State<FamilyCard> {
             child: Text('Guardian', style: kfamiltTitleTextColor),
           ),
           LabelName(
+            namecontroller: widget.fathernameController,
             labelText: 'Name',
             namefocusnode: widget.guardianfocusNode,
           ),
