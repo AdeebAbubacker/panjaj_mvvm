@@ -1,29 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'academics.dart';
+
 part 'data.g.dart';
 
 @JsonSerializable()
 class Data {
-	@JsonKey(name: 'student_id') 
-	int? studentId;
-	String? title;
-	String? description;
-	String? attachment;
-	@JsonKey(name: 'updated_at') 
-	DateTime? updatedAt;
-	@JsonKey(name: 'created_at') 
-	DateTime? createdAt;
-	int? id;
+	Academics? academics;
+	List<dynamic>? achievements;
 
-	Data({
-		this.studentId, 
-		this.title, 
-		this.description, 
-		this.attachment, 
-		this.updatedAt, 
-		this.createdAt, 
-		this.id, 
-	});
+	Data({this.academics, this.achievements});
 
 	factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

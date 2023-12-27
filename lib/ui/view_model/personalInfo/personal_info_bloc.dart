@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:panakj_app/core/model/failure/mainfailure.dart';
 import 'package:panakj_app/core/model/personal_info/personal_info.dart';
 import 'package:panakj_app/core/service/personalinfo_service.dart';
@@ -53,6 +54,8 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
 
         print(
             'ifsc -----------------------------${response.data!.bank!.bankIfsc}');
+
+            
       } catch (e) {
         emit(state.copyWith(
             isLoading: false,

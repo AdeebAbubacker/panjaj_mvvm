@@ -68,9 +68,10 @@ Widget _buildachievmentsCard(
       Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ElevatedButton(
+          OutlinedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red),
+              backgroundColor: MaterialStateProperty.all(
+                  const Color.fromARGB(255, 247, 247, 247)),
             ),
             onPressed: () {
               add(DeleteSibling(achievmentID: achievmentID));

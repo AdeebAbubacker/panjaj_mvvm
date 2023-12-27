@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:panakj_app/core/db/adapters/family_success_status/family_status_adapter.dart';
 import 'package:panakj_app/core/db/adapters/personal_info_adapter/personal_info_adapter.dart';
+import 'package:panakj_app/core/db/boxes/family_status_box.dart';
+
 import 'package:panakj_app/package/presentation/custom_stepper.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/academics_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/academics/screens/achievments_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/family/screens/family_screen.dart';
+import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/checkbox_data.dart';
 import 'package:panakj_app/ui/screens/student/screens/home/screens/home_screen.dart';
 import 'package:panakj_app/ui/screens/student/screens/info/screens/info_layout.dart';
 import 'package:panakj_app/ui/screens/student/widgets/bottom_card.dart';
 import 'package:panakj_app/ui/screens/student/widgets/next_and_previous_button.dart';
 import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 import 'package:panakj_app/ui/view_model/Dob/dob_bloc.dart';
+import 'package:panakj_app/ui/view_model/acadmicdetails/academic_bloc.dart';
+import 'package:panakj_app/ui/view_model/checkboxfirst/checkboxfirst_bloc.dart';
+import 'package:panakj_app/ui/view_model/checkboxsec/checkboxsec_bloc.dart';
+import 'package:panakj_app/ui/view_model/checkboxthird/checkboxthird_bloc.dart';
 import 'package:panakj_app/ui/view_model/familyInfo/family_info_bloc.dart';
 import 'package:panakj_app/ui/view_model/horizontal_radio_btn/horizontal_radio_btn_bloc.dart';
 import 'package:panakj_app/ui/view_model/personalInfo/personal_info_bloc.dart';
@@ -28,10 +36,13 @@ class StudentsApplicationForm extends StatefulWidget {
 }
 
 class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
+  late int familysuccescount;
   late Box<personalInfoDB> personalInfoBox;
+
   @override
   void initState() {
     super.initState();
+    familysuccescount = 0;
     personalInfo();
   }
 
@@ -168,20 +179,20 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                                         gender: true,
                                         dob: selectedDate,
                                         address: addressController.text,
-                                        mobno: 888,
+                                        mobno: phoneNoController.text,
                                         email: emailController.text,
                                         doyouHaveBankAcc: true,
                                         nameasPerBank:
                                             nameatBankController.text,
-                                        AccNumber: 000000000000,
+                                        AccNumber: accNoController.text,
                                         bankName: "Federal Bank",
-                                        BranchIFSC: "IFSC0808",
+                                        BranchIFSC: ifscController.text,
                                       ),
                                     );
+
                                     for (var data in personalInfoBox.values) {
                                       print(
                                           'data from personal info box: $data');
-
                                       print('name from db: ${data.name}');
                                       print('gender from db: ${data.gender}');
                                       print('dob from db: ${data.dob}');
@@ -199,7 +210,7 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                                       print(
                                           'Branch IFSC from db: ${data.BranchIFSC}');
                                     }
-                                    // ignore: avoid_print
+
                                     print(success.data.toString());
                                     scrollController.jumpTo(0.0);
                                     handleNextPage(1);
@@ -261,11 +272,13 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                         motherfocusNode: focuscontroller3,
                         guardianfocusNode: focuscontroller4,
                         fathericomefocusnode: focuscontroller5,
+                        mothernameController: mothernameController,
                         mothericomefocusnode: focuscontroller6,
                         guardianicomefocusnode: focuscontroller7,
                         siblingnamefocusNode: focuscontroller8,
                         fatherincomeController: fatherincomeController,
                         motherincomeController: motherincomeController,
+                        guardianameController: guardianameController,
                         guardiaincomeController: guardiaincomeController,
                       ),
                       const HeightSpacer(),
@@ -283,7 +296,14 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                                           content: Text(failure.toString())));
                                 },
                                 (success) {
+                                  familysuccescount++;
                                   // ignore: avoid_print
+                                  familystatusInfoBox.put(
+                                    'key',
+                                    FamilyStatusDB(id: familysuccescount),
+                                  );
+                                  print(
+                                      'Family Status ID: ${familystatusInfoBox.get('key')?.id}');
                                   print(success.data.toString());
                                   scrollController.jumpTo(0.0);
                                   handleNextPage(2);
@@ -303,11 +323,63 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                             ),
                             nextBtn: InkResponse(
                               onTap: () {
-                                BlocProvider.of<FamilyInfoBloc>(context).add(
-                                  const PostFamilyInfo(
-                                      name: "adeeb",)
-                                      
-                                );
+                                BlocProvider.of<FamilyInfoBloc>(context)
+                                    .add(PostFamilyInfo(
+                                  fathername: fathernameController.text,
+                                  falive: context
+                                          .read<CheckboxfirstBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  fdisabled: context
+                                          .read<CheckboxfirstBloc>()
+                                          .state
+                                          .notdisabled
+                                      ? 0
+                                      : 1,
+                                  focupation: 3,
+                                  fincome:
+                                      int.parse(fatherincomeController.text),
+                                  frelation: "father",
+                                  mothername: mothernameController.text,
+                                  malive: context
+                                          .read<CheckboxsecBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  mdisabled: context
+                                          .read<CheckboxsecBloc>()
+                                          .state
+                                          .disabled
+                                      ? 1
+                                      : 0,
+                                  mocupation: 23,
+                                  mincome:
+                                      int.parse(motherincomeController.text),
+                                  mrelation: "mrelation",
+                                  guardianname: guardianameController.text,
+                                  gincome:
+                                      int.parse(guardiaincomeController.text),
+                                  galive: context
+                                          .read<CheckboxthirdBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  gdisabled: context
+                                          .read<CheckboxthirdBloc>()
+                                          .state
+                                          .disabled
+                                      ? 1
+                                      : 0,
+                                      siblingname1: "dfsdf",
+                                      sgender1: "m",
+                                      scourse1: 2,
+                                      socupation1: 5,
+                                      squalification1: 9,
+                                ));
                               },
                               child: const StepperBtn(
                                 nextorprev: 'Next',
@@ -321,40 +393,173 @@ class _StudentsApplicationFormState extends State<StudentsApplicationForm> {
                   stepIcon: Icons.family_restroom,
                   status: 'To do',
                 ),
-                AddStep(
+               
+                               AddStep(
                   title: 'Academics',
                   content: Column(
                     children: [
-                      AcademicsScreen(
-                        examRegfocusnode: focuscontroller1,
-                        sslcfocusnode: focuscontroller2,
-                        plusonefocusnode: focuscontroller3,
-                        plustwofocusnode: focuscontroller4,
+                      FamilyScreen(
+                        fathernameController: fathernameController,
+                        realtionfocusNode: focuscontroller1,
+                        fatherfocusNode: focuscontroller2,
+                        motherfocusNode: focuscontroller3,
+                        guardianfocusNode: focuscontroller4,
+                        fathericomefocusnode: focuscontroller5,
+                        mothernameController: mothernameController,
+                        mothericomefocusnode: focuscontroller6,
+                        guardianicomefocusnode: focuscontroller7,
+                        siblingnamefocusNode: focuscontroller8,
+                        fatherincomeController: fatherincomeController,
+                        motherincomeController: motherincomeController,
+                        guardianameController: guardianameController,
+                        guardiaincomeController: guardiaincomeController,
                       ),
                       const HeightSpacer(),
-                      AchievmentsScreen(focusNode: focuscontroller5),
-                      BottomCard(
-                        prevBtn: InkResponse(
-                          onTap: () {
-                            scrollController.jumpTo(0.0);
-                            handlePrevious(1);
-                          },
-                          child: const StepperBtn(nextorprev: 'Prev'),
-                        ),
-                        nextBtn: InkResponse(
-                            onTap: () {
-                              scrollController.jumpTo(0.0);
-                              handleNextPage(3);
+                      BlocConsumer<AcademicBloc, AcademicState>(
+                        listener: (context, state) {
+                          state.successorFailure.fold(
+                            () {},
+                            (either) {
+                              either.fold(
+                                (failure) {
+                                  // ignore: avoid_print
+                                  print(failure.toString());
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(failure.toString())));
+                                },
+                                (success) {
+                               
+                                  
+                                  print(
+                                      'Family Status ID: ${familystatusInfoBox.get('key')?.id}');
+                                  print(success.data.toString());
+                                  scrollController.jumpTo(0.0);
+                                  handleNextPage(2);
+                                },
+                              );
                             },
-                            child: const StepperBtn(
-                              nextorprev: 'Next',
-                            )),
+                          );
+                        },
+                        builder: (context, state) {
+                          return BottomCard(
+                            prevBtn: InkResponse(
+                              onTap: () {
+                                scrollController.jumpTo(0.0);
+                                handlePrevious(0);
+                              },
+                              child: const StepperBtn(nextorprev: 'Prev'),
+                            ),
+                            nextBtn: InkResponse(
+                              onTap: () {
+                                BlocProvider.of<FamilyInfoBloc>(context)
+                                    .add(PostFamilyInfo(
+                                  fathername: fathernameController.text,
+                                  falive: context
+                                          .read<CheckboxfirstBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  fdisabled: context
+                                          .read<CheckboxfirstBloc>()
+                                          .state
+                                          .notdisabled
+                                      ? 0
+                                      : 1,
+                                  focupation: 3,
+                                  fincome:
+                                      int.parse(fatherincomeController.text),
+                                  frelation: "father",
+                                  mothername: mothernameController.text,
+                                  malive: context
+                                          .read<CheckboxsecBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  mdisabled: context
+                                          .read<CheckboxsecBloc>()
+                                          .state
+                                          .disabled
+                                      ? 1
+                                      : 0,
+                                  mocupation: 23,
+                                  mincome:
+                                      int.parse(motherincomeController.text),
+                                  mrelation: "mrelation",
+                                  guardianname: guardianameController.text,
+                                  gincome:
+                                      int.parse(guardiaincomeController.text),
+                                  galive: context
+                                          .read<CheckboxthirdBloc>()
+                                          .state
+                                          .alive
+                                      ? 1
+                                      : 0,
+                                  gdisabled: context
+                                          .read<CheckboxthirdBloc>()
+                                          .state
+                                          .disabled
+                                      ? 1
+                                      : 0,
+                                      siblingname1: "dfsdf",
+                                      sgender1: "m",
+                                      scourse1: 2,
+                                      socupation1: 5,
+                                      squalification1: 9,
+                                ));
+                              },
+                              child: const StepperBtn(
+                                nextorprev: 'Next',
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
-                  stepIcon: Icons.school_rounded,
-                  status: 'Completed',
+                  stepIcon: Icons.family_restroom,
+                  status: 'To do',
                 ),
+               
+               
+                // AddStep(
+                //   title: 'Academics',
+                //   content: Column(
+                //     children: [
+                //       AcademicsScreen(
+                //         examRegfocusnode: focuscontroller1,
+                //         sslcfocusnode: focuscontroller2,
+                //         plusonefocusnode: focuscontroller3,
+                //         plustwofocusnode: focuscontroller4,
+                //       ),
+                //       const HeightSpacer(),
+                //       AchievmentsScreen(focusNode: focuscontroller5),
+                //       BottomCard(
+                //         prevBtn: InkResponse(
+                //           onTap: () {
+                //             scrollController.jumpTo(0.0);
+                //             handlePrevious(1);
+                //           },
+                //           child: const StepperBtn(nextorprev: 'Prev'),
+                //         ),
+                //         nextBtn: InkResponse(
+                //             onTap: () {
+                //               scrollController.jumpTo(0.0);
+                //               handleNextPage(3);
+                //             },
+                //             child: const StepperBtn(
+                //               nextorprev: 'Next',
+                //             )),
+                //       ),
+                //     ],
+                //   ),
+                //   stepIcon: Icons.school_rounded,
+                //   status: 'Completed',
+                // ),
+               
+               
                 AddStep(
                   title: 'Home',
                   content: Column(

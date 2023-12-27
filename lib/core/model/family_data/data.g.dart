@@ -7,11 +7,15 @@ part of 'data.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      familyInfo: json['family_info'] == null
-          ? null
-          : FamilyInfo.fromJson(json['family_info'] as Map<String, dynamic>),
+      guardians: (json['guardians'] as List<dynamic>?)
+          ?.map((e) => Guardian.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      siblings: (json['siblings'] as List<dynamic>?)
+          ?.map((e) => Sibling.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'family_info': instance.familyInfo,
+      'guardians': instance.guardians,
+      'siblings': instance.siblings,
     };

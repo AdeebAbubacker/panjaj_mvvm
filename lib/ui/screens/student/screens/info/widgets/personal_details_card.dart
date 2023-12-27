@@ -109,41 +109,68 @@ class _PersonalDetailsCardState extends State<PersonalDetailsCard> {
             emailfocusnode: widget.emailfocusnode,
           ),
           const HeightSpacer(height: 14),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 90,
-                height: 100,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: const BorderRadius.all(Radius.circular(1)),
-                ),
-                child: myVisibility
-                    ? Image.file(
-                        File(filePath!),
-                        fit: BoxFit.cover,
-                      )
-                    : const Icon(
-                        Icons.person_2_outlined,
-                        color: Colors.black12,
-                        size: 70,
-                      ),
-              ),
-              Column(children: [
-                TextButton(
-                    onPressed: _openFilePicker,
-                    child: const Text('upload img')),
-                GestureDetector(
-                  onTap: _deleteFile,
-                  child: const Text(
-                    'remove',
-                    style: TextStyle(fontSize: 9, color: Colors.red),
+          Container(
+            width: 333,
+            height: 90,
+            color: const Color.fromARGB(115, 239, 239, 239),
+            child: Row(
+              children: [
+                Container(
+                  width: 90,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    border:
+                        Border.all(color: const Color.fromARGB(31, 79, 79, 79)),
+                    borderRadius: const BorderRadius.all(Radius.circular(1)),
                   ),
+                  child: myVisibility
+                      ? Image.file(
+                          File(filePath!),
+                          fit: BoxFit.cover,
+                        )
+                      : const Icon(
+                          Icons.person_2_outlined,
+                          color: Colors.black12,
+                          size: 70,
+                        ),
                 ),
-              ]),
-            ],
+                const SizedBox(width: 10),
+                Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    const Text(
+                        'Please upload square image, size less than 100KB',
+                        style: TextStyle(fontSize: 8)),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        OutlinedButton(
+                            onPressed: _openFilePicker,
+                            child: const Text('Choose File')),
+                        const SizedBox(width: 30),
+                        // const Text(
+                        //   'No file choosen',
+                        //   style: TextStyle(fontSize: 8, color: Colors.grey),
+                        // )
+                        filePath!.isEmpty
+                            ? const Text(
+                                'No file choosen',
+                                style:
+                                    TextStyle(fontSize: 8, color: Colors.grey),
+                              )
+                            : IconButton(
+                                onPressed: _deleteFile,
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Color.fromARGB(255, 253, 53, 39),
+                                ))
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
           const HeightSpacer(height: 14),
           LabelInputText(

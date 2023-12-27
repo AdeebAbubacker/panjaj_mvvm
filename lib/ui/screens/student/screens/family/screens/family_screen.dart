@@ -9,8 +9,9 @@ import 'package:panakj_app/ui/view_model/family/family_bloc.dart';
 class FamilyScreen extends StatelessWidget {
   TextEditingController fathernameController = TextEditingController();
   TextEditingController fatherincomeController = TextEditingController();
-
+  TextEditingController mothernameController = TextEditingController();
   TextEditingController motherincomeController = TextEditingController();
+  TextEditingController guardianameController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
   FocusNode realtionfocusNode;
   FocusNode siblingnamefocusNode;
@@ -26,6 +27,7 @@ class FamilyScreen extends StatelessWidget {
     required this.fathernameController,
     required this.fatherincomeController,
     required this.fathericomefocusnode,
+    required this.mothernameController,
     required this.mothericomefocusnode,
     required this.guardianicomefocusnode,
     required this.realtionfocusNode,
@@ -33,6 +35,7 @@ class FamilyScreen extends StatelessWidget {
     required this.motherfocusNode,
     required this.guardianfocusNode,
     required this.siblingnamefocusNode,
+    required this.guardianameController,
     required this.motherincomeController,
     required this.guardiaincomeController,
   });
@@ -44,12 +47,14 @@ class FamilyScreen extends StatelessWidget {
         return Column(
           children: [
             FamilyLayout(
-              familyLayoutheight: 1579,
+              familyLayoutheight: 1460,
               title: 'Family Details',
               familyDetailsCard: FamilyCard(
                 fathernameController: fathernameController,
                 fathericomefocusnode: fathericomefocusnode,
+                mothernameController: mothernameController,
                 mothericomefocusnode: mothericomefocusnode,
+                guardianameController: guardianameController,
                 guardianicomefocusnode: guardianicomefocusnode,
                 realtionfocusNode: realtionfocusNode,
                 fatherfocusNode: fatherfocusNode,
@@ -66,9 +71,9 @@ class FamilyScreen extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: FamilyLayout(
-                      familyLayoutheight: 583 +
+                      familyLayoutheight: 593 +
                           (state.numberOfSiblings > 0
-                              ? (state.numberOfSiblings) * 505
+                              ? (state.numberOfSiblings) * 545
                               : 0),
                       title: 'Siblings Details',
                       familyDetailsCard: SiblingsCard(

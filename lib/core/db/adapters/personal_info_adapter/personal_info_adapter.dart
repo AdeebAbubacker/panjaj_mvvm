@@ -16,7 +16,7 @@ class personalInfoDB {
   String address;
 
   @HiveField(4)
-  int mobno;
+  var mobno;
 
   @HiveField(5)
   String email;
@@ -28,7 +28,7 @@ class personalInfoDB {
   String nameasPerBank;
 
   @HiveField(8)
-  int AccNumber;
+  var AccNumber;
 
   @HiveField(9)
   String bankName;

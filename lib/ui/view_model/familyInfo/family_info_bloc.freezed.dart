@@ -19,19 +19,91 @@ mixin _$FamilyInfoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) postFamilyInfo,
+    required TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)
+        postFamilyInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? postFamilyInfo,
+    TResult? Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? postFamilyInfo,
+    TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +185,31 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) postFamilyInfo,
+    required TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)
+        postFamilyInfo,
   }) {
     return started();
   }
@@ -122,7 +218,31 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? postFamilyInfo,
+    TResult? Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
   }) {
     return started?.call();
   }
@@ -131,7 +251,31 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? postFamilyInfo,
+    TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +326,30 @@ abstract class _$$PostFamilyInfoImplCopyWith<$Res> {
           $Res Function(_$PostFamilyInfoImpl) then) =
       __$$PostFamilyInfoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String? fathername,
+      int? falive,
+      int? fdisabled,
+      int? focupation,
+      int? fincome,
+      String? frelation,
+      String? mothername,
+      int? malive,
+      int? mdisabled,
+      int? mocupation,
+      int? mincome,
+      String? mrelation,
+      String? guardianname,
+      int? galive,
+      int? gdisabled,
+      int? gocupation,
+      int? gincome,
+      String? grelation,
+      String? siblingname1,
+      String? sgender1,
+      int? squalification1,
+      int? scourse1,
+      int? socupation1});
 }
 
 /// @nodoc
@@ -196,13 +363,123 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? fathername = freezed,
+    Object? falive = freezed,
+    Object? fdisabled = freezed,
+    Object? focupation = freezed,
+    Object? fincome = freezed,
+    Object? frelation = freezed,
+    Object? mothername = freezed,
+    Object? malive = freezed,
+    Object? mdisabled = freezed,
+    Object? mocupation = freezed,
+    Object? mincome = freezed,
+    Object? mrelation = freezed,
+    Object? guardianname = freezed,
+    Object? galive = freezed,
+    Object? gdisabled = freezed,
+    Object? gocupation = freezed,
+    Object? gincome = freezed,
+    Object? grelation = freezed,
+    Object? siblingname1 = freezed,
+    Object? sgender1 = freezed,
+    Object? squalification1 = freezed,
+    Object? scourse1 = freezed,
+    Object? socupation1 = freezed,
   }) {
     return _then(_$PostFamilyInfoImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      fathername: freezed == fathername
+          ? _value.fathername
+          : fathername // ignore: cast_nullable_to_non_nullable
+              as String?,
+      falive: freezed == falive
+          ? _value.falive
+          : falive // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fdisabled: freezed == fdisabled
+          ? _value.fdisabled
+          : fdisabled // ignore: cast_nullable_to_non_nullable
+              as int?,
+      focupation: freezed == focupation
+          ? _value.focupation
+          : focupation // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fincome: freezed == fincome
+          ? _value.fincome
+          : fincome // ignore: cast_nullable_to_non_nullable
+              as int?,
+      frelation: freezed == frelation
+          ? _value.frelation
+          : frelation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mothername: freezed == mothername
+          ? _value.mothername
+          : mothername // ignore: cast_nullable_to_non_nullable
+              as String?,
+      malive: freezed == malive
+          ? _value.malive
+          : malive // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mdisabled: freezed == mdisabled
+          ? _value.mdisabled
+          : mdisabled // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mocupation: freezed == mocupation
+          ? _value.mocupation
+          : mocupation // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mincome: freezed == mincome
+          ? _value.mincome
+          : mincome // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mrelation: freezed == mrelation
+          ? _value.mrelation
+          : mrelation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      guardianname: freezed == guardianname
+          ? _value.guardianname
+          : guardianname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      galive: freezed == galive
+          ? _value.galive
+          : galive // ignore: cast_nullable_to_non_nullable
+              as int?,
+      gdisabled: freezed == gdisabled
+          ? _value.gdisabled
+          : gdisabled // ignore: cast_nullable_to_non_nullable
+              as int?,
+      gocupation: freezed == gocupation
+          ? _value.gocupation
+          : gocupation // ignore: cast_nullable_to_non_nullable
+              as int?,
+      gincome: freezed == gincome
+          ? _value.gincome
+          : gincome // ignore: cast_nullable_to_non_nullable
+              as int?,
+      grelation: freezed == grelation
+          ? _value.grelation
+          : grelation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siblingname1: freezed == siblingname1
+          ? _value.siblingname1
+          : siblingname1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sgender1: freezed == sgender1
+          ? _value.sgender1
+          : sgender1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      squalification1: freezed == squalification1
+          ? _value.squalification1
+          : squalification1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      scourse1: freezed == scourse1
+          ? _value.scourse1
+          : scourse1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      socupation1: freezed == socupation1
+          ? _value.socupation1
+          : socupation1 // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -210,14 +487,81 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PostFamilyInfoImpl implements PostFamilyInfo {
-  const _$PostFamilyInfoImpl({required this.name});
+  const _$PostFamilyInfoImpl(
+      {this.fathername,
+      this.falive,
+      this.fdisabled,
+      this.focupation,
+      this.fincome,
+      this.frelation,
+      this.mothername,
+      this.malive,
+      this.mdisabled,
+      this.mocupation,
+      this.mincome,
+      this.mrelation,
+      this.guardianname,
+      this.galive,
+      this.gdisabled,
+      this.gocupation,
+      this.gincome,
+      this.grelation,
+      this.siblingname1,
+      this.sgender1,
+      this.squalification1,
+      this.scourse1,
+      this.socupation1});
 
   @override
-  final String name;
+  final String? fathername;
+  @override
+  final int? falive;
+  @override
+  final int? fdisabled;
+  @override
+  final int? focupation;
+  @override
+  final int? fincome;
+  @override
+  final String? frelation;
+  @override
+  final String? mothername;
+  @override
+  final int? malive;
+  @override
+  final int? mdisabled;
+  @override
+  final int? mocupation;
+  @override
+  final int? mincome;
+  @override
+  final String? mrelation;
+  @override
+  final String? guardianname;
+  @override
+  final int? galive;
+  @override
+  final int? gdisabled;
+  @override
+  final int? gocupation;
+  @override
+  final int? gincome;
+  @override
+  final String? grelation;
+  @override
+  final String? siblingname1;
+  @override
+  final String? sgender1;
+  @override
+  final int? squalification1;
+  @override
+  final int? scourse1;
+  @override
+  final int? socupation1;
 
   @override
   String toString() {
-    return 'FamilyInfoEvent.postFamilyInfo(name: $name)';
+    return 'FamilyInfoEvent.postFamilyInfo(fathername: $fathername, falive: $falive, fdisabled: $fdisabled, focupation: $focupation, fincome: $fincome, frelation: $frelation, mothername: $mothername, malive: $malive, mdisabled: $mdisabled, mocupation: $mocupation, mincome: $mincome, mrelation: $mrelation, guardianname: $guardianname, galive: $galive, gdisabled: $gdisabled, gocupation: $gocupation, gincome: $gincome, grelation: $grelation, siblingname1: $siblingname1, sgender1: $sgender1, squalification1: $squalification1, scourse1: $scourse1, socupation1: $socupation1)';
   }
 
   @override
@@ -225,11 +569,75 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostFamilyInfoImpl &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.fathername, fathername) ||
+                other.fathername == fathername) &&
+            (identical(other.falive, falive) || other.falive == falive) &&
+            (identical(other.fdisabled, fdisabled) ||
+                other.fdisabled == fdisabled) &&
+            (identical(other.focupation, focupation) ||
+                other.focupation == focupation) &&
+            (identical(other.fincome, fincome) || other.fincome == fincome) &&
+            (identical(other.frelation, frelation) ||
+                other.frelation == frelation) &&
+            (identical(other.mothername, mothername) ||
+                other.mothername == mothername) &&
+            (identical(other.malive, malive) || other.malive == malive) &&
+            (identical(other.mdisabled, mdisabled) ||
+                other.mdisabled == mdisabled) &&
+            (identical(other.mocupation, mocupation) ||
+                other.mocupation == mocupation) &&
+            (identical(other.mincome, mincome) || other.mincome == mincome) &&
+            (identical(other.mrelation, mrelation) ||
+                other.mrelation == mrelation) &&
+            (identical(other.guardianname, guardianname) ||
+                other.guardianname == guardianname) &&
+            (identical(other.galive, galive) || other.galive == galive) &&
+            (identical(other.gdisabled, gdisabled) ||
+                other.gdisabled == gdisabled) &&
+            (identical(other.gocupation, gocupation) ||
+                other.gocupation == gocupation) &&
+            (identical(other.gincome, gincome) || other.gincome == gincome) &&
+            (identical(other.grelation, grelation) ||
+                other.grelation == grelation) &&
+            (identical(other.siblingname1, siblingname1) ||
+                other.siblingname1 == siblingname1) &&
+            (identical(other.sgender1, sgender1) ||
+                other.sgender1 == sgender1) &&
+            (identical(other.squalification1, squalification1) ||
+                other.squalification1 == squalification1) &&
+            (identical(other.scourse1, scourse1) ||
+                other.scourse1 == scourse1) &&
+            (identical(other.socupation1, socupation1) ||
+                other.socupation1 == socupation1));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        fathername,
+        falive,
+        fdisabled,
+        focupation,
+        fincome,
+        frelation,
+        mothername,
+        malive,
+        mdisabled,
+        mocupation,
+        mincome,
+        mrelation,
+        guardianname,
+        galive,
+        gdisabled,
+        gocupation,
+        gincome,
+        grelation,
+        siblingname1,
+        sgender1,
+        squalification1,
+        scourse1,
+        socupation1
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -242,29 +650,170 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) postFamilyInfo,
+    required TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)
+        postFamilyInfo,
   }) {
-    return postFamilyInfo(name);
+    return postFamilyInfo(
+        fathername,
+        falive,
+        fdisabled,
+        focupation,
+        fincome,
+        frelation,
+        mothername,
+        malive,
+        mdisabled,
+        mocupation,
+        mincome,
+        mrelation,
+        guardianname,
+        galive,
+        gdisabled,
+        gocupation,
+        gincome,
+        grelation,
+        siblingname1,
+        sgender1,
+        squalification1,
+        scourse1,
+        socupation1);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? postFamilyInfo,
+    TResult? Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
   }) {
-    return postFamilyInfo?.call(name);
+    return postFamilyInfo?.call(
+        fathername,
+        falive,
+        fdisabled,
+        focupation,
+        fincome,
+        frelation,
+        mothername,
+        malive,
+        mdisabled,
+        mocupation,
+        mincome,
+        mrelation,
+        guardianname,
+        galive,
+        gdisabled,
+        gocupation,
+        gincome,
+        grelation,
+        siblingname1,
+        sgender1,
+        squalification1,
+        scourse1,
+        socupation1);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? postFamilyInfo,
+    TResult Function(
+            String? fathername,
+            int? falive,
+            int? fdisabled,
+            int? focupation,
+            int? fincome,
+            String? frelation,
+            String? mothername,
+            int? malive,
+            int? mdisabled,
+            int? mocupation,
+            int? mincome,
+            String? mrelation,
+            String? guardianname,
+            int? galive,
+            int? gdisabled,
+            int? gocupation,
+            int? gincome,
+            String? grelation,
+            String? siblingname1,
+            String? sgender1,
+            int? squalification1,
+            int? scourse1,
+            int? socupation1)?
+        postFamilyInfo,
     required TResult orElse(),
   }) {
     if (postFamilyInfo != null) {
-      return postFamilyInfo(name);
+      return postFamilyInfo(
+          fathername,
+          falive,
+          fdisabled,
+          focupation,
+          fincome,
+          frelation,
+          mothername,
+          malive,
+          mdisabled,
+          mocupation,
+          mincome,
+          mrelation,
+          guardianname,
+          galive,
+          gdisabled,
+          gocupation,
+          gincome,
+          grelation,
+          siblingname1,
+          sgender1,
+          squalification1,
+          scourse1,
+          socupation1);
     }
     return orElse();
   }
@@ -302,10 +851,54 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
 }
 
 abstract class PostFamilyInfo implements FamilyInfoEvent {
-  const factory PostFamilyInfo({required final String name}) =
-      _$PostFamilyInfoImpl;
+  const factory PostFamilyInfo(
+      {final String? fathername,
+      final int? falive,
+      final int? fdisabled,
+      final int? focupation,
+      final int? fincome,
+      final String? frelation,
+      final String? mothername,
+      final int? malive,
+      final int? mdisabled,
+      final int? mocupation,
+      final int? mincome,
+      final String? mrelation,
+      final String? guardianname,
+      final int? galive,
+      final int? gdisabled,
+      final int? gocupation,
+      final int? gincome,
+      final String? grelation,
+      final String? siblingname1,
+      final String? sgender1,
+      final int? squalification1,
+      final int? scourse1,
+      final int? socupation1}) = _$PostFamilyInfoImpl;
 
-  String get name;
+  String? get fathername;
+  int? get falive;
+  int? get fdisabled;
+  int? get focupation;
+  int? get fincome;
+  String? get frelation;
+  String? get mothername;
+  int? get malive;
+  int? get mdisabled;
+  int? get mocupation;
+  int? get mincome;
+  String? get mrelation;
+  String? get guardianname;
+  int? get galive;
+  int? get gdisabled;
+  int? get gocupation;
+  int? get gincome;
+  String? get grelation;
+  String? get siblingname1;
+  String? get sgender1;
+  int? get squalification1;
+  int? get scourse1;
+  int? get socupation1;
   @JsonKey(ignore: true)
   _$$PostFamilyInfoImplCopyWith<_$PostFamilyInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;

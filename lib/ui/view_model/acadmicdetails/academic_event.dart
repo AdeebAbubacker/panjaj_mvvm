@@ -3,7 +3,7 @@ part of 'academic_bloc.dart';
 @freezed
 class AcademicEvent with _$AcademicEvent {
   const factory AcademicEvent.started() = _Started;
-      const factory AcademicEvent.postFamilyInfo({
+      const factory AcademicEvent.postAcademicInfo({
   required final String name,
       required final String relation,
       required final String phone,
@@ -19,5 +19,5 @@ class AcademicEvent with _$AcademicEvent {
     required final String  siblingsqualification,
      required final String  siblingscourse,
     required final String  siblingsoccuptaion,
-  }) = PostFamilyInfo;
+  }) = postAcademicInfo;
 }

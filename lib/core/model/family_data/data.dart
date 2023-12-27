@@ -1,15 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'family_info.dart';
+import 'guardian.dart';
+import 'sibling.dart';
 
 part 'data.g.dart';
 
 @JsonSerializable()
 class Data {
-	@JsonKey(name: 'family_info') 
-	FamilyInfo? familyInfo;
+	List<Guardian>? guardians;
+	List<Sibling>? siblings;
 
-	Data({this.familyInfo});
+	Data({this.guardians, this.siblings});
 
 	factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

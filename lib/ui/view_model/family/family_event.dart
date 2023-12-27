@@ -15,8 +15,10 @@ class FornoSiblings extends FamilyEvent{
 }
 
 class AddMoreSiblings extends FamilyEvent {}
-class DeleteSibling extends FamilyEvent {
-  final int siblingIndex ;
 
-  DeleteSibling({required this.siblingIndex});
+
+class DeleteSibling extends FamilyEvent {
+ final String siblingID;
+
+  DeleteSibling({required this.siblingID});
 }

@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:panakj_app/ui/screens/student/widgets/checkboxdata.dart';
 import 'package:panakj_app/core/constant/constants.dart';
 import 'package:panakj_app/ui/screens/student/widgets/label_bottomSheet.dart';
 import 'package:panakj_app/ui/screens/student/screens/family/widgets/local_widgets/checkbox_data.dart';
@@ -13,7 +13,9 @@ import 'package:panakj_app/ui/screens/student/widgets/spacer_height.dart';
 class FamilyCard extends StatefulWidget {
   TextEditingController fathernameController = TextEditingController();
   TextEditingController fatherincomeController = TextEditingController();
+  TextEditingController mothernameController = TextEditingController();
   TextEditingController motherincomeController = TextEditingController();
+  TextEditingController guardianameController = TextEditingController();
   TextEditingController guardiaincomeController = TextEditingController();
   FocusNode realtionfocusNode;
   FocusNode fatherfocusNode;
@@ -34,7 +36,9 @@ class FamilyCard extends StatefulWidget {
     required this.realtionfocusNode,
     required this.fathernameController,
     required this.fathericomefocusnode,
+    required this.mothernameController,
     required this.mothericomefocusnode,
+    required this.guardianameController,
     required this.guardianicomefocusnode,
     required this.fatherfocusNode,
     required this.motherfocusNode,
@@ -63,12 +67,10 @@ class _FamilyCardState extends State<FamilyCard> {
           LabelName(
             labelText: 'Name',
             namefocusnode: widget.fatherfocusNode,
-            namecontroller: widget. fathernameController,
+            namecontroller: widget.fathernameController,
           ),
           const HeightSpacer(height: 14),
-          const CheckBoxWorkout(
-            width: 46,
-          ),
+          const CheckBoxData1(),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Occupation / Job'),
           labelBottomSheet(
@@ -76,7 +78,7 @@ class _FamilyCardState extends State<FamilyCard> {
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
           LabelNumericalText(
-            numericalfocusnode: widget.fathericomefocusnode,
+              numericalfocusnode: widget.fathericomefocusnode,
               mytext: 'Monthly Income',
               numController: widget.fatherincomeController),
           const LineDivider(),
@@ -87,12 +89,10 @@ class _FamilyCardState extends State<FamilyCard> {
           LabelName(
             labelText: 'Name',
             namefocusnode: widget.motherfocusNode,
-            namecontroller: widget.fathernameController,
+            namecontroller: widget.mothernameController,
           ),
           const HeightSpacer(height: 14),
-          const CheckBoxData(label: 'Alive', width: 130),
-          const HeightSpacer(height: 14),
-          const CheckBoxData(label: 'Disabled / Bedriden', width: 26),
+          const CheckBoxData2(),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Occupation / Job'),
           labelBottomSheet(
@@ -100,7 +100,7 @@ class _FamilyCardState extends State<FamilyCard> {
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
           LabelNumericalText(
-            numericalfocusnode: widget.mothericomefocusnode,
+              numericalfocusnode: widget.mothericomefocusnode,
               mytext: 'Monthly Income',
               numController: widget.motherincomeController),
           const LineDivider(),
@@ -109,19 +109,12 @@ class _FamilyCardState extends State<FamilyCard> {
             child: Text('Guardian', style: kfamiltTitleTextColor),
           ),
           LabelName(
-            namecontroller: widget.fathernameController,
+            namecontroller: widget.guardianameController,
             labelText: 'Name',
             namefocusnode: widget.guardianfocusNode,
           ),
           const HeightSpacer(height: 14),
-          LabelInputText(
-              focusNode: widget.realtionfocusNode,
-              label: 'Relation',
-              StringInput: widget.relationController),
-          const HeightSpacer(height: 14),
-          const CheckBoxData(label: 'Alive', width: 130),
-          const HeightSpacer(height: 14),
-          const CheckBoxData(label: 'Disabled / Bedriden', width: 26),
+          const CheckBoxData3(),
           const HeightSpacer(height: 14),
           InputLabel(mytext: 'Occupation / Job'),
           labelBottomSheet(
@@ -129,7 +122,7 @@ class _FamilyCardState extends State<FamilyCard> {
               hintText: 'Search For Occupation / Job'),
           const HeightSpacer(height: 14),
           LabelNumericalText(
-            numericalfocusnode: widget.guardianicomefocusnode,
+              numericalfocusnode: widget.guardianicomefocusnode,
               mytext: 'Monthly Income',
               numController: widget.guardiaincomeController),
           const LineDivider(),

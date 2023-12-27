@@ -14,7 +14,7 @@ class PostAChievmentScreen extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   BlocProvider.of<AcademicBloc>(context).add(
-                      AcademicEvent.postFamilyInfo(
+                      const AcademicEvent.postAcademicInfo(
                           name: "name",
                           relation: "relation",
                           phone: "phone",

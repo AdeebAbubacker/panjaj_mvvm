@@ -34,7 +34,7 @@ mixin _$AcademicEvent {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)
-        postFamilyInfo,
+        postAcademicInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +55,7 @@ mixin _$AcademicEvent {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,26 +76,26 @@ mixin _$AcademicEvent {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(PostFamilyInfo value) postFamilyInfo,
+    required TResult Function(postAcademicInfo value) postAcademicInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult? Function(postAcademicInfo value)? postAcademicInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult Function(postAcademicInfo value)? postAcademicInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,7 +173,7 @@ class _$StartedImpl implements _Started {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)
-        postFamilyInfo,
+        postAcademicInfo,
   }) {
     return started();
   }
@@ -197,7 +197,7 @@ class _$StartedImpl implements _Started {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
   }) {
     return started?.call();
   }
@@ -221,7 +221,7 @@ class _$StartedImpl implements _Started {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -234,7 +234,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(PostFamilyInfo value) postFamilyInfo,
+    required TResult Function(postAcademicInfo value) postAcademicInfo,
   }) {
     return started(this);
   }
@@ -243,7 +243,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult? Function(postAcademicInfo value)? postAcademicInfo,
   }) {
     return started?.call(this);
   }
@@ -252,7 +252,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult Function(postAcademicInfo value)? postAcademicInfo,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -267,10 +267,10 @@ abstract class _Started implements AcademicEvent {
 }
 
 /// @nodoc
-abstract class _$$PostFamilyInfoImplCopyWith<$Res> {
-  factory _$$PostFamilyInfoImplCopyWith(_$PostFamilyInfoImpl value,
-          $Res Function(_$PostFamilyInfoImpl) then) =
-      __$$PostFamilyInfoImplCopyWithImpl<$Res>;
+abstract class _$$postAcademicInfoImplCopyWith<$Res> {
+  factory _$$postAcademicInfoImplCopyWith(_$postAcademicInfoImpl value,
+          $Res Function(_$postAcademicInfoImpl) then) =
+      __$$postAcademicInfoImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String name,
@@ -290,11 +290,11 @@ abstract class _$$PostFamilyInfoImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PostFamilyInfoImplCopyWithImpl<$Res>
-    extends _$AcademicEventCopyWithImpl<$Res, _$PostFamilyInfoImpl>
-    implements _$$PostFamilyInfoImplCopyWith<$Res> {
-  __$$PostFamilyInfoImplCopyWithImpl(
-      _$PostFamilyInfoImpl _value, $Res Function(_$PostFamilyInfoImpl) _then)
+class __$$postAcademicInfoImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$postAcademicInfoImpl>
+    implements _$$postAcademicInfoImplCopyWith<$Res> {
+  __$$postAcademicInfoImplCopyWithImpl(_$postAcademicInfoImpl _value,
+      $Res Function(_$postAcademicInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -315,7 +315,7 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
     Object? siblingscourse = null,
     Object? siblingsoccuptaion = null,
   }) {
-    return _then(_$PostFamilyInfoImpl(
+    return _then(_$postAcademicInfoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -378,8 +378,8 @@ class __$$PostFamilyInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PostFamilyInfoImpl implements PostFamilyInfo {
-  const _$PostFamilyInfoImpl(
+class _$postAcademicInfoImpl implements postAcademicInfo {
+  const _$postAcademicInfoImpl(
       {required this.name,
       required this.relation,
       required this.phone,
@@ -426,14 +426,14 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
 
   @override
   String toString() {
-    return 'AcademicEvent.postFamilyInfo(name: $name, relation: $relation, phone: $phone, email: $email, highest_qualification: $highest_qualification, occupation: $occupation, income: $income, alive: $alive, disabled: $disabled, siblingname: $siblingname, siblinggender: $siblinggender, siblingsqualification: $siblingsqualification, siblingscourse: $siblingscourse, siblingsoccuptaion: $siblingsoccuptaion)';
+    return 'AcademicEvent.postAcademicInfo(name: $name, relation: $relation, phone: $phone, email: $email, highest_qualification: $highest_qualification, occupation: $occupation, income: $income, alive: $alive, disabled: $disabled, siblingname: $siblingname, siblinggender: $siblinggender, siblingsqualification: $siblingsqualification, siblingscourse: $siblingscourse, siblingsoccuptaion: $siblingsoccuptaion)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostFamilyInfoImpl &&
+            other is _$postAcademicInfoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.relation, relation) ||
                 other.relation == relation) &&
@@ -480,8 +480,8 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostFamilyInfoImplCopyWith<_$PostFamilyInfoImpl> get copyWith =>
-      __$$PostFamilyInfoImplCopyWithImpl<_$PostFamilyInfoImpl>(
+  _$$postAcademicInfoImplCopyWith<_$postAcademicInfoImpl> get copyWith =>
+      __$$postAcademicInfoImplCopyWithImpl<_$postAcademicInfoImpl>(
           this, _$identity);
 
   @override
@@ -503,9 +503,9 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)
-        postFamilyInfo,
+        postAcademicInfo,
   }) {
-    return postFamilyInfo(
+    return postAcademicInfo(
         name,
         relation,
         phone,
@@ -541,9 +541,9 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
   }) {
-    return postFamilyInfo?.call(
+    return postAcademicInfo?.call(
         name,
         relation,
         phone,
@@ -579,11 +579,11 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
             String siblingsqualification,
             String siblingscourse,
             String siblingsoccuptaion)?
-        postFamilyInfo,
+        postAcademicInfo,
     required TResult orElse(),
   }) {
-    if (postFamilyInfo != null) {
-      return postFamilyInfo(
+    if (postAcademicInfo != null) {
+      return postAcademicInfo(
           name,
           relation,
           phone,
@@ -606,36 +606,36 @@ class _$PostFamilyInfoImpl implements PostFamilyInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(PostFamilyInfo value) postFamilyInfo,
+    required TResult Function(postAcademicInfo value) postAcademicInfo,
   }) {
-    return postFamilyInfo(this);
+    return postAcademicInfo(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult? Function(postAcademicInfo value)? postAcademicInfo,
   }) {
-    return postFamilyInfo?.call(this);
+    return postAcademicInfo?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(PostFamilyInfo value)? postFamilyInfo,
+    TResult Function(postAcademicInfo value)? postAcademicInfo,
     required TResult orElse(),
   }) {
-    if (postFamilyInfo != null) {
-      return postFamilyInfo(this);
+    if (postAcademicInfo != null) {
+      return postAcademicInfo(this);
     }
     return orElse();
   }
 }
 
-abstract class PostFamilyInfo implements AcademicEvent {
-  const factory PostFamilyInfo(
+abstract class postAcademicInfo implements AcademicEvent {
+  const factory postAcademicInfo(
       {required final String name,
       required final String relation,
       required final String phone,
@@ -649,7 +649,7 @@ abstract class PostFamilyInfo implements AcademicEvent {
       required final String siblinggender,
       required final String siblingsqualification,
       required final String siblingscourse,
-      required final String siblingsoccuptaion}) = _$PostFamilyInfoImpl;
+      required final String siblingsoccuptaion}) = _$postAcademicInfoImpl;
 
   String get name;
   String get relation;
@@ -666,7 +666,7 @@ abstract class PostFamilyInfo implements AcademicEvent {
   String get siblingscourse;
   String get siblingsoccuptaion;
   @JsonKey(ignore: true)
-  _$$PostFamilyInfoImplCopyWith<_$PostFamilyInfoImpl> get copyWith =>
+  _$$postAcademicInfoImplCopyWith<_$postAcademicInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

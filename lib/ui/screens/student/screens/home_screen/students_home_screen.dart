@@ -259,7 +259,7 @@ class PhotoGallery extends StatelessWidget {
       paddingRight: 9,
       widget: Container(
         margin: const EdgeInsets.only(top: 10, bottom: 10, left: 3, right: 3),
-        width: 395,
+        width: double.infinity,
         height: 308,
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 255, 255, 255),
@@ -442,7 +442,7 @@ class LatestNews extends StatelessWidget {
       paddingLeft: 9,
       paddingRight: 9,
       widget: Container(
-        width: 395,
+        width: double.infinity,
         height: 240,
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 255, 255, 255),
@@ -542,7 +542,7 @@ class UpcomingEvents extends StatelessWidget {
       paddingLeft: 9,
       paddingRight: 9,
       widget: Container(
-        width: 395,
+        width: double.infinity,
         height: 240,
         margin: const EdgeInsets.only(
           top: 10,
@@ -618,19 +618,11 @@ class UpcomingEvents extends StatelessWidget {
                               SizedBox(
                                 width: 160.4,
                                 height: 80,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(0),
-                                    bottomRight: Radius.circular(0),
-                                    topLeft: Radius.circular(8),
-                                    topRight: Radius.circular(8),
-                                  ),
-                                  child: Image.network(
-                                    "https://th.bing.com/th/id/OIP.idied9qK1gECV-iXPddGbQHaEc?rs=1&pid=ImgDetMain",
-                                    width: 10,
-                                    height: 50,
-                                    fit: BoxFit.fitWidth,
-                                  ),
+                                child: Image.network(
+                                  "https://th.bing.com/th/id/OIP.idied9qK1gECV-iXPddGbQHaEc?rs=1&pid=ImgDetMain",
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  fit: BoxFit.fitWidth,
                                 ),
                               ),
                             ],
@@ -684,19 +676,11 @@ class UpcomingEvents extends StatelessWidget {
                               SizedBox(
                                 width: 168,
                                 height: 80,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(0),
-                                    bottomRight: Radius.circular(0),
-                                    topLeft: Radius.circular(8),
-                                    topRight: Radius.circular(8),
-                                  ),
-                                  child: Image.network(
-                                    "https://mdxdubai.blob.core.windows.net/prod/images/default-source/scholarship-awards/scholarship-award-ceremony.jpg?sfvrsn=26ab5701_0",
-                                    width: 10,
-                                    height: 50,
-                                    fit: BoxFit.fitWidth,
-                                  ),
+                                child: Image.network(
+                                  "https://mdxdubai.blob.core.windows.net/prod/images/default-source/scholarship-awards/scholarship-award-ceremony.jpg?sfvrsn=26ab5701_0",
+                                  width: 10,
+                                  height: 50,
+                                  fit: BoxFit.fitWidth,
                                 ),
                               ),
                             ],
@@ -744,7 +728,7 @@ class ApplicationStatus extends StatelessWidget {
       paddingLeft: 9,
       paddingRight: 9,
       widget: Container(
-        width: 395,
+        width: double.infinity,
         height: 180,
         margin: const EdgeInsets.only(
           top: 10,
@@ -836,8 +820,10 @@ class ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final kwidth = MediaQuery.of(context).size.width;
+    final kheight = MediaQuery.of(context).size.height;
     return Container(
-      width: 412,
+      width: kwidth,
       height: 120,
       color: const Color.fromARGB(187, 206, 201, 201),
       child: MyPadding(
@@ -892,6 +878,8 @@ class ApplyScholorshipCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final kwidth = MediaQuery.of(context).size.width;
+    final kheight = MediaQuery.of(context).size.width;
     return MyPadding(
       paddingLeft: 9,
       paddingRight: 9,
@@ -943,31 +931,37 @@ class ApplyScholorshipCard extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
             ),
-            MyPadding(
-              paddingLeft: 240,
-              paddingTop: 10,
-              widget: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      const Color.fromARGB(255, 255, 97, 86)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: kwidth * 0.65,
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 255, 97, 86)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const StudentsApplicationForm();
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text('Apply Now'),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const StudentsApplicationForm();
-                      },
-                    ),
-                  );
-                },
-                child: const Text('Apply Now'),
-              ),
+              ],
             ),
           ],
         ),

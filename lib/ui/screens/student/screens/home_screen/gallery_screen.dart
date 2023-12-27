@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panakj_app/ui/view_model/gallery/gallery_bloc.dart';
@@ -27,7 +29,7 @@ class GalleryScreen extends StatelessWidget {
             // ignore: avoid_print
             print('success');
             if (state.gallery.data == null) {
-              return CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

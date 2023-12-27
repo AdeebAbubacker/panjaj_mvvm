@@ -21,11 +21,11 @@ class personalInfoDBAdapter extends TypeAdapter<personalInfoDB> {
       gender: fields[1] as bool,
       dob: fields[2] as DateTime,
       address: fields[3] as String,
-      mobno: fields[4] as int,
+      mobno: fields[4] as dynamic,
       email: fields[5] as String,
       doyouHaveBankAcc: fields[6] as bool,
       nameasPerBank: fields[7] as String,
-      AccNumber: fields[8] as int,
+      AccNumber: fields[8] as dynamic,
       bankName: fields[9] as String,
       BranchIFSC: fields[10] as dynamic,
     );

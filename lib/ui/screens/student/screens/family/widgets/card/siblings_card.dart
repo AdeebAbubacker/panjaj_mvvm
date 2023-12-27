@@ -46,20 +46,14 @@ class _SiblingsCardState extends State<SiblingsCard> {
 
     List<int> keys = courseBox.keys.cast<int>().toList();
 
-
-
     if (keys.isEmpty) {
       return;
     }
-
 
     coursename = keys.map((key) {
       CourseDB bank = courseBox.get(key)!;
       return bank.name;
     }).toList();
-
-
-
 
     if (mounted) {
       setState(() {});

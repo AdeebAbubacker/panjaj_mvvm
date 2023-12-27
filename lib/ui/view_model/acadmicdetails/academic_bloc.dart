@@ -12,7 +12,7 @@ part 'academic_bloc.freezed.dart';
 class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   final academicService = AcademicService();
   AcademicBloc() : super(AcademicState.initial()) {
-    on<PostFamilyInfo>((event, emit) async {
+    on<postAcademicInfo>((event, emit) async {
       try {
         final response = await academicService.academicInfo();
         emit(state.copyWith(
@@ -20,7 +20,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
             isError: false,
             academicData: response,
             successorFailure: optionOf(right(response))));
-        print('from bloc file sucess${state.academicData.data!.studentId}');
+        print('from bloc file sucess ${state.academicData.data!.academics!.name}');
       } catch (e) {
         print('from bloc file errorr');
         emit(state.copyWith(
